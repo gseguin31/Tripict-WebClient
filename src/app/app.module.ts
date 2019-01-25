@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
 import { PostComponent } from './post/post.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {WebApiService} from './Services/web-api.service';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,10 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
   imports: [
     BrowserModule,
     HttpClientModule,
+    RouterModule.forRoot([
+      {path: '', component: AppComponent},
+      {path: ':trip/:activity/post', component: PostComponent}
+    ]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

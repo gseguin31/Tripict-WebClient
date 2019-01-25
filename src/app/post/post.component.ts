@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Picture} from '../assets/Models/picture';
 
 @Component({
   selector: 'app-post',
@@ -9,7 +10,14 @@ export class PostComponent implements OnInit {
 
   constructor() { }
 
+  text: string;
+  picture: Picture;
+
   ngOnInit() {
+  }
+
+  upload() {
+
   }
 
 }

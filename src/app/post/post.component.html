@@ -1,3 +1,12 @@
 <p>
   post works!
 </p>
+
+<div class="container">
+  <div class="row">
+    <input type="text" placeholder="Comment" [(ngmodel)]="text">
+  </div>
+  <div class="row">
+    <button (click)="upload()">Upload</button>
+  </div>
+</div>
