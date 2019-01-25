@@ -17,10 +17,10 @@ import {RouterModule} from '@angular/router';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([
+    /*RouterModule.forRoot([
       {path: '', component: AppComponent},
       {path: ':trip/:activity/post', component: PostComponent}
-    ]),
+    ]),*/
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
