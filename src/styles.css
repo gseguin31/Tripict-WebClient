@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+body, html{
+  background-image: linear-gradient(#6C648B, #B6A19E);
+  width: 100%;
+  height: 100%;
+}
+
+.btn{
+  background-color: #6BBAA7;
+  border: none;
+  margin: 1em 1em 0 0;
+  width: 25%;
+  -moz-transition: all 0.15s;
+  -webkit-transition: all 0.15s;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+  background-color: #6aa3ba;
+}
+
+#commentText{
+  margin-top: 2em;
+}
+
+.fileInput{
+  margin-top: 1em;
+  color: #ffffff
+}
+
+.imgPrev{
+  margin: 1em 0 1em 0;
+}
+
+h1{
+  text-align: center;
+  color: #ffffff;
+}
+
+h2{
+  text-align: center;
+  color: #ffffff;
+}
