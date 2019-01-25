@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Picture} from '../assets/Models/picture';
+import {WebApiService} from '../Services/web-api.service';
+import {Post} from '../assets/Models/post';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -8,16 +11,17 @@ import {Picture} from '../assets/Models/picture';
 })
 export class PostComponent implements OnInit {
 
-  constructor() { }
+  constructor(public apiService: WebApiService, private  route: ActivatedRoute) { }
 
   text: string;
-  picture: Picture;
+  pictures: Picture[];
 
   ngOnInit() {
   }
 
   upload() {
-
+    let p: Post = new Post(this.text, this.pictures, this.apiService.currentActivity)
+    this.apiService.addPost(p);
   }
 
 }

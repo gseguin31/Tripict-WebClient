@@ -12,6 +12,9 @@ export class WebApiService {
 
   constructor(public http: HttpClient) { }
 
+  public currentActivity: number;
+  public currentTrip: number;
+
   getOptions() {
     return {
       headers: new HttpHeaders({
