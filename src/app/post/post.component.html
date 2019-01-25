@@ -1,12 +1,8 @@
-<p>
-  post works!
-</p>
-
 <div class="container">
   <div class="row">
-    <input type="text" placeholder="Comment">
-  </div>
-  <div class="row">
-    <button (click)="upload()">Upload</button>
+    <form (ngSubmit)="upload()">
+      <input class="form-control col-md-12" [(ngModel)]="text" name="commentText" placeholder="Comment">
+      <button class="btn btn-default col-md-12">Submit</button>
+    </form>
   </div>
 </div>

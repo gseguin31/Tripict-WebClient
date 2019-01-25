@@ -8,6 +8,7 @@ import {WebApiService} from './Services/web-api.service';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,10 @@ import {RouterModule} from '@angular/router';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
-      /*{path: '', component: AppComponent},*/
-      {path: '', component: PostComponent}
+      {path: '', component: AppComponent},
+      {path: ':trip/:activity/post', component: PostComponent}
     ]),
     TranslateModule.forRoot({
       loader: {
