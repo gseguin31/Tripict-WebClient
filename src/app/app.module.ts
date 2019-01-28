@@ -37,6 +37,7 @@ import { DisplayPostComponent } from './display-post/display-post.component';
     RouterModule.forRoot([
       {path: '', component: AppComponent},
       {path: ':trip/activity', component: ActivityComponent},
+      {path: ':trip/:activity/posts', component: DisplayPostComponent},
       {path: ':trip/:activity/createPost', component: CreatePostComponent}
     ]),
     TranslateModule.forRoot({
