@@ -33,7 +33,7 @@ export class WebApiService {
   }
 
   getPostForActivity(activityId: number): Observable<Post[]>{
-    return this.http.get('/api/Post/getPostForActivity', this.getOptions()).pipe(map(r => {
+    return this.http.get('/api/Post/getPostForActivity?id=' + activityId, this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
