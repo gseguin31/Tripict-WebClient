@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PostComponent } from './post/post.component';
+import { CreatePostComponent } from './createPost/createPost.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { WebApiService } from './Services/web-api.service';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -14,13 +14,15 @@ import { MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule} from '@angular/material';
 import { ActivityComponent } from './activity/activity.component';
+import { DisplayPostComponent } from './display-post/display-post.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostComponent,
-    ActivityComponent
+    CreatePostComponent,
+    ActivityComponent,
+    DisplayPostComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { ActivityComponent } from './activity/activity.component';
     RouterModule.forRoot([
       {path: '', component: AppComponent},
       {path: ':trip/activity', component: ActivityComponent},
-      {path: ':trip/:activity/post', component: PostComponent}
+      {path: ':trip/:activity/createPost', component: CreatePostComponent}
     ]),
     TranslateModule.forRoot({
       loader: {
