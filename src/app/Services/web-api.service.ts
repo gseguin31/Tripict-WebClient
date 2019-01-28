@@ -25,9 +25,8 @@ export class WebApiService {
     };
   }
 
-  addPost(post: Post): void{
-    let dto = post.toCreatePostDTO(post);
-    this.http.post('api/Post/CreatePost', dto, this.getOptions()).subscribe();
+  addPost(post: CreatePostDTO): void{
+    this.http.post('api/Post/CreatePost', post, this.getOptions()).subscribe();
   }
 
   addActivity(activity: Activity): void{

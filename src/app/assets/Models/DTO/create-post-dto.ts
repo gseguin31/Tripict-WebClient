@@ -1,4 +1,4 @@
 
 export class CreatePostDTO {
-  constructor(public text: string, public pictures: File[], public activityId: number){}
+  constructor(public Text: string, public Pictures: String[], public activityId: number){}
 }

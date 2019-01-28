@@ -1,14 +1,13 @@
-<h2>New Post</h2>
+<h2>Nouveau Post</h2>
 
 <div class="container">
   <div class="row">
       <mat-form-field color="accent" class="comment col-md-12">
-        <textarea matInput id="commentText" class="form-control col-md-12" [(ngModel)]="text" name="commentText" placeholder="Comment"></textarea>
+        <textarea matInput id="commentText" class="form-control col-md-12" [(ngModel)]="text" name="commentText" placeholder="Commentaire"></textarea>
       </mat-form-field>
-      <!--<input id="commentTextBU" class="form-control col-md-12" [(ngModel)]="text" name="commentText" placeholder="Comment">-->
       <input #file type="file" multiple="multiple" style="display: none" accept='image/*' (change)="previewImage(file.files)" #fileInput>
-      <button class="btn btn-default col-md-5" (click)="upload()">Upload</button>
-      <button class="btn btn-default col-md-5" (click)="fileInput.click()" >Browse</button>
+      <button class="btn btn-default col-md-5" (click)="upload()">Envoyer</button>
+      <button class="btn btn-default col-md-5" (click)="fileInput.click()" >Parcourir</button>
   </div>
   <div class="row">
     <div class="col-md-3 imgPrev" *ngFor="let u of pictureURLS; index as i">
