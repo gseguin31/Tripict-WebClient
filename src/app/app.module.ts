@@ -36,8 +36,11 @@ import { DisplayPostComponent } from './display-post/display-post.component';
     MatFormFieldModule,
     RouterModule.forRoot([
       {path: '', component: AppComponent},
+
       {path: ':trip/create-activity', component: CreateActivityComponent},
-      {path: ':trip/:create-activity/createPost', component: CreatePostComponent}
+      {path: ':trip/:create-activity/createPost', component: CreatePostComponent},
+      {path: ':trip/:activity/posts', component: DisplayPostComponent},
+      {path: ':trip/:activity/createPost', component: CreatePostComponent}
     ]),
     TranslateModule.forRoot({
       loader: {
