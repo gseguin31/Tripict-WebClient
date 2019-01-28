@@ -20,9 +20,9 @@ export class ActivityComponent implements OnInit {
     this.posts = [];
   }
 
-  upload(){
+  /*upload(){
     let a: Activity = new Activity(this.name, this.apiService.currentTrip, this.posts);
     console.log(a);
     this.apiService.addPost(a);
-  }
+  }*/
 }
