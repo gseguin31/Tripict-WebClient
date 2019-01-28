@@ -9,10 +9,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  templateUrl: './createPost.component.html',
+  styleUrls: ['./createPost.component.css']
 })
-export class PostComponent implements OnInit {
+export class CreatePostComponent implements OnInit {
 
   constructor(public apiService: WebApiService, private  route: ActivatedRoute) { }
   public imagePath;

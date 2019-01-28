@@ -36,7 +36,7 @@ export class WebApiService {
   }
 
   getPostForUser(): Observable<Post[]>{
-    return this.http.get('/api/Post/GetPostForUser', this.getOptions()).pipe(map(r => {
+    return this.http.get('api/Posts', this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
