@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {WebApiService} from '../Services/web-api.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-activity',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityComponent implements OnInit {
 
-  constructor() { }
+  constructor(public apiService: WebApiService, private  route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
+  upload(){
+
+  }
 }
