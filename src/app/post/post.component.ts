@@ -4,6 +4,8 @@ import {WebApiService} from '../Services/web-api.service';
 import {Post} from '../assets/Models/post';
 import {ActivatedRoute} from '@angular/router';
 import {stringify} from 'querystring';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 @Component({
   selector: 'app-post',
@@ -22,10 +24,12 @@ export class PostComponent implements OnInit {
   ngOnInit() {
     this.pictures = [];
     this.pictureURLS = [];
+    this.text = '';
   }
 
   upload() {
     let p: Post = new Post(this.text, this.pictures, this.apiService.currentActivity);
+    console.log(p);
     this.apiService.addPost(p);
   }
 
