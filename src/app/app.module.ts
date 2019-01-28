@@ -13,12 +13,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule} from '@angular/material';
+import { ActivityComponent } from './activity/activity.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostComponent
+    PostComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { MatInputModule} from '@angular/material';
     MatFormFieldModule,
     RouterModule.forRoot([
       {path: '', component: AppComponent},
+      {path: ':trip/activity', component: ActivityComponent},
       {path: ':trip/:activity/post', component: PostComponent}
     ]),
     TranslateModule.forRoot({
