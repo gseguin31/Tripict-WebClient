@@ -6,10 +6,10 @@ import {Activity} from '../assets/Models/activity';
 
 @Component({
   selector: 'app-activity',
-  templateUrl: './activity.component.html',
-  styleUrls: ['./activity.component.css']
+  templateUrl: './create-activity.component.html',
+  styleUrls: ['./create-activity.component.css']
 })
-export class ActivityComponent implements OnInit {
+export class CreateActivityComponent implements OnInit {
 
   constructor(public apiService: WebApiService, private  route: ActivatedRoute) { }
 
@@ -20,9 +20,9 @@ export class ActivityComponent implements OnInit {
     this.posts = [];
   }
 
-  /*upload(){
+  upload(){
     let a: Activity = new Activity(this.name, this.apiService.currentTrip, this.posts);
     console.log(a);
-    this.apiService.addPost(a);
-  }*/
+    this.apiService.addActivity(a);
+  }
 }

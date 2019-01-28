@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule} from '@angular/material';
-import { ActivityComponent } from './activity/activity.component';
+import { CreateActivityComponent } from './create-activity/create-activity.component';
 import { DisplayPostComponent } from './display-post/display-post.component';
 
 
@@ -21,7 +21,7 @@ import { DisplayPostComponent } from './display-post/display-post.component';
   declarations: [
     AppComponent,
     CreatePostComponent,
-    ActivityComponent,
+    CreateActivityComponent,
     DisplayPostComponent
   ],
   imports: [
@@ -36,8 +36,8 @@ import { DisplayPostComponent } from './display-post/display-post.component';
     MatFormFieldModule,
     RouterModule.forRoot([
       {path: '', component: AppComponent},
-      {path: ':trip/activity', component: ActivityComponent},
-      {path: ':trip/:activity/createPost', component: CreatePostComponent}
+      {path: ':trip/create-activity', component: CreateActivityComponent},
+      {path: ':trip/:create-activity/createPost', component: CreatePostComponent}
     ]),
     TranslateModule.forRoot({
       loader: {
