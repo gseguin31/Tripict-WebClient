@@ -1,4 +1,10 @@
 {
   "app": {
+    "title": "Super Voyage Infini",
+	  "titlePostCreate": "Nouveau Post",
+	  "titleActivityCreate": "Nouvelle Activité",
+	  "alertImage": "Les fichiers sélectionnés doivent être de type image",
+	  "upload": "Envoyer",
+	  "browse": "Parcourir"
   }
 }

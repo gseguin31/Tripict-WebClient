@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class AppComponent {
   title = 'ClientAngular';
 
-  constructor (public http: HttpClient){}
+  constructor (public http: HttpClient, private translate: TranslateService){
+    translate.setDefaultLang('fr');
+  }
 
   getOptions() {
     return {

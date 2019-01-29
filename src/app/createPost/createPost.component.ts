@@ -23,7 +23,7 @@ export class CreatePostComponent implements OnInit {
   }
 
   upload() {
-    let p: CreatePostDTO = new CreatePostDTO(this.text, this.pictureURLS, 0/*this.apiService.currentActivity*/);
+    let p: CreatePostDTO = new CreatePostDTO(this.text, this.pictureURLS, 0);
     console.log(p);
     this.apiService.addPost(p);
   }
