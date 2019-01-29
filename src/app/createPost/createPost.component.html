@@ -1,13 +1,13 @@
-<h2>Nouveau Post</h2>
+<h2>{{ 'app.titlePostCreate' | translate}}</h2>
 
 <div class="container">
   <div class="row">
       <mat-form-field color="accent" class="comment col-md-12">
-        <textarea matInput id="commentText" class="form-control col-md-12" [(ngModel)]="text" name="commentText" placeholder="Commentaire"></textarea>
+        <textarea matInput id="commentText" class="form-control col-md-12" [(ngModel)]="text" name="commentText" placeholder="{{ 'app.phComment' | translate}}"></textarea>
       </mat-form-field>
       <input #file type="file" multiple="multiple" style="display: none" accept='image/*' (change)="previewImage(file.files)" #fileInput>
-      <button class="btn btn-default col-md-5" (click)="upload()">Envoyer</button>
-      <button class="btn btn-default col-md-5" (click)="fileInput.click()" >Parcourir</button>
+      <button class="btn btn-default col-md-5" (click)="upload()">{{ 'app.upload' | translate}}</button>
+      <button class="btn btn-default col-md-5" (click)="fileInput.click()" >{{ 'app.browse' | translate}}</button>
   </div>
   <div class="row">
     <div class="col-md-3 imgPrev" *ngFor="let u of pictureURLS; index as i">

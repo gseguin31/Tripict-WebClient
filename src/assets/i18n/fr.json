@@ -5,6 +5,7 @@
 	  "titleActivityCreate": "Nouvelle Activité",
 	  "alertImage": "Les fichiers sélectionnés doivent être de type image",
 	  "upload": "Envoyer",
-	  "browse": "Parcourir"
+	  "browse": "Parcourir",
+    "phComment": "Commentaire"
   }
 }
