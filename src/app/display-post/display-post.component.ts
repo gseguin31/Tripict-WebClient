@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
-import {Post} from '../assets/Models/post';
+import {Post} from '../../assets/Models/post';
 
 @Component({
   selector: 'app-display-post',

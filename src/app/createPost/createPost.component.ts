@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
 import {ActivatedRoute} from '@angular/router';
-import {CreatePostDTO} from '../assets/Models/DTO/create-post-dto';
+import {CreatePostDTO} from '../../assets/Models/DTO/create-post-dto';
 
 
 @Component({

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Post} from '../assets/Models/post';
-import {CreatePostDTO} from '../assets/Models/DTO/create-post-dto';
+import {Post} from '../../assets/Models/post';
+import {CreatePostDTO} from '../../assets/Models/DTO/create-post-dto';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Activity} from '../assets/Models/activity';
+import {Activity} from '../../assets/Models/activity';
 
 @Injectable({
   providedIn: 'root'
