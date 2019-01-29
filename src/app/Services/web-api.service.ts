@@ -5,6 +5,7 @@ import {CreatePostDTO} from '../Models/DTO/create-post-dto';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Activity} from '../Models/activity';
+import {PostDTO} from '../Models/DTO/post-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,8 @@ export class WebApiService {
     this.http.post('/api/Activity/createActivity', dto, this.getOptions()).subscribe();
   }
 
-  getPostForUser(): Observable<Post[]>{
-    return this.http.get('api/Posts', this.getOptions()).pipe(map(r => {
+  getPostForUser(): Observable<PostDTO[]>{
+    return this.http.get('api/Posts?', this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
