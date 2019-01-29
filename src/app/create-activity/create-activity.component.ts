@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
 import {ActivatedRoute} from '@angular/router';
-import {Post} from '../../assets/Models/post';
-import {Activity} from '../../assets/Models/activity';
+import {Post} from '../Models/post';
+import {Activity} from '../Models/activity';
 
 @Component({
   selector: 'app-activity',
