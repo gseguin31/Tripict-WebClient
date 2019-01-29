@@ -17,11 +17,12 @@ export class DisplayPostComponent implements OnInit {
   imagesPost1 = [];
   imagesPost2 = [];
 
+
   ngOnInit() {
     // a changer pour une activité
      this.http.getPostForUser().subscribe(r => {
+       console.log(r);
        this.allPostsFromServer = r;
-
      });
 
 
@@ -35,16 +36,6 @@ export class DisplayPostComponent implements OnInit {
     this.imagesPost2[1] = '../../assets/images/trip5.jpg';
     this.allPosts[1] = this.imagesPost2;
     this.allPosts[1] = new Post('Voici mon deuxieme post', this.imagesPost2, 0);
+
   }
-
-  readImages(files: any){
-    let readerFor = new FileReader();
-    readerFor.readAsDataURL(files);
-
-    readerFor.onload = (event) => {
-      this.allPostsFromServer.push((<any>readerFor.result));
-      // console.log(this.pictureURLS);
-    };
-  }
-
 }
