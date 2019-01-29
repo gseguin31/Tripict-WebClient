@@ -1,3 +1,30 @@
-<p>
-  display-post works!
-</p>
+
+<div class="container">
+
+  <div class="row postRows" *ngFor="let currentPost of allPosts">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <mat-card class="example-card">
+
+        <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'" [interval]="0">
+          <mdb-carousel-item *ngFor="let image of currentPost.pictureList">
+            <img class="d-block w-100" src={{image}} alt="First slide">
+          </mdb-carousel-item>
+        </mdb-carousel>
+
+        <mat-card-content class="postDescription">
+          <p>
+            {{currentPost.text}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>COMMENTAIRE</button>
+          <button mat-button>LIKE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+</div>
+

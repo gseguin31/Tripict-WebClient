@@ -15,6 +15,8 @@ import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule} from '@angular/material';
 import { CreateActivityComponent } from './create-activity/create-activity.component';
 import { DisplayPostComponent } from './display-post/display-post.component';
+import {MatCardModule} from '@angular/material/card';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    MatCardModule,
     RouterModule.forRoot([
       {path: '', component: AppComponent},
 
@@ -52,7 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    MDBBootstrapModule.forRoot()
   ],
   providers: [WebApiService],
   bootstrap: [AppComponent]
