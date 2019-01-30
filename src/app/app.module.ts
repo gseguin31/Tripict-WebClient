@@ -17,6 +17,7 @@ import { CreateActivityComponent } from './create-activity/create-activity.compo
 import { DisplayPostComponent } from './display-post/display-post.component';
 import {MatCardModule} from '@angular/material/card';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { CreditsComponent } from './credits/credits.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     CreatePostComponent,
     CreateActivityComponent,
-    DisplayPostComponent
+    DisplayPostComponent,
+    CreditsComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ export class DisplayPostComponent implements OnInit {
   constructor(public http: WebApiService) {
   }
 
+  public isLoading = true;
   public allPosts = [];
   public allPostsFromServer = [];
   imagesPost1 = [];
@@ -19,11 +20,19 @@ export class DisplayPostComponent implements OnInit {
 
 
   ngOnInit() {
-    // a changer pour une activité
-     this.http.getPostForUser().subscribe(r => {
+    // a mettre pour recuperer seulement d'une activité
+     /*this.http.getPostForActivity(id de lactivité).subscribe(r => {
        console.log(r);
        this.allPostsFromServer = r;
-     });
+     });*/
+
+     // appel temporaire pour tester et recevoir toute les post
+    this.http.getPostForUser().subscribe(r => {
+      console.log(r);
+      this.isLoading = false;
+      this.allPostsFromServer = r;
+
+    });
 
 
     this.imagesPost1[0] = '../../assets/images/trip1.jpg';
