@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {CreatePostDTO} from '../Models/DTO/create-post-dto';
 import {CreatePictureDto} from '../Models/DTO/create-picture-dto';
 import {forEach} from '@angular/router/src/utils/collection';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -13,7 +14,7 @@ import {forEach} from '@angular/router/src/utils/collection';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(public apiService: WebApiService, private  route: ActivatedRoute) { }
+  constructor(public apiService: WebApiService, private  route: ActivatedRoute, private translate: TranslateService) { }
   public imagePath;
 
   text: string;
@@ -29,6 +30,12 @@ export class CreatePostComponent implements OnInit {
     lstPictureDto = [];
     for (let i = 0; i < this.pictureURLS.length; i++){
       lstPictureDto.push(new CreatePictureDto(this.pictureURLS[i]));
+    }
+    if (this.pictureURLS.length === 0 && this.text === '') {
+      this.translate.get('app.alertPostCreate').subscribe((res: string) => {
+        alert(res);
+      });
+      return;
     }
     let p: CreatePostDTO = new CreatePostDTO(this.text, lstPictureDto, 0);
     console.log(p);
@@ -46,7 +53,9 @@ export class CreatePostComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
       let mimeType = files[i].type;
       if (mimeType.match(/image\/*/) == null) {
-        alert('The file you choose must be an image');
+        this.translate.get('app.alertImage').subscribe((res: string) => {
+          alert(res);
+        });
         return;
       }
 

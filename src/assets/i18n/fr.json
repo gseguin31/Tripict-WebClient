@@ -4,6 +4,7 @@
 	  "titlePostCreate": "Nouveau Post",
 	  "titleActivityCreate": "Nouvelle Activité",
 	  "alertImage": "Les fichiers sélectionnés doivent être de type image",
+    "alertPostCreate": "Veuillez indiquer au moins un message ou une image pour faire une publication",
 	  "upload": "Envoyer",
 	  "browse": "Parcourir",
     "phComment": "Commentaire"
