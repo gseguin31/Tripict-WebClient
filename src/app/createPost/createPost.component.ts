@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
 import {ActivatedRoute} from '@angular/router';
 import {CreatePostDTO} from '../Models/DTO/create-post-dto';
+import {CreatePictureDto} from '../Models/DTO/create-picture-dto';
+import {forEach} from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -23,7 +25,12 @@ export class CreatePostComponent implements OnInit {
   }
 
   upload() {
-    let p: CreatePostDTO = new CreatePostDTO(this.text, this.pictureURLS, 0);
+    let lstPictureDto: CreatePictureDto[];
+    lstPictureDto = [];
+    for (let i = 0; i < this.pictureURLS.length; i++){
+      lstPictureDto.push(new CreatePictureDto(this.pictureURLS[i]));
+    }
+    let p: CreatePostDTO = new CreatePostDTO(this.text, lstPictureDto, 0);
     console.log(p);
     this.apiService.addPost(p);
   }
