@@ -5,6 +5,7 @@
 .postDescription{
   padding-top: 10px;
   font-weight: bold;
+  overflow: auto;
 }
 
 .noPosts{
