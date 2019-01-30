@@ -6,6 +6,7 @@
 	  "alertImage": "Les fichiers sélectionnés doivent être de type image",
     "alertPostCreate": "Veuillez indiquer au moins un message ou une image pour faire une publication",
     "alertPostWorks": "La publication a été enregistrée avec succès, vous pouvez en envoyer une autre ou consulter celles qui existent déjà",
+    "alertActivityLength": "Veuillez indiquer un nom à l'activité",
 	  "upload": "Envoyer",
 	  "browse": "Parcourir",
     "toPosts": "Voir les publications",

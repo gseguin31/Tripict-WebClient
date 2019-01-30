@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Activity} from '../Models/activity';
 import {PostDTO} from '../Models/DTO/post-dto';
+import {CreateActivityDto} from '../Models/DTO/create-activity-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +31,9 @@ export class WebApiService {
     this.http.post('api/Post/CreatePost', post, this.getOptions()).subscribe();
   }
 
-  addActivity(activity: Activity): void{
-    let dto = activity.toCreateActivityDTO(activity);
-    this.http.post('/api/Activity/createActivity', dto, this.getOptions()).subscribe();
+  addActivity(activity: CreateActivityDto): void{
+    // let dto = activity.toCreateActivityDTO(activity);
+    this.http.post('/api/Activity/createActivity', activity, this.getOptions()).subscribe();
   }
 
   getPostForUser(): Observable<PostDTO[]>{

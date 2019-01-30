@@ -3,6 +3,8 @@ import {WebApiService} from '../Services/web-api.service';
 import {ActivatedRoute} from '@angular/router';
 import {Post} from '../Models/post';
 import {Activity} from '../Models/activity';
+import {CreateActivityDto} from '../Models/DTO/create-activity-dto';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-activity',
@@ -11,18 +13,27 @@ import {Activity} from '../Models/activity';
 })
 export class CreateActivityComponent implements OnInit {
 
-  constructor(public apiService: WebApiService, private  route: ActivatedRoute) { }
+  constructor(public apiService: WebApiService, private  route: ActivatedRoute, private translate: TranslateService) { }
 
   name: string;
   posts: Post[];
 
   ngOnInit() {
     this.posts = [];
+    this.name = '';
+    this.apiService.currentTrip = 1;
   }
 
   upload(){
-    let a: Activity = new Activity(this.name, this.apiService.currentTrip, this.posts);
-    console.log(a);
-    this.apiService.addActivity(a);
+    if (this.name.length <= 0){
+      this.translate.get('app.alertActivityLength').subscribe((res: string) => {
+        alert(res);
+      });
+      return;
+    }
+
+    let dto = new CreateActivityDto(this.name, this.apiService.currentTrip);
+    console.log(dto);
+    this.apiService.addActivity(dto);
   }
 }
