@@ -3,9 +3,10 @@
 
 body, html{
   background-image: linear-gradient(#6C648B 60%, #6BBAA7 100%);
-  width: 100%;
   height: 100%;
-  background-size: cover;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .btn{
@@ -32,9 +33,8 @@ body, html{
   text-align: left;
   padding-left: 7%;
 }
-
-.title-container{
-  width: 100%;
+.navbar{
+  background-color: #B6A19E;
 }
 
 .comment{
