@@ -40,6 +40,9 @@ export class CreatePostComponent implements OnInit {
     let p: CreatePostDTO = new CreatePostDTO(this.text, lstPictureDto, 0);
     console.log(p);
     this.apiService.addPost(p);
+    this.translate.get('app.alertPostWorks').subscribe((res: string) => {
+      alert(res);
+    });
   }
 
   // Ajoute les images sélectionnées à la liste, vérifie que tout ce qui est choisi est une image et affiche les images dans la page
