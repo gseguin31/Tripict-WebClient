@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
 import {Activity} from '../Models/activity';
 import {PostDTO} from '../Models/DTO/post-dto';
 import {CreateActivityDto} from '../Models/DTO/create-activity-dto';
+import {CreatePictureDto} from '../Models/DTO/create-picture-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +28,12 @@ export class WebApiService {
     };
   }
 
-  addPost(post: CreatePostDTO): void{
-    this.http.post('api/Post/CreatePost', post, this.getOptions()).subscribe();
+  addPost(post: CreatePostDTO): Observable<number> {
+    return this.http.post('api/Post/CreatePost', post, this.getOptions()) as any;
+  }
+
+  addPicture(pic: CreatePictureDto) {
+    this.http.post('api/Picture/CreatePicture', CreatePictureDto, this.getOptions()).subscribe();
   }
 
   addActivity(activity: CreateActivityDto): void{

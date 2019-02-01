@@ -18,10 +18,18 @@ export class CreatePostComponent implements OnInit {
 
   text: string;
   pictureURLS: string[];
+  currentPicAmount: number;
+
+  MAX_PIC_AMOUNT: number;
+  MAX_PIC_SIZE: number;
 
   ngOnInit() {
     this.pictureURLS = [];
     this.text = '';
+    this.currentPicAmount = 0;
+
+    this.MAX_PIC_AMOUNT = 25;
+    this.MAX_PIC_SIZE = 10485760;
   }
 
   upload() {
@@ -36,12 +44,19 @@ export class CreatePostComponent implements OnInit {
       });
       return;
     }
-    // let p: CreatePostDTO = new CreatePostDTO(this.text, lstPictureDto, 0);
-    /*console.log(p);
-    this.apiService.addPost(p);*/
-    /*this.translate.get('app.alertPostWorks').subscribe((res: string) => {
+
+    let p: CreatePostDTO = new CreatePostDTO(this.text, this.currentPicAmount, 0);
+    console.log(p);
+    this.apiService.addPost(p).subscribe(r => {
+      let id = r;
+      for (let i = 0; i < this.pictureURLS.length; i++) {
+        let picToSend = new CreatePictureDto(this.pictureURLS[i], id);
+        this.apiService.addPicture(picToSend);
+      }
+    });
+    this.translate.get('app.alertPostWorks').subscribe((res: string) => {
       alert(res);
-    });*/
+    });
   }
 
   // Ajoute les images sélectionnées à la liste, vérifie tout ce qui est choisi et affiche les images dans la page
@@ -57,11 +72,11 @@ export class CreatePostComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
 
       // Vérifie que le nombre maximum d'image n'a pas été atteint
-      if (this.pictureURLS.length >= 3){
+      if (this.currentPicAmount >= this.MAX_PIC_AMOUNT){
         this.translate.get('app.alertImageAmount').subscribe((res: string) => {
           alert(res);
         });
-        break;
+        return;
       }
 
       // Vérifie que le fichier est de type image
@@ -71,7 +86,7 @@ export class CreatePostComponent implements OnInit {
           alert(res);
         });
       // Vérifie que la taille maximum est respectée
-      } else if (files[i].size > 10485760) {
+      } else if (files[i].size > this.MAX_PIC_SIZE) {
         this.translate.get('app.alertImageSize').subscribe((res: string) => {
           alert(res);
         });
@@ -79,7 +94,7 @@ export class CreatePostComponent implements OnInit {
       } else {
         let readerFor = new FileReader();
         readerFor.readAsDataURL(files[i]);
-
+        this.currentPicAmount++;
         // La liste des URLs est lue pour les aperçus des images dans la page
         readerFor.onload = (event) => {
           this.pictureURLS.push((<any>readerFor.result));
