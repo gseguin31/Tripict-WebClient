@@ -50,13 +50,15 @@ export class CreatePostComponent implements OnInit {
     this.apiService.addPost(p).subscribe(r => {
       let id = r;
       for (let i = 0; i < this.pictureURLS.length; i++) {
-        let picToSend = new CreatePictureDto(this.pictureURLS[i], id);
-        this.apiService.addPicture(picToSend);
+        let base64 = this.pictureURLS[i];
+        let picToSend = new CreatePictureDto(base64, id);
+         console.log(picToSend);
+         this.apiService.addPicture(picToSend);
       }
     });
-    this.translate.get('app.alertPostWorks').subscribe((res: string) => {
+    /*this.translate.get('app.alertPostWorks').subscribe((res: string) => {
       alert(res);
-    });
+    });*/
   }
 
   // Ajoute les images sélectionnées à la liste, vérifie tout ce qui est choisi et affiche les images dans la page

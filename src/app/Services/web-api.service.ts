@@ -33,7 +33,7 @@ export class WebApiService {
   }
 
   addPicture(pic: CreatePictureDto) {
-    this.http.post('api/Picture/CreatePicture', CreatePictureDto, this.getOptions()).subscribe();
+    this.http.post('api/Picture/CreatePicture', pic, this.getOptions()).subscribe();
   }
 
   addActivity(activity: CreateActivityDto): void{
