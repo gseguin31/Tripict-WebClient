@@ -35,5 +35,9 @@ export class CreateActivityComponent implements OnInit {
     let dto = new CreateActivityDto(this.name, this.apiService.currentTrip);
     console.log(dto);
     this.apiService.addActivity(dto);
+
+    this.translate.get('app.alertActivityCreate').subscribe((res: string) => {
+      alert(res);
+    });
   }
 }

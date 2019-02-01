@@ -42,12 +42,16 @@ body, html{
   color: white;
 }
 
+.createActForm{
+  color: white;
+}
+
 .form-control{
   border: none;
   box-shadow: none;
 }
 
-.mat-input-element
+.mat-input-element,
 .mat-warn{
   color: #FBA100;
 }

@@ -33,7 +33,7 @@ export class WebApiService {
 
   addActivity(activity: CreateActivityDto): void{
     // let dto = activity.toCreateActivityDTO(activity);
-    this.http.post('/api/Activity/createActivity', activity, this.getOptions()).subscribe();
+    this.http.post('api/Activity/createActivity', activity, this.getOptions()).subscribe();
   }
 
   getPostForUser(): Observable<PostDTO[]>{
