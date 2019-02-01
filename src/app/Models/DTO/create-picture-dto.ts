@@ -1,4 +1,4 @@
 
 export class CreatePictureDto {
-  constructor(public Base64: string){}
+  constructor(public Base64: string, public PostId: number){}
 }
