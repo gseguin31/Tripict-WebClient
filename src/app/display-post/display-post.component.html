@@ -37,22 +37,107 @@
 </div>-->
 
 
-<div class="card-columns">
 
-  <div class="card" *ngFor="let currentPost of allPostsFromServer">
-    <img class="card-img-top" *ngIf="currentPost.PicturesDTO[0] != null" src={{currentPost.PicturesDTO[0].Base64}} alt="">
-    <div class="card-body">
-      <h5 class="card-title">
-        <img src="../../assets/images/user.png" alt="">
-        TODO Username
-      </h5>
-      <p class="card-text">{{currentPost.Text}}</p>
-      <p class="card-text"><small class="text-muted">TODO DATE ET HEURE</small></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-columns">
+        <div class="card" *ngFor="let currentPost of allPostsFromServer" (click)="open(content)">
+
+          <!-- model du popup (modal) mis ici pour utiliser les params de a-->
+          <ng-template #content let-modal class="modal">
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Purchase or sell</h4>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+
+                <div class="row postRows">
+                  <div class="col-md-12">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>Username</mat-card-title>
+                      </mat-card-header>
+
+                      <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'" [interval]="0">
+                        <mdb-carousel-item *ngFor="let image of currentPost.PicturesDTO">
+                          <img class="d-block w-100" src={{image.Base64}} alt="First slide">
+                        </mdb-carousel-item>
+                      </mdb-carousel>
+
+                      <mat-card-content class="postDescription">
+                        <p>
+                          {{currentPost.Text}}
+                        </p>
+                      </mat-card-content>
+                      <mat-card-actions>
+                        <button mat-button class="displayPostBtnComment" >COMMENTAIRE</button>
+                        <button mat-button class="displayPostBtnLike">LIKE</button>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="col-6">
+                <button type="button" class="btn submit" (click)="modal.close('Save click')">Purchase</button>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn submit" (click)="modal.close('Save click')">Sell</button>
+              </div>
+            </div>
+          </ng-template>
+          <!-- fin du popup -->
+
+
+          <img class="card-img-top" *ngIf="currentPost.PicturesDTO[0] != null" src={{currentPost.PicturesDTO[0].Base64}} alt="">
+          <div class="card-body">
+            <h5 class="card-title">
+              <img class="userIcon" src="../../assets/images/user.png" alt="">
+              TODO Username
+            </h5>
+            <p class="card-text">{{currentPost.Text}}</p>
+            <p class="card-text"><small class="text-muted">{{currentPost.Date}}</small></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
 </div>
 
-<!--Affichage si il n'y a pas de post ou que l'appel est en cours-->
 <h1 class="noPosts" *ngIf="isLoading" >Loading...</h1>
-<h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading" >Aucune publication à afficher</h1>
+<h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading" >Aucune publication à afficher</h1>-->
+
+
+
+
+
+
+
+<!--BACKUP DE FONCTIONNEL
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-columns">
+        <div class="card" *ngFor="let currentPost of allPostsFromServer" (click)="open(content)">
+          <img class="card-img-top" *ngIf="currentPost.PicturesDTO[0] != null" src={{currentPost.PicturesDTO[0].Base64}} alt="">
+          <div class="card-body">
+            <h5 class="card-title">
+              <img class="userIcon" src="../../assets/images/user.png" alt="">
+              TODO Username
+            </h5>
+            <p class="card-text">{{currentPost.Text}}</p>
+            <p class="card-text"><small class="text-muted">TODO DATE ET HEURE</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+&lt;!&ndash;Affichage si il n'y a pas de post ou que l'appel est en cours&ndash;&gt;
+<h1 class="noPosts" *ngIf="isLoading" >Loading...</h1>
+<h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading" >Aucune publication à afficher</h1>-->

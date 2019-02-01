@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
 import {Post} from '../Models/post';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-display-post',
@@ -9,7 +10,7 @@ import {Post} from '../Models/post';
 })
 export class DisplayPostComponent implements OnInit {
 
-  constructor(public http: WebApiService) {
+  constructor(public http: WebApiService, public modalService: NgbModal) {
   }
 
   public isLoading = true;
@@ -33,5 +34,9 @@ export class DisplayPostComponent implements OnInit {
       this.isLoading = false;
       this.allPostsFromServer = r;
     });
+  }
+
+  open(content) {
+    this.modalService.open(content, { centered: true }).result;
   }
 }

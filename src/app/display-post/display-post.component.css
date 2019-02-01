@@ -56,4 +56,39 @@ mat-card-header{
   font-weight: bold;
 }
 
+.userIcon{
+  width: 45px;
+  height: 45px;
+}
+
+.card{
+  margin-top: 1em;
+}
+
+/* MODAL SECTION */
+.modal-header{
+  text-align: center;
+  background-color: #000000;
+}
+
+.modal-body{
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background-color: #000000;
+}
+
+.modal-footer{
+  background-color: #000000;
+}
+
+
+
+
+/* MEDIA QUERY SECTION */
+@media (min-width: 1200px){
+  .container {
+    max-width: 1500px;
+  }
+}
+
 
