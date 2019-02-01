@@ -32,12 +32,11 @@ export class CreatePostComponent implements OnInit {
     this.MAX_PIC_SIZE = 10485760;
   }
 
+  // Prépare les objets de transfert de la liste et les envoie
   upload() {
-    let lstPictureDto: CreatePictureDto[];
-    lstPictureDto = [];
     for (let i = 0; i < this.pictureURLS.length; i++){
-      // lstPictureDto.push(new CreatePictureDto(this.pictureURLS[i]));
     }
+    // Ne permet pas l'envoi si rien n'est envoyé
     if (this.pictureURLS.length === 0 && this.text === '') {
       this.translate.get('app.alertPostCreate').subscribe((res: string) => {
         alert(res);
@@ -45,14 +44,13 @@ export class CreatePostComponent implements OnInit {
       return;
     }
 
+    // Crée le post puis envoie les images dedans de maniêre asynchrone
     let p: CreatePostDTO = new CreatePostDTO(this.text, this.currentPicAmount, 0);
-    console.log(p);
     this.apiService.addPost(p).subscribe(r => {
       let id = r;
       for (let i = 0; i < this.pictureURLS.length; i++) {
         let base64 = this.pictureURLS[i];
         let picToSend = new CreatePictureDto(base64, id);
-         console.log(picToSend);
          this.apiService.addPicture(picToSend);
       }
     });
@@ -100,7 +98,6 @@ export class CreatePostComponent implements OnInit {
         // La liste des URLs est lue pour les aperçus des images dans la page
         readerFor.onload = (event) => {
           this.pictureURLS.push((<any>readerFor.result));
-          console.log(this.pictureURLS);
         };
       }
     }
