@@ -67,7 +67,9 @@ export class CreatePostComponent implements OnInit {
             postsSent++;
             if (postsSent === this.currentPicAmount) {
               this.ref.detectChanges();
-              this.goToPosts();
+              setTimeout( (e) => {
+                this.goToPosts();
+              }, 300);
             }
           },
           (err) => {
@@ -82,6 +84,7 @@ export class CreatePostComponent implements OnInit {
   goToPosts() {
     this.translate.get('app.alertPostWorks').subscribe((re: string) => {
       alert(re);
+      this.ref.detectChanges();
       this.router.navigateByUrl('/a/b/posts');
     });
   }
