@@ -11,8 +11,15 @@
       <button class="btn btn-default col-md-3" [routerLink]="['/tripEx/activityEx/posts']">{{ 'app.toPosts' | translate}}</button>
   </div>
   <div class="row">
-    <div class="col-md-3 imgPrev" *ngFor="let u of pictureURLS; index as i">
-      <img [src]=pictureURLS[i] height="200" width="200">
+    <div class="col-md-3" *ngFor="let u of pictureURLS; index as i">
+      <div class="div-img-prev">
+        <img class="img-prev" [src]=pictureURLS[i].src>
+        <div [ngClass]=pictureURLS[i].status></div>
+
+        <div *ngIf="pictureURLS[i].status === 'sending'" class="img-loading-overlay">
+          <div class="img-spinning-circle"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

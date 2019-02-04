@@ -32,8 +32,8 @@ export class WebApiService {
     return this.http.post('api/Post/CreatePost', post, this.getOptions()) as any;
   }
 
-  addPicture(pic: CreatePictureDto) {
-    this.http.post('api/Picture/CreatePicture', pic, this.getOptions()).subscribe();
+  addPicture(pic: CreatePictureDto): Observable<Response> {
+    return this.http.post('api/Picture/CreatePicture', pic, this.getOptions()) as any;
   }
 
   addActivity(activity: CreateActivityDto): void{

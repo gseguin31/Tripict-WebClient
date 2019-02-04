@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CreatePostDTO} from '../Models/DTO/create-post-dto';
 import {CreatePictureDto} from '../Models/DTO/create-picture-dto';
 import {forEach} from '@angular/router/src/utils/collection';
 import {TranslateService} from '@ngx-translate/core';
 
+class ImgUpload {
+  status = 'waiting';
+
+  constructor(public src: string) {
+  }
+}
 
 @Component({
   selector: 'app-post',
@@ -14,10 +20,12 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(public apiService: WebApiService, private  route: ActivatedRoute, private translate: TranslateService) { }
+  constructor(public apiService: WebApiService, private  route: ActivatedRoute, private translate: TranslateService, private router: Router, private ref: ChangeDetectorRef) {
+  }
 
   text: string;
-  pictureURLS: string[];
+  // pictureURLS: string[];
+  pictureURLS: ImgUpload[];
   currentPicAmount: number;
 
   MAX_PIC_AMOUNT: number;
@@ -34,7 +42,7 @@ export class CreatePostComponent implements OnInit {
 
   // Prépare les objets de transfert de la liste et les envoie
   upload() {
-    for (let i = 0; i < this.pictureURLS.length; i++){
+    for (let i = 0; i < this.pictureURLS.length; i++) {
     }
     // Ne permet pas l'envoi si rien n'est envoyé
     if (this.pictureURLS.length === 0 && this.text === '') {
@@ -48,15 +56,34 @@ export class CreatePostComponent implements OnInit {
     let p: CreatePostDTO = new CreatePostDTO(this.text, this.currentPicAmount, 0);
     this.apiService.addPost(p).subscribe(r => {
       let id = r;
+      let postsSent = 0;
       for (let i = 0; i < this.pictureURLS.length; i++) {
-        let base64 = this.pictureURLS[i];
+        let base64 = this.pictureURLS[i].src;
         let picToSend = new CreatePictureDto(base64, id);
-         this.apiService.addPicture(picToSend);
+        this.pictureURLS[i].status = 'sending';
+        this.apiService.addPicture(picToSend).subscribe(
+          (res) => {
+            this.pictureURLS[i].status = 'ok';
+            postsSent++;
+            if (postsSent === this.currentPicAmount) {
+              this.ref.detectChanges();
+              this.goToPosts();
+            }
+          },
+          (err) => {
+            this.pictureURLS[i].status = 'failed';
+          }
+        );
       }
     });
-    /*this.translate.get('app.alertPostWorks').subscribe((res: string) => {
-      alert(res);
-    });*/
+  }
+
+  // Avertis l'utilisateur du succès du post et redirige vers la liste des posts
+  goToPosts() {
+    this.translate.get('app.alertPostWorks').subscribe((re: string) => {
+      alert(re);
+      this.router.navigateByUrl('/a/b/posts');
+    });
   }
 
   // Ajoute les images sélectionnées à la liste, vérifie tout ce qui est choisi et affiche les images dans la page
@@ -64,7 +91,7 @@ export class CreatePostComponent implements OnInit {
   previewImage(files) {
 
     // Vérifie que des fichiers on été sélectionnés
-    if (files.length === 0){
+    if (files.length === 0) {
       return;
     }
 
@@ -72,7 +99,7 @@ export class CreatePostComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
 
       // Vérifie que le nombre maximum d'image n'a pas été atteint
-      if (this.currentPicAmount >= this.MAX_PIC_AMOUNT){
+      if (this.currentPicAmount >= this.MAX_PIC_AMOUNT) {
         this.translate.get('app.alertImageAmount').subscribe((res: string) => {
           alert(res);
         });
@@ -85,19 +112,21 @@ export class CreatePostComponent implements OnInit {
         this.translate.get('app.alertImageType').subscribe((res: string) => {
           alert(res);
         });
-      // Vérifie que la taille maximum est respectée
+        // Vérifie que la taille maximum est respectée
       } else if (files[i].size > this.MAX_PIC_SIZE) {
         this.translate.get('app.alertImageSize').subscribe((res: string) => {
           alert(res);
         });
-      // Ajoute les URLs des fichiers à la liste
+        // Ajoute les URLs des fichiers à la liste
       } else {
         let readerFor = new FileReader();
         readerFor.readAsDataURL(files[i]);
         this.currentPicAmount++;
         // La liste des URLs est lue pour les aperçus des images dans la page
         readerFor.onload = (event) => {
-          this.pictureURLS.push((<any>readerFor.result));
+          let picAdd = new ImgUpload(<any>readerFor.result);
+          this.pictureURLS.push(picAdd);
+          console.log(this.pictureURLS);
         };
       }
     }
