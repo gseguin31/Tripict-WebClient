@@ -15,6 +15,7 @@ body, html{
   border: none;
   margin: 1em;
   width: 25%;
+  min-width: fit-content;
   -moz-transition: all 0.15s;
   -webkit-transition: all 0.15s;
 }
@@ -35,6 +36,10 @@ body, html{
 }
 .navbar{
   background-color: #B6A19E;
+}
+
+.nav-item{
+  cursor: pointer;
 }
 
 .comment{

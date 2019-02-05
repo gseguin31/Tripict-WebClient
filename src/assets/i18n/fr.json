@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Super Voyage Infini",
+    "title": "TripicT",
 	  "titlePostCreate": "Nouveau Post",
 	  "titleActivityCreate": "Nouvelle Activité",
 	  "alertImageType": "Les fichiers sélectionnés doivent être de type image",
@@ -13,6 +13,7 @@
 	  "upload": "Envoyer",
 	  "browse": "Parcourir",
     "toPosts": "Voir les publications",
-    "phComment": "Commentaire"
+    "phComment": "Commentaire",
+    "translateBtn": "English"
   }
 }
