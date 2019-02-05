@@ -36,7 +36,7 @@ export class CreatePostComponent implements OnInit {
     this.text = '';
     this.currentPicAmount = 0;
 
-    this.MAX_PIC_AMOUNT = 25;
+    this.MAX_PIC_AMOUNT = 2;
     this.MAX_PIC_SIZE = 10485760;
   }
 
@@ -55,6 +55,10 @@ export class CreatePostComponent implements OnInit {
     // Crée le post puis envoie les images dedans de maniêre asynchrone
     let p: CreatePostDTO = new CreatePostDTO(this.text, this.currentPicAmount, 1);
     this.apiService.addPost(p).subscribe(r => {
+
+      if (this.currentPicAmount === 0){ // Si le post ne contient pas d'images
+        this.goToPosts();
+      }
       let id = r;
       let postsSent = 0;
       for (let i = 0; i < this.pictureURLS.length; i++) {

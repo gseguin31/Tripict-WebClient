@@ -26,6 +26,10 @@ body, html{
   background-color: #6aa3ba;
 }
 
+.btn:disabled{
+  background-color: #6BBAA7;
+}
+
 .title{
   width: 100%;
   height: fit-content;

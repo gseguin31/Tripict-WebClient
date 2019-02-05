@@ -19,6 +19,8 @@ export class WebApiService {
   public currentActivity: number;
   public currentTrip: number;
 
+  public baseUrl = 'http://e1-dev.projet.college-em.info:8080/';
+
   getOptions() {
     return {
       headers: new HttpHeaders({
@@ -29,26 +31,26 @@ export class WebApiService {
   }
 
   addPost(post: CreatePostDTO): Observable<number> {
-    return this.http.post('api/Post/CreatePost', post, this.getOptions()) as any;
+    return this.http.post(this.baseUrl + 'api/Post/CreatePost', post, this.getOptions()) as any;
   }
 
   addPicture(pic: CreatePictureDto): Observable<Response> {
-    return this.http.post('api/Picture/CreatePicture', pic, this.getOptions()) as any;
+    return this.http.post(this.baseUrl + 'api/Picture/CreatePicture', pic, this.getOptions()) as any;
   }
 
   addActivity(activity: CreateActivityDto): void{
     // let dto = activity.toCreateActivityDTO(activity);
-    this.http.post('api/Activity/createActivity', activity, this.getOptions()).subscribe();
+    this.http.post(this.baseUrl + 'api/Activity/createActivity', activity, this.getOptions()).subscribe();
   }
 
   getPostForUser(): Observable<PostDTO[]>{
-    return this.http.get('api/Posts', this.getOptions()).pipe(map(r => {
+    return this.http.get(this.baseUrl + 'api/Posts', this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
 
   getPostForActivity(activityId: number): Observable<PostDTO[]>{
-    return this.http.get('/api/Posts/GetPostsForActivity?id=' + activityId, this.getOptions()).pipe(map(r => {
+    return this.http.get(this.baseUrl + '/api/Posts/GetPostsForActivity?id=' + activityId, this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
