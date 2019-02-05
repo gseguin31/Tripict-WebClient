@@ -27,6 +27,7 @@ export class CreatePostComponent implements OnInit {
   // pictureURLS: string[];
   pictureURLS: ImgUpload[];
   currentPicAmount: number;
+  currentlyUploading: boolean;
 
   MAX_PIC_AMOUNT: number;
   MAX_PIC_SIZE: number;
@@ -35,8 +36,9 @@ export class CreatePostComponent implements OnInit {
     this.pictureURLS = [];
     this.text = '';
     this.currentPicAmount = 0;
+    this.currentlyUploading = false;
 
-    this.MAX_PIC_AMOUNT = 2;
+    this.MAX_PIC_AMOUNT = 25;
     this.MAX_PIC_SIZE = 10485760;
   }
 
@@ -52,6 +54,8 @@ export class CreatePostComponent implements OnInit {
       return;
     }
 
+
+    this.currentlyUploading = true;
     // Crée le post puis envoie les images dedans de maniêre asynchrone
     let p: CreatePostDTO = new CreatePostDTO(this.text, this.currentPicAmount, 1);
     this.apiService.addPost(p).subscribe(r => {
@@ -70,6 +74,7 @@ export class CreatePostComponent implements OnInit {
             this.pictureURLS[i].status = 'ok';
             postsSent++;
             if (postsSent === this.currentPicAmount) {
+              this.currentlyUploading = false;
               this.ref.detectChanges();
               setTimeout( (e) => {
                 this.goToPosts();

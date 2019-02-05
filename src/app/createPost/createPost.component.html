@@ -6,8 +6,8 @@
         <textarea matInput id="commentText" maxlength="250" class="form-control col-md-12" [(ngModel)]="text" name="commentText" placeholder="{{ 'app.phComment' | translate}}"></textarea>
       </mat-form-field>
       <input #file type="file" multiple="multiple" style="display: none" accept='image/*' (change)="previewImage(file.files)" #fileInput>
-      <button [disabled]="currentPicAmount === MAX_PIC_AMOUNT" class="btn btn-default col-md-3" (click)="upload()">{{ 'app.upload' | translate}}</button>
-      <button class="btn btn-default col-md-3" (click)="fileInput.click()" >{{ 'app.browse' | translate}}</button>
+      <button [disabled]="currentlyUploading" class="btn btn-default col-md-3" (click)="upload()">{{ 'app.upload' | translate}}</button>
+      <button [disabled]="currentPicAmount === MAX_PIC_AMOUNT"  class="btn btn-default col-md-3" (click)="fileInput.click()" >{{ 'app.browse' | translate}}</button>
   </div>
   <div class="row">
     <div class="col-md-3" *ngFor="let u of pictureURLS; index as i">
