@@ -53,7 +53,7 @@ export class CreatePostComponent implements OnInit {
     }
 
     // Crée le post puis envoie les images dedans de maniêre asynchrone
-    let p: CreatePostDTO = new CreatePostDTO(this.text, this.currentPicAmount, 0);
+    let p: CreatePostDTO = new CreatePostDTO(this.text, this.currentPicAmount, 1);
     this.apiService.addPost(p).subscribe(r => {
       let id = r;
       let postsSent = 0;

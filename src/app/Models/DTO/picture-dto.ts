@@ -1,3 +1,3 @@
 export class PictureDTO {
-  constructor(public Id: number, public Base64: String) {}
+  constructor(public id: number, public base64: String) {}
 }
