@@ -2,11 +2,11 @@
 
 <div class="container">
   <div class="row">
-    <mat-form-field color="accent" class="createActForm">
+    <mat-form-field class="createActForm">
       <input matInput placeholder="Nom de l'activité" [(ngModel)]="name">
     </mat-form-field>
   </div>
   <div class="row">
-    <button mat-raised-button color="accent" (click)="upload()">{{ 'app.upload' | translate}}</button>
+    <button mat-raised-button (click)="upload()">{{ 'app.upload' | translate}}</button>
   </div>
 </div>
