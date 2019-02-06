@@ -23,14 +23,14 @@ export class DisplayPostComponent implements OnInit {
   ngOnInit() {
     // a mettre pour recuperer seulement d'une activité
      /*this.http.getPostForActivity(id de lactivité).subscribe(r => {
-       console.log(r);
+       // console.log(r);
        this.isLoading = false;
        this.allPostsFromServer = r;
      });*/
 
      // appel temporaire pour tester et recevoir toute les post
     this.http.getPostForUser().subscribe(r => {
-      console.log(r);
+      // console.log(r);
       this.isLoading = false;
       this.allPostsFromServer = r;
     });

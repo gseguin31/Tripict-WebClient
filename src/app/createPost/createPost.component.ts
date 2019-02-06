@@ -138,7 +138,7 @@ export class CreatePostComponent implements OnInit {
         readerFor.onload = (event) => {
           let picAdd = new ImgUpload(<any>readerFor.result);
           this.pictureURLS.push(picAdd);
-          console.log(this.pictureURLS);
+          // console.log(this.pictureURLS);
         };
       }
     }
