@@ -2,7 +2,7 @@
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 
 body, html{
-  background-image: linear-gradient(#6C648B 60%, #6BBAA7 100%);
+  background-image: linear-gradient(ghostwhite 60%, lightgray 100%);
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@ body, html{
   padding-left: 7%;
 }
 .navbar{
-  background-color: #B6A19E;
+  background-color: #2b8087;
 }
 
 .nav-item{
@@ -147,3 +147,6 @@ h2{
   }
 }
 
+.card{
+  border: 1px solid rgba(0,0,0,.2);
+}
