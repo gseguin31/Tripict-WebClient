@@ -19,7 +19,7 @@ export class WebApiService {
   public currentActivity: number;
   public currentTrip: number;
 
-  public baseUrl = 'http://e1-dev.projet.college-em.info:8080/';
+  public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
 
   getOptions() {
     return {
@@ -41,6 +41,12 @@ export class WebApiService {
   addActivity(activity: CreateActivityDto): void{
     // let dto = activity.toCreateActivityDTO(activity);
     this.http.post(this.baseUrl + 'api/Activity/createActivity', activity, this.getOptions()).subscribe();
+  }
+
+  getActivityForTrip(tripId: number){
+    this.http.get(this.baseUrl + 'api/Activity/getActivityForTrip?id=' + tripId, this.getOptions()).pipe(map( r => {
+      return r as any;
+    }));
   }
 
   getPostForUser(): Observable<PostDTO[]>{

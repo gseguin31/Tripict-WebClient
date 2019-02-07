@@ -20,6 +20,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CreditsComponent } from './credits/credits.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
+import { ViewActivityComponent } from './view-activity/view-activity.component';
+import { DisplayActivitiesComponent } from './display-activities/display-activities.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,7 +35,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CreateActivityComponent,
     DisplayPostComponent,
     CreditsComponent,
-    LoginComponent
+    LoginComponent,
+    ViewActivityComponent,
+    DisplayActivitiesComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: '', component: LoginComponent},
 
       {path: ':trip/create-activity', component: CreateActivityComponent},
+      {path: ':trip/:activity', component: DisplayActivitiesComponent},
       {path: ':trip/:create-activity/createPost', component: CreatePostComponent},
       {path: ':trip/:activity/posts', component: DisplayPostComponent},
       {path: ':trip/:activity/createPost', component: CreatePostComponent}
