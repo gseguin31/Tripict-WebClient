@@ -19,6 +19,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CreditsComponent } from './credits/credits.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './login/login.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -31,7 +32,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CreatePostComponent,
     CreateActivityComponent,
     DisplayPostComponent,
-    CreditsComponent
+    CreditsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCardModule,
     NgbModule,
     RouterModule.forRoot([
-      {path: '', component: AppComponent},
+      {path: '', component: LoginComponent},
 
       {path: ':trip/create-activity', component: CreateActivityComponent},
       {path: ':trip/:create-activity/createPost', component: CreatePostComponent},
