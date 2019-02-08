@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  viewRegister = false;
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
+  toggleRegister() {
+    this.viewRegister = !this.viewRegister;
+  }
 }
