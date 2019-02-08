@@ -20,7 +20,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CreditsComponent } from './credits/credits.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
-import { ViewActivityComponent } from './view-activity/view-activity.component';
 import { DisplayActivitiesComponent } from './display-activities/display-activities.component';
 
 
@@ -36,7 +35,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     DisplayPostComponent,
     CreditsComponent,
     LoginComponent,
-    ViewActivityComponent,
     DisplayActivitiesComponent
   ],
   imports: [

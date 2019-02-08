@@ -1,3 +1,7 @@
-<p>
-  display-activities works!
-</p>
+<div class="container">
+  <div class="row" *ngFor="let a of activities; i as index">
+    <div class="col-md-12">
+      <a (click)="moveToPosts(a[i].activityId, a[i].name)">{{a[i].name}}</a>
+    </div>
+  </div>
+</div>

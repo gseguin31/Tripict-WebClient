@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {conditionallyCreateMapObjectLiteral} from '@angular/compiler/src/render3/view/util';
 import {compareLogSummaries} from '@angular/core/src/render3/styling/class_and_style_bindings';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import {compareLogSummaries} from '@angular/core/src/render3/styling/class_and_s
 export class AppComponent {
   title = 'ClientAngular';
 
-  constructor (public http: HttpClient, private translate: TranslateService){
+  constructor (public http: HttpClient, private translate: TranslateService, private route: ActivatedRoute){
     translate.setDefaultLang('fr');
     this.translate.use('fr');
   }
