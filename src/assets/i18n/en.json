@@ -10,10 +10,12 @@
     "alertPostWorks": "Your post was successfully sent , you will now be redirected towards the rest of the posts for this activity.",
     "alertActivityLength": "You must enter a name for your activity.",
     "alertActivityCreate": "Your activity was successfully created.",
+    "alertGenericApiError" : "An error has occured, please try again later",
     "upload": "Upload",
     "browse": "Browse",
     "toPosts": "View other posts",
     "phComment": "Comment",
-    "translateBtn": "Français"
+    "translateBtn": "Français",
+    "modalCancel": "Cancel"
   }
 }

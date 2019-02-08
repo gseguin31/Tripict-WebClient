@@ -11,7 +11,9 @@ import {NavbarService} from '../Services/navbar.service';
 })
 export class DisplayPostComponent implements OnInit {
 
-  constructor(public http: WebApiService, public modalService: NgbModal, public navBar: NavbarService) {
+  constructor(public http: WebApiService,
+              public modalService: NgbModal,
+              public navBar: NavbarService) {
   }
 
   public isLoading = true;
@@ -32,7 +34,7 @@ export class DisplayPostComponent implements OnInit {
      });*/
 
      // appel temporaire pour tester et recevoir toute les post
-    this.http.getPostForUser().subscribe(r => {
+    this.http.getPostForActivity(0).subscribe(r => {
       // console.log(r);
       this.isLoading = false;
       this.allPostsFromServer = r;

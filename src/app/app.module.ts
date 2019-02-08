@@ -10,15 +10,17 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatList} from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule} from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CreateActivityComponent } from './create-activity/create-activity.component';
 import { DisplayPostComponent } from './display-post/display-post.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CreditsComponent } from './credits/credits.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { DisplayActivitiesComponent } from './display-activities/display-activities.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -50,6 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCheckboxModule,
     MatFormFieldModule,
     MatCardModule,
+    MatListModule,
+    MatDialogModule,
     NgbModule,
     RouterModule.forRoot([
       {path: '', component: LoginComponent},

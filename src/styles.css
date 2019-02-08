@@ -19,6 +19,17 @@ body, html{
   -webkit-transition: all 0.15s;
 }
 
+.mat-fab{
+  position: fixed !important;
+  background-color: #2B8087 !important;
+  right: 2em;
+  bottom: 2em;
+}
+
+.mat-form-field{
+  width: 90%;
+}
+
 .title{
   width: 100%;
   height: fit-content;

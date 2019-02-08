@@ -21,7 +21,11 @@ class ImgUpload {
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(public apiService: WebApiService, private  route: ActivatedRoute, private translate: TranslateService, private router: Router, private ref: ChangeDetectorRef, public navBar: NavbarService) {
+  constructor(public apiService: WebApiService,
+              private  route: ActivatedRoute,
+              private translate: TranslateService,
+              private router: Router, private ref: ChangeDetectorRef,
+              public navBar: NavbarService) {
   }
 
   text: string;
