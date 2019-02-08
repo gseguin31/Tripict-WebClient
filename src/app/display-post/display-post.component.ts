@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
 import {Post} from '../Models/post';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NavbarService} from '../Services/navbar.service';
 
 @Component({
   selector: 'app-display-post',
@@ -10,7 +11,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class DisplayPostComponent implements OnInit {
 
-  constructor(public http: WebApiService, public modalService: NgbModal) {
+  constructor(public http: WebApiService, public modalService: NgbModal, public navBar: NavbarService) {
   }
 
   public isLoading = true;
@@ -21,6 +22,8 @@ export class DisplayPostComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.navBar.show();
     // a mettre pour recuperer seulement d'une activité
      /*this.http.getPostForActivity(id de lactivité).subscribe(r => {
        // console.log(r);

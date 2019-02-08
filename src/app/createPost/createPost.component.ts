@@ -5,6 +5,7 @@ import {CreatePostDTO} from '../Models/DTO/create-post-dto';
 import {CreatePictureDto} from '../Models/DTO/create-picture-dto';
 import {forEach} from '@angular/router/src/utils/collection';
 import {TranslateService} from '@ngx-translate/core';
+import {NavbarService} from '../Services/navbar.service';
 
 class ImgUpload {
   status = 'waiting';
@@ -20,7 +21,7 @@ class ImgUpload {
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(public apiService: WebApiService, private  route: ActivatedRoute, private translate: TranslateService, private router: Router, private ref: ChangeDetectorRef) {
+  constructor(public apiService: WebApiService, private  route: ActivatedRoute, private translate: TranslateService, private router: Router, private ref: ChangeDetectorRef, public navBar: NavbarService) {
   }
 
   text: string;
@@ -33,6 +34,8 @@ export class CreatePostComponent implements OnInit {
   MAX_PIC_SIZE: number;
 
   ngOnInit() {
+    this.navBar.show();
+
     this.pictureURLS = [];
     this.text = '';
     this.currentPicAmount = 0;

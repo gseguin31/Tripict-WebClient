@@ -5,6 +5,7 @@ import {Post} from '../Models/post';
 import {Activity} from '../Models/activity';
 import {CreateActivityDto} from '../Models/DTO/create-activity-dto';
 import {TranslateService} from '@ngx-translate/core';
+import {NavbarService} from '../Services/navbar.service';
 
 @Component({
   selector: 'app-activity',
@@ -13,12 +14,14 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class CreateActivityComponent implements OnInit {
 
-  constructor(public apiService: WebApiService, private  route: ActivatedRoute, private translate: TranslateService) { }
+  constructor(public apiService: WebApiService, private  route: ActivatedRoute, private translate: TranslateService, public navBar: NavbarService) { }
 
   name: string;
   posts: Post[];
 
   ngOnInit() {
+    this.navBar.show();
+
     this.posts = [];
     this.name = '';
     this.apiService.currentTrip = 1;

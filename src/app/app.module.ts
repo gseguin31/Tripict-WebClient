@@ -21,6 +21,7 @@ import { CreditsComponent } from './credits/credits.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { DisplayActivitiesComponent } from './display-activities/display-activities.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -35,7 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DisplayPostComponent,
     CreditsComponent,
     LoginComponent,
-    DisplayActivitiesComponent
+    DisplayActivitiesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

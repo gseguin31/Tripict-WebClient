@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavbarService} from '../Services/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,10 @@ export class LoginComponent implements OnInit {
 
   viewRegister = false;
 
-  constructor() { }
+  constructor(public navBar: NavbarService) { }
 
   ngOnInit() {
-
+    this.navBar.hide();
   }
 
   toggleRegister() {
