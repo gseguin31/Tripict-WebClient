@@ -3,6 +3,7 @@
 
 body, html{
   background-image: linear-gradient(ghostwhite 60%, lightgray 100%);
+  z-index: -1000;
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
@@ -22,7 +23,6 @@ body, html{
   width: 100%;
   height: fit-content;
   padding: 1em 0 1em 0;
-  background-color: #B6A19E;
   text-align: left;
   padding-left: 7%;
 }
