@@ -1,8 +1,41 @@
+.hidden{
+  height: 0;
+  display: none;
+}
+
+.slider{
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/*style for slider and slides*/
 .slide1,.slide2,.slide3,.slide4 {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: -100;
+  -webkit-background-size: cover;
+  background-size: cover;
+  filter:blur(2px);
+}
+
+.slideBlur{
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  height: 100%;
+  z-index: -90;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 
 .slide1 {
@@ -78,7 +111,6 @@
 
 /deep/body {
   background: none !important;
-  color: #666666;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
@@ -87,46 +119,12 @@
 
 /* Pen Title */
 .pen-title {
+  position: relative;
   padding: 50px 0;
   text-align: center;
-  letter-spacing: 2px;
-}
-.pen-title h1 {
-  margin: 0 0 20px;
-  font-size: 48px;
-  font-weight: 300;
 }
 .pen-title span {
   font-size: 12px;
-}
-.pen-title span .fa {
-  color: #2b8087;
-}
-.pen-title span a {
-  color: #2b8087;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-/* Scroll To Bottom */
-#codepen {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #363636;
-  width: 56px;
-  height: 56px;
-  border-radius: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: 0.3s ease;
-  color: #ffffff;
-  text-align: center;
-}
-#codepen i {
-  line-height: 56px;
-}
-#codepen:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 /* Container */
@@ -148,6 +146,7 @@
   top: 20px;
   right: 0;
   width: 100%;
+  margin-bottom: 100px;
   min-width: 100%;
   height: auto;
   border-radius: 5px;
@@ -159,8 +158,8 @@
   top: 40px;
   right: -70px;
   box-shadow: none;
-  -webkit-transform: scale(10);
-  transform: scale(10);
+  -webkit-transform: scale(12);
+  transform: scale(12);
   transition: -webkit-transform .3s ease;
   transition: transform .3s ease;
   transition: transform .3s ease, -webkit-transform .3s ease;
@@ -375,6 +374,7 @@
 .card.alt .toggle {
   position: relative;
   background: #2b8087;
+  padding: 20px;
   width: 140px;
   height: 140px;
   border-radius: 100%;
@@ -386,15 +386,12 @@
   cursor: pointer;
 }
 .card.alt .toggle:before {
-  content: '\f040';
+  content: url("../../assets/images/pencil.png");
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-transform: translate(0, 0);
-  transform: translate(0, 0);
 }
 .card.alt .title,
 .card.alt .input-container,
@@ -453,6 +450,7 @@
 .card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
   display: none;
 }
+
 
 /* Keyframes */
 @-webkit-keyframes buttonFadeInUp {

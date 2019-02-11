@@ -3,6 +3,8 @@
 
 <!-- Wrapper for slides -->
 <div class="slider" role="listbox">
+  <div class="slideBlur">
+  </div>
   <div class="slide1">
   </div>
   <div class="slide2">
@@ -14,27 +16,23 @@
 </div>
 
 
-<!-- Remeber to put all the content you want on top of the slider below the slider code -->
-
-
-<!-- Mixins-->
-<!-- Pen Title-->
 <div class="pen-title">
-  <h1>TripicT</h1>
+  <img src="../../assets/images/logo.png"/>
 </div>
+
 <div class="container" [class.active]="viewRegister">
   <div class="card"></div>
   <div class="card">
     <h1 class="title">Login</h1>
     <form>
       <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required"/>
-        <label for="#{label}">Username</label>
+        <input type="text" id="loginUser" required="required"/>
+        <label for="loginUser">Username</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required"/>
-        <label for="#{label}">Password</label>
+        <input type="password" id="loginPassword" required="required"/>
+        <label for="loginPassword">Password</label>
         <div class="bar"></div>
       </div>
       <div class="button-container">
@@ -44,29 +42,42 @@
     </form>
   </div>
   <div class="card alt" style="border:none">
-    <div class="toggle" (click)="toggleRegister()"></div>
+    <div class="toggle" (click)="toggleRegister()">
+    </div>
     <h1 class="title">Register
       <div class="close" (click)="toggleRegister()"></div>
     </h1>
     <form>
-      <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required"/>
-        <label for="#{label}">Username</label>
+      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+        <input type="text}" id="registerUser" required="required"/>
+        <label for="registerUser">Username</label>
         <div class="bar"></div>
       </div>
-      <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required"/>
-        <label for="#{label}">Password</label>
+      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+        <input type="text}" id="registerName" required="required"/>
+        <label for="registerUser">First Name</label>
         <div class="bar"></div>
       </div>
-      <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required"/>
-        <label for="#{label}">Repeat Password</label>
+      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+        <input type="text}" id="registerLastName" required="required"/>
+        <label for="registerUser">Last Name</label>
         <div class="bar"></div>
       </div>
-      <div class="button-container">
+      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+        <input type="password" id="registerPassword" required="required"/>
+        <label for="registerPassword">Password</label>
+        <div class="bar"></div>
+      </div>
+      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+        <input type="password" id="registerPasswordConfirm" required="required"/>
+        <label for="registerPasswordConfirm">Repeat Password</label>
+        <div class="bar"></div>
+      </div>
+      <div [className]="viewRegister ? 'button-container' : 'hidden'">
         <button><span>Next</span></button>
       </div>
     </form>
   </div>
 </div>
+
+<div class="bottomFiller"></div>
