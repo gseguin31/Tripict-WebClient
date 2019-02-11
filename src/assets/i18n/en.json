@@ -19,6 +19,9 @@
     "toPosts": "View other posts",
     "phComment": "Comment",
     "translateBtn": "Français",
+    "username": "Username",
+    "password": "Password",
+    "passwordConfirmation": "Confirm password",
     "modalCancel": "Cancel"
   }
 }
