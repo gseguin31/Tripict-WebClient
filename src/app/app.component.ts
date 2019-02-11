@@ -13,7 +13,9 @@ import {ActivatedRoute} from '@angular/router';
 export class AppComponent {
   title = 'ClientAngular';
 
-  constructor (public http: HttpClient, private translate: TranslateService, private route: ActivatedRoute){
+  constructor (public http: HttpClient,
+               private translate: TranslateService,
+               private route: ActivatedRoute){
     translate.setDefaultLang('fr');
     this.translate.use('fr');
   }

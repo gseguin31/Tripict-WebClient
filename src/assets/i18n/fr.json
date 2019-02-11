@@ -10,6 +10,7 @@
     "alertPostWorks": "La publication a été enregistrée avec succès, vous allez maintenant être redirigé vers les autres publications de cette activité",
     "alertActivityLength": "Veuillez indiquer un nom à l'activité",
     "alertActivityCreate": "L'activité a été créée avec succès",
+    "alertGenericApiError" : "Une erreur s'est produite, veuillez réessayer plus tard",
 	  "upload": "Envoyer",
 	  "browse": "Parcourir",
     "toPosts": "Voir les publications",
@@ -17,7 +18,7 @@
     "translateBtn": "English",
     "username": "Nom d'utilisateur",
     "password": "Mot de passe",
-    "passwordConfirmation": "Confirmation de mot de passe"
-
+    "passwordConfirmation": "Confirmation de mot de passe",
+    "modalCancel": "Annuler"
   }
 }

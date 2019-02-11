@@ -20,7 +20,8 @@ export class WebApiService {
   public currentActivity: number;
   public currentTrip: number;
 
-  public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
+  // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
+   public baseUrl = 'http://localhost:52090/';
 
   getOptions() {
     return {
@@ -39,9 +40,9 @@ export class WebApiService {
     return this.http.post(this.baseUrl + 'api/Picture/CreatePicture', pic, this.getOptions()) as any;
   }
 
-  addActivity(activity: CreateActivityDto): void{
+  addActivity(activity: CreateActivityDto): Observable<Response>{
     // let dto = activity.toCreateActivityDTO(activity);
-    this.http.post(this.baseUrl + 'api/Activity/createActivity', activity, this.getOptions()).subscribe();
+    return this.http.post(this.baseUrl + 'api/Activity/createActivity', activity, this.getOptions()) as any;
   }
 
   getActivitiesForTrip(tripId: number): Observable<DisplayActivityDto[]>{
@@ -57,7 +58,7 @@ export class WebApiService {
   }
 
   getPostForActivity(activityId: number): Observable<PostDTO[]>{
-    return this.http.get(this.baseUrl + '/api/Posts/GetPostsForActivity?id=' + activityId, this.getOptions()).pipe(map(r => {
+    return this.http.get(this.baseUrl + '/api/Posts/GetPostsForActivity/' + activityId, this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }

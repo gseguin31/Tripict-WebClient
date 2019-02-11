@@ -1,4 +1,4 @@
-<h2>Nouvelle Activité</h2>
+<!--
 
 <div class="container">
   <div class="row">
@@ -9,4 +9,16 @@
   <div class="row">
     <button mat-raised-button (click)="upload()">{{ 'app.upload' | translate}}</button>
   </div>
+</div>
+-->
+
+<h1 mat-dialog-title>{{'app.titleActivityCreate' | translate}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput cdkFocusInitial [(ngModel)]="name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">{{'app.modalCancel' | translate}}</button>
+  <button mat-button (click)="upload()">{{'app.upload' | translate}}</button>
 </div>

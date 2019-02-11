@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row" *ngFor="let a of activities; i as index">
     <div class="col-md-12">
-      <a (click)="moveToPosts(a[i].activityId, a[i].name)">{{a[i].name}}</a>
+      <mat-action-list>
+        <button (click)="moveToPosts(a.activityId, a.name)">{{a.name}}</button>
+      </mat-action-list>
     </div>
   </div>
 </div>
+
+<button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>
