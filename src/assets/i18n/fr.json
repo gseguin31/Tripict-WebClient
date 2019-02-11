@@ -19,6 +19,9 @@
     "toPosts": "Voir les publications",
     "phComment": "Commentaire",
     "translateBtn": "English",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "passwordConfirmation": "Confirmation de mot de passe",
     "modalCancel": "Annuler"
   }
 }
