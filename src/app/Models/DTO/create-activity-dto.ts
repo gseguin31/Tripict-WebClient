@@ -1,4 +1,4 @@
 export class CreateActivityDto {
-  constructor(public Name: String, public VoyageId: number) {
+  constructor(public name: String, public voyageId: number) {
   }
 }

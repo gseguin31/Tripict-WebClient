@@ -2,7 +2,7 @@
   <div class="row" *ngFor="let a of activities; i as index">
     <div class="col-md-12">
       <mat-action-list>
-        <button (click)="moveToPosts(a.activityId, a.name)">{{a.name}}</button>
+        <button (click)="moveToPosts(a.id, a.name)">{{a.name}}</button>
       </mat-action-list>
     </div>
   </div>

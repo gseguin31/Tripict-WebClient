@@ -1,6 +1,6 @@
 import {CreatePictureDto} from './create-picture-dto';
 
-export class CreatePostDTO {
-  constructor(public Text: string, public picCount: number, public activityId: number) {
+export class CreatePostDto {
+  constructor(public text: string, public picCount: number, public activityId: number) {
   }
 }

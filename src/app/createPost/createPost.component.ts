@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CreatePostDTO} from '../Models/DTO/create-post-dto';
+import {CreatePostDto} from '../Models/DTO/create-post-dto';
 import {CreatePictureDto} from '../Models/DTO/create-picture-dto';
 import {forEach} from '@angular/router/src/utils/collection';
 import {TranslateService} from '@ngx-translate/core';
@@ -64,7 +64,7 @@ export class CreatePostComponent implements OnInit {
 
     this.currentlyUploading = true;
     // Crée le post puis envoie les images dedans de maniêre asynchrone
-    let p: CreatePostDTO = new CreatePostDTO(this.text, this.currentPicAmount, 1);
+    let p: CreatePostDto = new CreatePostDto(this.text, this.currentPicAmount, 1);
     this.apiService.addPost(p).subscribe(r => {
 
       if (this.currentPicAmount === 0){ // Si le post ne contient pas d'images

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Post} from '../Models/post';
-import {CreatePostDTO} from '../Models/DTO/create-post-dto';
+import {CreatePostDto} from '../Models/DTO/create-post-dto';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Activity} from '../Models/activity';
-import {PostDTO} from '../Models/DTO/post-dto';
+import {PostDto} from '../Models/DTO/post-dto';
 import {CreateActivityDto} from '../Models/DTO/create-activity-dto';
 import {CreatePictureDto} from '../Models/DTO/create-picture-dto';
 import {DisplayActivityDto} from '../Models/DTO/display-activity-dto';
@@ -34,7 +34,7 @@ export class WebApiService {
     };
   }
 
-  addPost(post: CreatePostDTO): Observable<number> {
+  addPost(post: CreatePostDto): Observable<number> {
     return this.http.post(this.baseUrl + 'api/Post/CreatePost', post, this.getOptions()) as any;
   }
 
@@ -63,13 +63,13 @@ export class WebApiService {
     }));
   }
 
-  getPostForUser(): Observable<PostDTO[]>{
+  getPostForUser(): Observable<PostDto[]>{
     return this.http.get(this.baseUrl + 'api/Posts', this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
 
-  getPostForActivity(activityId: number): Observable<PostDTO[]>{
+  getPostForActivity(activityId: number): Observable<PostDto[]>{
     return this.http.get(this.baseUrl + '/api/Posts/GetPostsForActivity/' + activityId, this.getOptions()).pipe(map(r => {
       return r as any;
     }));
