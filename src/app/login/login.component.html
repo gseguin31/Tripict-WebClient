@@ -73,7 +73,7 @@
         <label for="registerPasswordConfirm">Repeat Password</label>
         <div class="bar"></div>
       </div>
-      <div [className]="viewRegister ? 'button-container' : 'hidden'">
+      <div (click)="register()" [className]="viewRegister ? 'button-container' : 'hidden'">
         <button><span>Next</span></button>
       </div>
     </form>
