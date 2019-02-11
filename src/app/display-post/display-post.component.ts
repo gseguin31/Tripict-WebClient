@@ -26,7 +26,7 @@ export class DisplayPostComponent implements OnInit {
   ngOnInit() {
 
     this.navBar.show();
-    // a mettre pour recuperer seulement d'une activité
+    // t mettre pour recuperer seulement d'une activité
      /*this.http.getPostForActivity(id de lactivité).subscribe(r => {
        // console.log(r);
        this.isLoading = false;

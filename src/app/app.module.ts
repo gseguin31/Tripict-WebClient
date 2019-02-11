@@ -24,6 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { DisplayActivitiesComponent } from './display-activities/display-activities.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DisplayTripComponent } from './display-trip/display-trip.component';
+import { CreateTripComponent } from './create-trip/create-trip.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,7 +41,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CreditsComponent,
     LoginComponent,
     DisplayActivitiesComponent,
-    NavbarComponent
+    NavbarComponent,
+    DisplayTripComponent,
+    CreateTripComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule.forRoot([
       {path: '', component: LoginComponent},
 
+      {path: 'trips', component: DisplayTripComponent},
+      {path: 'trips/create-trip', component: CreateTripComponent},
       {path: ':trip/create-activity', component: CreateActivityComponent},
       {path: ':trip/:activity', component: DisplayActivitiesComponent},
       {path: ':trip/:create-activity/createPost', component: CreatePostComponent},

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row" *ngFor="let t of trips; i as index">
+    <div class="col-md-12">
+      <mat-action-list>
+        <button (click)="moveToActivities(t.tripId, t.name)">{{t.name}}</button>
+      </mat-action-list>
+    </div>
+  </div>
+</div>
+
+<button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>

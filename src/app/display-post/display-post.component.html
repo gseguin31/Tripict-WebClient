@@ -30,7 +30,7 @@
     <div class="col-md-2"></div>
   </div>
 
-  &lt;!&ndash;Affichage si il n'y a pas de post ou que l'appel est en cours&ndash;&gt;
+  &lt;!&ndash;Affichage si il n'y t pas de post ou que l'appel est en cours&ndash;&gt;
   <h1 class="noPosts" *ngIf="isLoading" >Loading...</h1>
   <h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading" >Aucune publication à afficher</h1>
 
@@ -44,7 +44,7 @@
       <div class="card-columns">
         <div class="card" *ngFor="let currentPost of allPostsFromServer" (click)="open(content)">
 
-          <!-- model du popup (modal) mis ici pour utiliser les params de a-->
+          <!-- model du popup (modal) mis ici pour utiliser les params de t-->
           <ng-template #content let-modal class="modal">
             <!--<div class="modal-header">
               <h4 class="modal-title" id="modal-basic-title">Purchase or sell</h4>
@@ -138,6 +138,6 @@
   </div>
 </div>
 
-&lt;!&ndash;Affichage si il n'y a pas de post ou que l'appel est en cours&ndash;&gt;
+&lt;!&ndash;Affichage si il n'y t pas de post ou que l'appel est en cours&ndash;&gt;
 <h1 class="noPosts" *ngIf="isLoading" >Loading...</h1>
 <h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading" >Aucune publication à afficher</h1>-->

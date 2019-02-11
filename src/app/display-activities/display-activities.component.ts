@@ -16,7 +16,7 @@ import {CreateActivityComponent} from '../create-activity/create-activity.compon
 export class DisplayActivitiesComponent implements OnInit {
 
   constructor(public apiService: WebApiService,
-              private  route: ActivatedRoute,
+              private route: ActivatedRoute,
               private translate: TranslateService,
               private router: Router,
               public navBar: NavbarService,
@@ -33,6 +33,7 @@ export class DisplayActivitiesComponent implements OnInit {
         this.activities.push(r[i]);
       }
     });*/
+    // Temporaire, en attendant l'API
     for (let i = 0; i < 5; i++) {
       let act = new DisplayActivityDto(i, 'Spradarajan ' + i);
       this.activities.push(act);
@@ -42,11 +43,7 @@ export class DisplayActivitiesComponent implements OnInit {
 
   moveToPosts(activityId: number, activityName: string) {
     this.apiService.currentActivity = activityId;
-    this.router.navigateByUrl('/a/' + activityName + '/posts');
-  }
-
-  showActivity(a: DisplayActivityDto) {
-    console.log(a);
+    this.router.navigateByUrl('/t/' + activityName + '/posts');
   }
 
   openDialog(): void {

@@ -17,7 +17,7 @@ import {DialogData} from '../interfaces/dialog-data';
 export class CreateActivityComponent implements OnInit {
 
   constructor(public apiService: WebApiService,
-              private  route: ActivatedRoute,
+              private route: ActivatedRoute,
               private translate: TranslateService,
               public navBar: NavbarService,
               public dialogRef: MatDialogRef<CreateActivityComponent>,
@@ -32,7 +32,7 @@ export class CreateActivityComponent implements OnInit {
 
     this.posts = [];
     this.name = '';
-    this.apiService.currentTrip = 1;
+    // this.apiService.currentTrip = 1;
   }
 
   upload() {
@@ -44,7 +44,6 @@ export class CreateActivityComponent implements OnInit {
     }
 
     let dto = new CreateActivityDto(this.name, this.apiService.currentTrip);
-    // console.log(dto);
     this.apiService.addActivity(dto).subscribe((r) => {
         this.translate.get('app.alertActivityCreate').subscribe((res: string) => {
           alert(res);

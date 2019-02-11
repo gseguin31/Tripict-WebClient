@@ -101,7 +101,7 @@ export class CreatePostComponent implements OnInit {
     this.translate.get('app.alertPostWorks').subscribe((re: string) => {
       alert(re);
       this.ref.detectChanges();
-      this.router.navigateByUrl('/a/b/posts');
+      this.router.navigateByUrl('/t/b/posts');
     });
   }
 
@@ -117,7 +117,7 @@ export class CreatePostComponent implements OnInit {
     // Parcours les fichiers sélectionnés
     for (let i = 0; i < files.length; i++) {
 
-      // Vérifie que le nombre maximum d'image n'a pas été atteint
+      // Vérifie que le nombre maximum d'image n't pas été atteint
       if (this.currentPicAmount >= this.MAX_PIC_AMOUNT) {
         this.translate.get('app.alertImageAmount').subscribe((res: string) => {
           alert(res);

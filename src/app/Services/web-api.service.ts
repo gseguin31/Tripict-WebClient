@@ -9,6 +9,8 @@ import {PostDTO} from '../Models/DTO/post-dto';
 import {CreateActivityDto} from '../Models/DTO/create-activity-dto';
 import {CreatePictureDto} from '../Models/DTO/create-picture-dto';
 import {DisplayActivityDto} from '../Models/DTO/display-activity-dto';
+import {DisplayTripDto} from '../Models/DTO/display-trip-dto';
+import {CreateTripDto} from '../Models/DTO/create-trip-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -45,8 +47,18 @@ export class WebApiService {
     return this.http.post(this.baseUrl + 'api/Activity/createActivity', activity, this.getOptions()) as any;
   }
 
+  addTrip(trip: CreateTripDto): Observable<Response>{
+    return this.http.post(this.baseUrl + 'api/Trip/createTrip', trip, this.getOptions()) as any;
+  }
+
   getActivitiesForTrip(tripId: number): Observable<DisplayActivityDto[]>{
     return this.http.get(this.baseUrl + 'api/Activity/getActivitiesForTrip?id=' + tripId, this.getOptions()).pipe(map( r => {
+      return r as any;
+    }));
+  }
+
+  getTripsForUser(): Observable<DisplayTripDto[]>{
+    return this.http.get(this.baseUrl + 'api/Trip/getTripsForUser', this.getOptions()).pipe(map( r => {
       return r as any;
     }));
   }

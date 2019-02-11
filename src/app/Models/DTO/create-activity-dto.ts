@@ -1,4 +1,4 @@
-
-export class CreateActivityDto{
-  constructor(public Name: String, public VoyageId: number){}
+export class CreateActivityDto {
+  constructor(public Name: String, public VoyageId: number) {
+  }
 }
