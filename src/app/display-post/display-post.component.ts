@@ -3,6 +3,7 @@ import {WebApiService} from '../Services/web-api.service';
 import {Post} from '../Models/post';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarService} from '../Services/navbar.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-display-post',
@@ -13,18 +14,18 @@ export class DisplayPostComponent implements OnInit {
 
   constructor(public http: WebApiService,
               public modalService: NgbModal,
-              public navBar: NavbarService) {
+              public navBar: NavbarService,
+              private route: ActivatedRoute) {
   }
 
   public isLoading = true;
-  public allPosts = [];
   public allPostsFromServer = [];
-  imagesPost1 = [];
-  imagesPost2 = [];
 
 
   ngOnInit() {
 
+    let activityId = this.route.snapshot.paramMap.get('activityId');
+    let id = +activityId;
     this.navBar.show();
     // t mettre pour recuperer seulement d'une activité
      /*this.http.getPostForActivity(id de lactivité).subscribe(r => {
@@ -33,9 +34,8 @@ export class DisplayPostComponent implements OnInit {
        this.allPostsFromServer = r;
      });*/
 
-     // appel temporaire pour tester et recevoir toute les post
-    this.http.getPostForActivity(0).subscribe(r => {
-      // console.log(r);
+
+    this.http.getPostForActivity(id).subscribe(r => {
       this.isLoading = false;
       this.allPostsFromServer = r;
     });
