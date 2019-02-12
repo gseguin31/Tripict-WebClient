@@ -75,7 +75,7 @@ export class WebApiService {
   }
 
   getActivitiesForTrip(tripId: number): Observable<DisplayActivityDto[]>{
-    return this.http.get(this.baseUrl + 'api/Activity/getActivitiesForTrip?id=' + tripId, this.getOptions()).pipe(map( r => {
+    return this.http.get(this.baseUrl + 'api/Activity/getActivitiesForTrip/' + tripId, this.getOptions()).pipe(map( r => {
       return r as any;
     }));
   }
