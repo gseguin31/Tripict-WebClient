@@ -24,7 +24,8 @@ export class CreatePostComponent implements OnInit {
   constructor(public apiService: WebApiService,
               private  route: ActivatedRoute,
               private translate: TranslateService,
-              private router: Router, private ref: ChangeDetectorRef,
+              private router: Router,
+              private ref: ChangeDetectorRef,
               public navBar: NavbarService) {
   }
 
@@ -45,8 +46,8 @@ export class CreatePostComponent implements OnInit {
     this.currentPicAmount = 0;
     this.currentlyUploading = false;
 
-    this.MAX_PIC_AMOUNT = 25;
-    this.MAX_PIC_SIZE = 10485760;
+    this.MAX_PIC_AMOUNT = 10;
+    this.MAX_PIC_SIZE = 5242880;
   }
 
   // Prépare les objets de transfert de la liste et les envoie
@@ -61,12 +62,10 @@ export class CreatePostComponent implements OnInit {
       return;
     }
 
-
-    this.currentlyUploading = true;
-    // Crée le post puis envoie les images dedans de maniêre asynchrone
+    this.currentlyUploading = true; // Indique que l'appel réseau est en attente de résolution
+    // Crée le post puis envoie les images dedans de manière asynchrone
     let p: CreatePostDto = new CreatePostDto(this.text, this.currentPicAmount, 1);
     this.apiService.addPost(p).subscribe(r => {
-
       if (this.currentPicAmount === 0){ // Si le post ne contient pas d'images
         this.goToPosts();
       }

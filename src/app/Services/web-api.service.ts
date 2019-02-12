@@ -69,6 +69,8 @@ export class WebApiService {
   // Méthodes pour Activities --------------------------------------------------------------------
   addActivity(activity: CreateActivityDto): Observable<Response>{
     // let dto = activity.toCreateActivityDTO(activity);
+    console.log(this.currentTrip);
+    console.log(activity);
     return this.http.post(this.baseUrl + 'api/Activity/createActivity', activity, this.getOptions()) as any;
   }
 
@@ -90,5 +92,4 @@ export class WebApiService {
       return r as any;
     }));
   }
-
 }
