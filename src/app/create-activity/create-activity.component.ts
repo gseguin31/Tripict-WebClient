@@ -32,18 +32,17 @@ export class CreateActivityComponent implements OnInit {
 
     this.posts = [];
     this.name = '';
-    // this.apiService.currentTrip = 1;
   }
 
   upload() {
-    if (this.name.length <= 0) {
+    if (this.name.trim().length <= 0) { // Vérifie qu'un nom est indiqué pour l'activité
       this.translate.get('app.alertActivityLength').subscribe((res: string) => {
         alert(res);
       });
       return;
     }
 
-    let dto = new CreateActivityDto(this.name, this.apiService.currentTrip);
+    let dto = new CreateActivityDto(this.name.trim(), this.apiService.currentTrip);
     this.apiService.addActivity(dto).subscribe((r) => {
         this.translate.get('app.alertActivityCreate').subscribe((res: string) => {
           alert(res);
@@ -51,11 +50,19 @@ export class CreateActivityComponent implements OnInit {
         });
       },
       (e) => {
-        this.translate.get('app.alertGenericApiError').subscribe((res: string) => {
-          alert(res);
-        });
+      console.log('----');
+      console.log(e);
+        if (e.status === 409) {
+          this.translate.get('app.alertActivityCreateName').subscribe((res: string) => {
+            alert(res);
+          });
+        }
+        else {
+          this.translate.get('app.alertGenericApiError').subscribe((res: string) => {
+            alert(res);
+          });
+        }
       });
-
   }
 
   cancel() {

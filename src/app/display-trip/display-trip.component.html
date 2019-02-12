@@ -2,7 +2,7 @@
   <div class="row" *ngFor="let t of trips; i as index">
     <div class="col-md-12">
       <mat-action-list>
-        <button (click)="moveToActivities(t.tripId, t.name)">{{t.name}}</button>
+        <button (click)="moveToActivities(t.id, t.name)">{{t.name}}</button>
       </mat-action-list>
     </div>
   </div>

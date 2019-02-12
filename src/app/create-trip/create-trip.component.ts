@@ -8,6 +8,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {CreateActivityComponent} from '../create-activity/create-activity.component';
 import {CreateActivityDto} from '../Models/DTO/create-activity-dto';
 import {CreateTripDto} from '../Models/DTO/create-trip-dto';
+import {DisplayTripDto} from '../Models/DTO/display-trip-dto';
 
 @Component({
   selector: 'app-create-trip',

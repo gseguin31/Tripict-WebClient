@@ -1,6 +1,6 @@
 import {Trip} from './trip';
 import {Post} from './post';
-import {CreatePostDTO} from './DTO/create-post-dto';
+import {CreatePostDto} from './DTO/create-post-dto';
 import {CreateActivityDto} from './DTO/create-activity-dto';
 
 export class Activity {

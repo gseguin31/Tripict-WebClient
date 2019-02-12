@@ -28,22 +28,15 @@ export class DisplayActivitiesComponent implements OnInit {
   ngOnInit() {
     this.navBar.show();
     this.activities = [];
-    /*this.apiService.getActivitiesForTrip(this.apiService.currentTrip).subscribe(r => {
-      for (let i = 0; i < r.length; i++){
-        this.activities.push(r[i]);
-      }
-    });*/
-    // Temporaire, en attendant l'API
-    for (let i = 0; i < 5; i++) {
-      let act = new DisplayActivityDto(i, 'Spradarajan ' + i);
-      this.activities.push(act);
-    }
+    this.showActivities();
     console.log(this.activities);
   }
 
-  moveToPosts(activityId: number, activityName: string) {
-    this.apiService.currentActivity = activityId;
-    this.router.navigateByUrl('/t/' + activityName + '/posts');
+  moveToPosts(id: number, name: string) {
+    this.apiService.currentActivity = id;
+    let trip = this.route.snapshot.paramMap.get('trip');
+    let tripId = this.route.snapshot.paramMap.get('tripId');
+    this.router.navigateByUrl(trip + '/' + tripId + '/' + name + '/' + id + '/posts');
   }
 
   openDialog(): void {
@@ -51,6 +44,19 @@ export class DisplayActivitiesComponent implements OnInit {
       width: '40%',
       maxWidth: '50em',
       minWidth: '20em'
+    });
+
+    dialogRef.afterClosed().subscribe( r => {
+      this.showActivities();
+    });
+  }
+
+  showActivities(){
+    this.apiService.getActivitiesForTrip(this.apiService.currentTrip).subscribe(r => {
+      this.activities = [];
+      for (let i = 0; i < r.length; i++){
+        this.activities.push(r[i]);
+      }
     });
   }
 }

@@ -12,13 +12,13 @@
 
         <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'" [interval]="0">
           <mdb-carousel-item *ngFor="let image of currentPost.PicturesDTO">
-            <img class="d-block w-100" src={{image.Base64}} alt="First slide">
+            <img class="d-block w-100" src={{image.base64}} alt="First slide">
           </mdb-carousel-item>
         </mdb-carousel>
 
         <mat-card-content class="postDescription">
           <p>
-            {{currentPost.Text}}
+            {{currentPost.text}}
           </p>
         </mat-card-content>
         <mat-card-actions>
@@ -61,8 +61,8 @@
                       </mat-card-header>
 
                       <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'" [interval]="0">
-                        <mdb-carousel-item *ngFor="let image of currentPost.picturesDTO">
-                          <img class="d-block w-100" src={{image.base64}} alt="First slide">
+                        <mdb-carousel-item *ngFor="let imageId of currentPost.idTable">
+                          <img class="d-block w-100" src="http://e1-test.projet.college-em.info:8080/api/Picture/GetPictureFromId/{{imageId}}" alt="First slide">
                         </mdb-carousel-item>
                       </mdb-carousel>
 
@@ -93,7 +93,7 @@
           <!-- fin du popup -->
 
 
-          <img class="card-img-top" *ngIf="currentPost.picturesDTO[0] != null" src={{currentPost.picturesDTO[0].base64}} alt="">
+          <img class="card-img-top" *ngIf="currentPost.idTable.length  > 0" src="http://e1-test.projet.college-em.info:8080/api/Picture/GetPictureFromId/{{currentPost.idTable[0]}}" alt="">
           <div class="card-body">
             <h5 class="card-title">
               <img class="userIcon" src="../../assets/images/user.png" alt="">
@@ -111,6 +111,8 @@
 <h1 class="noPosts" *ngIf="isLoading" >Loading...</h1>
 <h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading" >Aucune publication à afficher</h1>
 
+<!--FAB-->
+<button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>
 
 
 
@@ -123,13 +125,13 @@
     <div class="col-md-12">
       <div class="card-columns">
         <div class="card" *ngFor="let currentPost of allPostsFromServer" (click)="open(content)">
-          <img class="card-img-top" *ngIf="currentPost.PicturesDTO[0] != null" src={{currentPost.PicturesDTO[0].Base64}} alt="">
+          <img class="card-img-top" *ngIf="currentPost.PicturesDTO[0] != null" src={{currentPost.PicturesDTO[0].base64}} alt="">
           <div class="card-body">
             <h5 class="card-title">
               <img class="userIcon" src="../../assets/images/user.png" alt="">
               TODO Username
             </h5>
-            <p class="card-text">{{currentPost.Text}}</p>
+            <p class="card-text">{{currentPost.text}}</p>
             <p class="card-text"><small class="text-muted">TODO DATE ET HEURE</small></p>
           </div>
         </div>
