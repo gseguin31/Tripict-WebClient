@@ -35,7 +35,8 @@ export class DisplayActivitiesComponent implements OnInit {
   moveToPosts(id: number, name: string) {
     this.apiService.currentActivity = id;
     let trip = this.route.snapshot.paramMap.get('trip');
-    this.router.navigateByUrl(trip + '/' + name + '/posts');
+    let tripId = this.route.snapshot.paramMap.get('tripId');
+    this.router.navigateByUrl(trip + '/' + tripId + '/' + name + '/' + id + '/posts');
   }
 
   openDialog(): void {
