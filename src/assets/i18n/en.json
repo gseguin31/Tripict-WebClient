@@ -22,6 +22,10 @@
     "username": "Username",
     "password": "Password",
     "passwordConfirmation": "Confirm password",
-    "modalCancel": "Cancel"
+    "modalCancel": "Cancel",
+    "usernameLengthError": "The username must have between 5 and 35 characters",
+    "firstNameLengthError": "The first name must be between 1 and 50 characters",
+    "lastNameLengthError": "The last name must be between 1 and 50 characters",
+    "passwordLengthError": "The password must be between 8 and 35 characters"
   }
 }

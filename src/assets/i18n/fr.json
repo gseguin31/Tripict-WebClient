@@ -22,6 +22,10 @@
     "username": "Nom d'utilisateur",
     "password": "Mot de passe",
     "passwordConfirmation": "Confirmation de mot de passe",
-    "modalCancel": "Annuler"
+    "modalCancel": "Annuler",
+    "usernameLengthError": "Veuillez entrer un nom d'utilisateur entre 5 et 35 caractères",
+    "firstNameLengthError": "Le prénom doit comporter 1 à 50 caractères",
+    "lastNameLengthError": "Le nom de famille doit comporter 1 à 50 caractères",
+    "passwordLengthError": "Le mot de passe doit être entre 8 et 35 caractères"
   }
 }
