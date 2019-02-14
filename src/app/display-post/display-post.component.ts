@@ -21,6 +21,8 @@ export class DisplayPostComponent implements OnInit {
 
   public isLoading = true;
   public allPostsFromServer = [];
+  public prefix = 'http://localhost:52090/';
+  // public prefix = 'http://e1-test.projet.college-em.info:8080/';
 
 
   ngOnInit() {
@@ -47,10 +49,8 @@ export class DisplayPostComponent implements OnInit {
   }
 
   createPost() {
-    let trip = this.route.snapshot.paramMap.get('trip');
     let tripId = this.route.snapshot.paramMap.get('tripId');
     let activityId = this.route.snapshot.paramMap.get('activityId');
-    let activity = this.route.snapshot.paramMap.get('activity');
-    this.router.navigateByUrl(trip +'/' + tripId + '/' + activity + '/' + activityId + '/createPost');
+    this.router.navigateByUrl('trip/' + tripId + '/activity/' + activityId + '/create-post');
   }
 }
