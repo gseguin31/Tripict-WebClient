@@ -66,7 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: 'trips/create-trip', component: CreateTripComponent}, // pour le modale de cree un voyage ... ne sera jamais routé
       {path: ':trip/create-activity', component: CreateActivityComponent}, // pour le modal pour cree une activite .. ne sera jamais routé
       {path: ':trip/:tripId/activities', component: DisplayActivitiesComponent}, // route vers la liste des activitée pour un voyage, prend un parametre tripId
-      {path: ':trip/:create-activity/createPost', component: CreatePostComponent},
+      {path: ':trip/:tripId/:activity/:activityId/createPost', component: CreatePostComponent},
       {path: ':trip/:tripId/:activity/:activityId/posts', component: DisplayPostComponent}, // route vers display posts avec parametre activity id
       {path: ':trip/:activity/createPost', component: CreatePostComponent},
       { path: '**', redirectTo: '/'}
