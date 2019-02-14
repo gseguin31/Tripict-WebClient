@@ -4,6 +4,8 @@
     "titlePostCreate": "New Post",
     "titleActivityCreate": "New Activity",
     "titleTripCreate": "New Trip",
+    "titleTrip": "Trips",
+    "titleActivity": "Activities",
     "alertImageType": "Selected files must be images.",
     "alertImageSize": "You can't send pictures with a file size over 5 mb.",
     "alertImageAmount": "A single post can only contain up to 10 pictures. If you have more to send, you should split them among multiple posts.",
