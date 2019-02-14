@@ -23,58 +23,59 @@
 <div class="container" [class.active]="viewRegister">
   <div class="card"></div>
   <div class="card">
-    <h1 class="title">Login</h1>
+    <h1 class="title">Connection</h1>
     <form>
       <div class="input-container">
         <input type="text" id="loginUser" required="required" [(ngModel)]="loginUserName" name="loginUser"/>
-        <label for="loginUser">Username</label>
+        <label for="loginUser">Nom de compte</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
         <input type="password" id="loginPassword" required="required" [(ngModel)]="loginPassword" name="loginPassword"/>
-        <label for="loginPassword">Password</label>
+        <label for="loginPassword">Mot de passe</label>
         <div class="bar"></div>
       </div>
       <div class="button-container">
-        <button><span>Go</span></button>
+        <button (click)="login()">
+          <span>SE CONNECTER</span>
+        </button>
       </div>
-      <div class="footer"><a href="#">Forgot your password?</a></div>
     </form>
   </div>
   <div class="card alt" style="border:none">
     <div class="toggle" (click)="toggleRegister()">
     </div>
-    <h1 class="title">Register
+    <h1 class="title">Inscription
       <div class="close" (click)="toggleRegister()"></div>
     </h1>
     <form>
       <div [className]="viewRegister ? 'input-container' : 'hidden'">
         <input type="text" id="registerUser" required="required" [(ngModel)]="registerUserName" name="registerUserName"/>
-        <label for="registerUser">Username</label>
+        <label for="registerUser">Nom de compte</label>
         <div class="bar"></div>
       </div>
       <div [className]="viewRegister ? 'input-container' : 'hidden'">
         <input type="text" id="registerName" required="required" [(ngModel)]="firstName" name="firstName"/>
-        <label for="registerName">First Name</label>
+        <label for="registerName">Prénom</label>
         <div class="bar"></div>
       </div>
       <div [className]="viewRegister ? 'input-container' : 'hidden'">
         <input type="text" id="registerLastName" required="required" [(ngModel)]="lastName" name="lastName"/>
-        <label for="registerLastName">Last Name</label>
+        <label for="registerLastName">Nom</label>
         <div class="bar"></div>
       </div>
       <div [className]="viewRegister ? 'input-container' : 'hidden'">
         <input type="password" id="registerPassword" required="required" [(ngModel)]="registerPassword" name="registerPassword"/>
-        <label for="registerPassword">Password</label>
+        <label for="registerPassword">Mot de passe</label>
         <div class="bar"></div>
       </div>
       <div [className]="viewRegister ? 'input-container' : 'hidden'">
         <input type="password" id="registerPasswordConfirm" required="required" [(ngModel)]="registerConfirm" name="registerConfirm"/>
-        <label for="registerPasswordConfirm">Repeat Password</label>
+        <label for="registerPasswordConfirm">Mot de passe</label>
         <div class="bar"></div>
       </div>
       <div (click)="register()" [className]="viewRegister ? 'button-container' : 'hidden'">
-        <button><span>Next</span></button>
+        <button><span>Confirmer</span></button>
       </div>
     </form>
   </div>

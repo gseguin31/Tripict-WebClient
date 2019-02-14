@@ -3,6 +3,7 @@ import {NavbarService} from '../Services/navbar.service';
 import {WebApiService} from '../Services/web-api.service';
 import {CreateUserDto} from '../Models/DTO/create-user-dto';
 import {TranslateService} from '@ngx-translate/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
 
   constructor(public http: WebApiService,
               public navBar: NavbarService,
-              private translate: TranslateService
+              private translate: TranslateService,
+              private router: Router
   ) {
   }
 
@@ -47,13 +49,17 @@ export class LoginComponent implements OnInit {
     if (this.validDto()) {
 
       this.http.createUser(this.validDto()).subscribe(r => {
-          alert('holy shit i created a new form of cancer with Angular');
+          this.router.navigateByUrl('/trips');
         },
         e => {
           alert(e);
         }
       );
     }
+  }
+
+  login() {
+          this.router.navigateByUrl('/trips');
   }
 
 
