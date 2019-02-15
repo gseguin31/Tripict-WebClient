@@ -45,7 +45,7 @@ export class WebApiService {
 
   // Méthodes pour posts --------------------------------------------------------------------
   addPost(post: CreatePostDto): Observable<number> {
-    return this.http.post(this.baseUrl + 'api/Post/CreatePost', post, this.getOptions()) as any;
+    return this.http.post(this.baseUrl + 'api/Posts/CreatePost', post, this.getOptions()) as any;
   }
 
   getPostForUser(): Observable<PostDto[]>{
@@ -61,7 +61,7 @@ export class WebApiService {
 
   // Méthodes pour pictures --------------------------------------------------------------------
   addPicture(pic: CreatePictureDto): Observable<Response> {
-    return this.http.post(this.baseUrl + 'api/Picture/CreatePicture', pic, this.getOptions()) as any;
+    return this.http.post(this.baseUrl + 'api/Pictures/CreatePicture', pic, this.getOptions()) as any;
   }
 
 
@@ -71,11 +71,11 @@ export class WebApiService {
     // let dto = activity.toCreateActivityDTO(activity);
     console.log(this.currentTrip);
     console.log(activity);
-    return this.http.post(this.baseUrl + 'api/Activity/createActivity', activity, this.getOptions()) as any;
+    return this.http.post(this.baseUrl + 'api/Activities/createActivity', activity, this.getOptions()) as any;
   }
 
   getActivitiesForTrip(tripId: number): Observable<DisplayActivityDto[]>{
-    return this.http.get(this.baseUrl + 'api/Activity/getActivitiesForTrip/' + tripId, this.getOptions()).pipe(map( r => {
+    return this.http.get(this.baseUrl + 'api/Activities/getActivitiesForTrip/' + tripId, this.getOptions()).pipe(map( r => {
       return r as any;
     }));
   }
@@ -84,11 +84,11 @@ export class WebApiService {
 
   // Méthodes pour Trips --------------------------------------------------------------------
   addTrip(trip: CreateTripDto): Observable<Response>{
-    return this.http.post(this.baseUrl + 'api/Trip/createTrip', trip, this.getOptions()) as any;
+    return this.http.post(this.baseUrl + 'api/Trips/createTrip', trip, this.getOptions()) as any;
   }
 
   getTripsForUser(): Observable<DisplayTripDto[]>{
-    return this.http.get(this.baseUrl + 'api/Trip/getTripsForUser', this.getOptions()).pipe(map( r => {
+    return this.http.get(this.baseUrl + 'api/Trips/getTripsForUser', this.getOptions()).pipe(map( r => {
       return r as any;
     }));
   }
