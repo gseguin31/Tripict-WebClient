@@ -4,6 +4,7 @@ import {WebApiService} from '../Services/web-api.service';
 import {CreateUserDto} from '../Models/DTO/create-user-dto';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
+import {LoginUserDto} from '../Models/DTO/login-user-dto';
 
 @Component({
   selector: 'app-login',
@@ -46,9 +47,14 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
-    if (this.validDto()) {
+    if (this.registerIsValid()) {
+      let cud = new CreateUserDto(
+        this.registerUserName,
+        this.firstName,
+        this.lastName,
+        this.registerPassword);
 
-      this.http.createUser(this.validDto()).subscribe(r => {
+      this.http.createUser(cud).subscribe(r => {
           this.router.navigateByUrl('/trips');
         },
         e => {
@@ -59,65 +65,142 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-          this.router.navigateByUrl('/trips');
+    if (this.loginIsValid()) {
+      let lud = new LoginUserDto(
+        this.loginUserName,
+        this.loginPassword);
+
+    this.http.loginUser(lud).subscribe(r => {
+        localStorage.setItem('Token', r.access_token);
+        this.router.navigateByUrl('/trips');
+      },
+      e => {
+        alert(e);
+      });
+    }
+  }
+
+
+  loginIsValid(): boolean{
+    // vérifies si le nom d'utilisateur est valide avant l'envoi
+    if (this.loginUsernameIsValid()) {
+      this.translate.get('app.usernameLengthError').subscribe((res: string) => {
+        alert(res);
+      });
+      return false;
+    }
+    // vérifies si le mot de passe est valide avant l'envoi
+    else if (this.loginPasswordIsValid()) {
+      this.translate.get('app.passwordLengthError').subscribe((res: string) => {
+        alert(res);
+      });
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
 
   // si une des conditions de validation ne passe pas, retournes false
-  // si tout est bon, retourne un CreateUserDTO.
-  // si jamais on appelle cette méthode dans un if, retournes true si l'objet
-  // existe (objet qui sera créé apres àvoir tout valider.
-  validDto(): any {
+  registerIsValid(): boolean{
 
-    console.log(this.lastName);
-    this.firstName.trim();
-    this.lastName.trim();
-    this.registerUserName.trim();
-    this.registerPassword.trim();
-    console.log(this.registerUserName);
     // vérifies si le nom d'utilisateur est valide avant l'envoi
-    if (this.registerUserName.length > this.MAX_USERNAME_LENGTH ||
-      this.registerUserName.length < this.MIN_USERNAME_LENGTH) {
+    if (this.usernameIsValid()) {
       this.translate.get('app.usernameLengthError').subscribe((res: string) => {
-        alert(res);
-        return false;
+      alert(res);
       });
+      return false;
     }
-
     // vérifies si le mot de passe est valide avant l'envoi
-    if (this.registerPassword.length > this.MAX_PASSWORD_LENGTH ||
-      this.registerPassword.length < this.MIN_PASSWORD_LENGTH) {
+    else if (this.passwordIsValid()) {
       this.translate.get('app.passwordLengthError').subscribe((res: string) => {
         alert(res);
-        return false;
       });
+      return false;
     }
-
+    // vérifies si le mot de passe est valide avant l'envoi
+    else if (!this.passwordConfirmIsValid()) {
+      this.translate.get('app.passwordNotMatchingError').subscribe((res: string) => {
+        alert(res);
+      });
+      return false;
+    }
     // vérifies si le prénom est valide avant l'envoi
-    if (this.firstName.length > this.MAX_NAME_LENGTH ||
-      this.firstName.length < this.MIN_NAME_LENGTH) {
+    else if (this.firstNameIsValid()) {
       this.translate.get('app.firstNameLengthError').subscribe((res: string) => {
         alert(res);
-        return false;
       });
+      return false;
     }
-
     // vérifies si le nom de famille est valide avant l'envoi
-    if (this.lastName.length > this.MAX_NAME_LENGTH ||
-      this.lastName.length < this.MIN_NAME_LENGTH) {
+    else if (this.lastNameIsValid()) {
       this.translate.get('app.lastNameLengthError').subscribe((res: string) => {
         alert(res);
-        return false;
       });
+      return false;
     }
-
     // retourne un dto comme tout est valide
-    return new CreateUserDto(
-      this.registerUserName,
-      this.firstName,
-      this.lastName,
-      this.registerPassword);
-
+    else{
+      return true;
+    }
   }
+
+
+  // vérifies si le nom d'utilisateur est valide avant l'envoi
+  usernameIsValid(): boolean {
+    this.registerUserName.trim();
+    return (this.registerUserName.length > this.MAX_USERNAME_LENGTH ||
+      this.registerUserName.length < this.MIN_USERNAME_LENGTH);
+  }
+
+
+  // vérifies si le nom d'utilisateur est valide avant l'envoi
+  loginUsernameIsValid(): boolean {
+    this.loginUserName.trim();
+    return (this.loginUserName.length > this.MAX_USERNAME_LENGTH ||
+      this.loginUserName.length < this.MIN_USERNAME_LENGTH);
+  }
+
+
+  // vérifies si le mot de passe est valide avant l'envoi
+  passwordIsValid(): boolean {
+    this.registerPassword.trim();
+    return (this.registerPassword.length > this.MAX_PASSWORD_LENGTH ||
+      this.registerPassword.length < this.MIN_PASSWORD_LENGTH);
+  }
+
+
+  // vérifies si le nom d'utilisateur est valide avant l'envoi
+  loginPasswordIsValid(): boolean {
+    this.loginPassword.trim();
+    return (this.loginPassword.length > this.MAX_PASSWORD_LENGTH ||
+      this.loginPassword.length < this.MIN_PASSWORD_LENGTH);
+  }
+
+
+  // vérifies si le mot de passe est le même que le mot de passe retapé
+  passwordConfirmIsValid(): boolean {
+    this.registerConfirm.trim();
+    this.registerConfirm.trim();
+    return (this.registerPassword === this.registerConfirm);
+  }
+
+
+  // vérifies si le prénom est valide avant l'envoi
+  firstNameIsValid(): boolean {
+    this.firstName.trim();
+    return (this.firstName.length > this.MAX_NAME_LENGTH ||
+      this.firstName.length < this.MIN_NAME_LENGTH);
+  }
+
+
+  // vérifies si le nom de famille est valide avant l'envoi
+  lastNameIsValid(): boolean{
+    this.lastName.trim();
+    return (this.lastName.length > this.MAX_NAME_LENGTH ||
+      this.lastName.length < this.MIN_NAME_LENGTH);
+  }
+
 
 }
