@@ -42,39 +42,39 @@
       </div>
     </form>
   </div>
-  <div class="card alt" style="border:none">
+  <div [className]="viewRegister ? 'card alt unclickable' : 'card alt'" style="border:none">
     <div class="toggle" (click)="toggleRegister()">
     </div>
     <h1 class="title">Inscription
-      <div class="close" (click)="toggleRegister()"></div>
+      <div class="close clickable" (click)="toggleRegister()"></div>
     </h1>
     <form>
-      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+      <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
         <input type="text" id="registerUser" required="required" [(ngModel)]="registerUserName" name="registerUserName"/>
         <label for="registerUser">Nom de compte</label>
         <div class="bar"></div>
       </div>
-      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+      <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
         <input type="text" id="registerName" required="required" [(ngModel)]="firstName" name="firstName"/>
         <label for="registerName">Prénom</label>
         <div class="bar"></div>
       </div>
-      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+      <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
         <input type="text" id="registerLastName" required="required" [(ngModel)]="lastName" name="lastName"/>
         <label for="registerLastName">Nom</label>
         <div class="bar"></div>
       </div>
-      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+      <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
         <input type="password" id="registerPassword" required="required" [(ngModel)]="registerPassword" name="registerPassword"/>
         <label for="registerPassword">Mot de passe</label>
         <div class="bar"></div>
       </div>
-      <div [className]="viewRegister ? 'input-container' : 'hidden'">
+      <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
         <input type="password" id="registerPasswordConfirm" required="required" [(ngModel)]="registerConfirm" name="registerConfirm"/>
         <label for="registerPasswordConfirm">Mot de passe</label>
         <div class="bar"></div>
       </div>
-      <div (click)="register()" [className]="viewRegister ? 'button-container' : 'hidden'">
+      <div (click)="register()" [className]="viewRegister ? 'button-container clickable' : 'hidden'">
         <button><span>Confirmer</span></button>
       </div>
     </form>

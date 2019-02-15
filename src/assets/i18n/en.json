@@ -34,6 +34,8 @@
     "passwordNotMatchingError": "The password does not match the confirmation",
     "firstNameLengthError": "The first name must be between 1 and 50 characters. Spaces before and after the word will not be counted",
     "lastNameLengthError": "The last name must be between 1 and 50 characters. Spaces before and after the word will not be counted",
-    "passwordLengthError": "The password must be between 8 and 35 characters. Spaces before and after the word will not be counted"
+    "passwordLengthError": "The password must be between 8 and 35 characters. Spaces before and after the word will not be counted",
+    "userNameAlreadyTaken": "The desired username is already taken",
+    "invalidUsernameOrPassword": "Invalid username or password"
   }
 }

@@ -55,10 +55,20 @@ export class LoginComponent implements OnInit {
         this.registerPassword);
 
       this.http.createUser(cud).subscribe(r => {
+        this.http.loginUser(new LoginUserDto(this.registerUserName, this.registerPassword)).subscribe(r => {
+          localStorage.setItem('Token', r.access_token);
           this.router.navigateByUrl('/trips');
+        });
         },
         e => {
-          alert(e);
+          if (e.status === 409) {
+            this.translate.get('app.userNameAlreadyTaken').subscribe((res: string) => {
+              alert(res);
+            });
+          }
+          else {
+            alert(e.status);
+          }
         }
       );
     }
@@ -70,18 +80,25 @@ export class LoginComponent implements OnInit {
         this.loginUserName,
         this.loginPassword);
 
-    this.http.loginUser(lud).subscribe(r => {
-        localStorage.setItem('Token', r.access_token);
-        this.router.navigateByUrl('/trips');
-      },
-      e => {
-        alert(e);
-      });
+      this.http.loginUser(lud).subscribe(r => {
+          localStorage.setItem('Token', r.access_token);
+          this.router.navigateByUrl('/trips');
+        },
+        e => {
+          if (e.status === 400) {
+            this.translate.get('app.invalidUsernameOrPassword').subscribe((res: string) => {
+              alert(res);
+            });
+          }
+          else {
+            alert(e.status);
+          }
+        });
     }
   }
 
 
-  loginIsValid(): boolean{
+  loginIsValid(): boolean {
     // vérifies si le nom d'utilisateur est valide avant l'envoi
     if (this.loginUsernameIsValid()) {
       this.translate.get('app.usernameLengthError').subscribe((res: string) => {
@@ -96,19 +113,19 @@ export class LoginComponent implements OnInit {
       });
       return false;
     }
-    else{
+    else {
       return true;
     }
   }
 
 
   // si une des conditions de validation ne passe pas, retournes false
-  registerIsValid(): boolean{
+  registerIsValid(): boolean {
 
     // vérifies si le nom d'utilisateur est valide avant l'envoi
     if (this.usernameIsValid()) {
       this.translate.get('app.usernameLengthError').subscribe((res: string) => {
-      alert(res);
+        alert(res);
       });
       return false;
     }
@@ -141,7 +158,7 @@ export class LoginComponent implements OnInit {
       return false;
     }
     // retourne un dto comme tout est valide
-    else{
+    else {
       return true;
     }
   }
@@ -196,11 +213,10 @@ export class LoginComponent implements OnInit {
 
 
   // vérifies si le nom de famille est valide avant l'envoi
-  lastNameIsValid(): boolean{
+  lastNameIsValid(): boolean {
     this.lastName.trim();
     return (this.lastName.length > this.MAX_NAME_LENGTH ||
       this.lastName.length < this.MIN_NAME_LENGTH);
   }
-
 
 }
