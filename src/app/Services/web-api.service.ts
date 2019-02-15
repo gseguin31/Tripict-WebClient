@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Post} from '../Models/post';
 import {CreatePostDto} from '../Models/DTO/create-post-dto';
 import {Observable} from 'rxjs';
@@ -13,6 +13,7 @@ import {DisplayTripDto} from '../Models/DTO/display-trip-dto';
 import {CreateTripDto} from '../Models/DTO/create-trip-dto';
 import {CreateUserDto} from '../Models/DTO/create-user-dto';
 import {SignedInUserDto} from '../Models/DTO/signed-in-user-dto';
+import {LoginUserDto} from '../Models/DTO/login-user-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,22 @@ export class WebApiService {
     return this.http.post(this.baseUrl + 'api/Account/Register', user, this.getOptions()) as any;
   }
 
+  loginUser(user: LoginUserDto): Observable<any> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      })
+    };
+
+    const body = new HttpParams()
+      .set('username', user.userName)
+      .set('password', user.password)
+      .set('grant_type', 'password');
+
+    return this.http.post<any>('/api/Token', body.toString(), httpOptions);
+  }
+
 
 
   // Méthodes pour posts --------------------------------------------------------------------
@@ -58,6 +75,8 @@ export class WebApiService {
       return r as any;
     }));
   }
+
+
 
   // Méthodes pour pictures --------------------------------------------------------------------
   addPicture(pic: CreatePictureDto): Observable<Response> {

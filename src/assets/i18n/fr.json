@@ -29,6 +29,7 @@
     "passwordConfirmation": "Confirmation de mot de passe",
     "modalCancel": "Annuler",
     "usernameLengthError": "Veuillez entrer un nom d'utilisateur entre 5 et 35 caractères",
+    "passwordNotMatchingError": "Le mot de passe n'est pas le même que la vérification",
     "firstNameLengthError": "Le prénom doit comporter 1 à 50 caractères",
     "lastNameLengthError": "Le nom de famille doit comporter 1 à 50 caractères",
     "passwordLengthError": "Le mot de passe doit être entre 8 et 35 caractères"
