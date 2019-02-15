@@ -40,7 +40,7 @@ export class DisplayTripComponent implements OnInit {
     this.apiService.currentTrip = tripId;
     console.log(tripId);
     console.log(name + '/' + tripId + '/activities');
-    this.router.navigateByUrl(name + '/' + tripId + '/activities');
+    this.router.navigateByUrl('trip/' + tripId + '/activities');
   }
 
   openDialog(): void {

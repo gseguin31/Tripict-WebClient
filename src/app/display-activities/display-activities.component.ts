@@ -28,15 +28,15 @@ export class DisplayActivitiesComponent implements OnInit {
   ngOnInit() {
     this.navBar.show();
     this.activities = [];
+    this.apiService.currentTrip = this.route.snapshot.paramMap.get('tripId') as any;
     this.showActivities();
     console.log(this.activities);
   }
 
   moveToPosts(id: number, name: string) {
     this.apiService.currentActivity = id;
-    let trip = this.route.snapshot.paramMap.get('trip');
     let tripId = this.route.snapshot.paramMap.get('tripId');
-    this.router.navigateByUrl(trip + '/' + tripId + '/' + name + '/' + id + '/posts');
+    this.router.navigateByUrl('trip/' + tripId + '/activity/' + id + '/posts');
   }
 
   openDialog(): void {

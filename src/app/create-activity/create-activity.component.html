@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{'app.titleActivityCreate' | translate}}</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <input matInput cdkFocusInitial [(ngModel)]="name">
+    <input matInput maxlength="35" minlength="1" cdkFocusInitial [(ngModel)]="name">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

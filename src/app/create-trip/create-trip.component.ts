@@ -29,18 +29,20 @@ export class CreateTripComponent implements OnInit {
 
   ngOnInit() {
     this.navBar.show();
-
+    this.name = '';
   }
 
   upload() {
-    if (this.name.length <= 0) {
+    console.log(this.name);
+    const trimmedName = this.name.trim();
+    if (trimmedName.length <= 0 || trimmedName.length > 35) {
       this.translate.get('app.alertTripLength').subscribe((res: string) => {
         alert(res);
       });
       return;
     }
 
-    let dto = new CreateTripDto(this.name);
+    let dto = new CreateTripDto(trimmedName);
     this.apiService.addTrip(dto).subscribe((r) => {
         this.translate.get('app.alertTripCreate').subscribe((res: string) => {
           alert(res);

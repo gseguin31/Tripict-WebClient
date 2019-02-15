@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div *ngIf="trips.length > 0 || trips === undefined" class="row">
     <h1>{{'app.titleTrip' | translate}}</h1>
   </div>
   <div class="row" *ngFor="let t of trips; i as index">
@@ -10,5 +10,7 @@
     </div>
   </div>
 </div>
+
+<h1 class="noTrip" *ngIf="trips.length === 0" >{{'app.addTrip' | translate}}</h1>
 
 <button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>

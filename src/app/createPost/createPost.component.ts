@@ -64,7 +64,9 @@ export class CreatePostComponent implements OnInit {
 
     this.currentlyUploading = true; // Indique que l'appel réseau est en attente de résolution
     // Crée le post puis envoie les images dedans de manière asynchrone
-    let p: CreatePostDto = new CreatePostDto(this.text, this.currentPicAmount, 1);
+    let activityId = this.route.snapshot.paramMap.get('activityId');
+    let actId = activityId as unknown;
+    let p: CreatePostDto = new CreatePostDto(this.text, this.currentPicAmount, actId as number);
     this.apiService.addPost(p).subscribe(r => {
       if (this.currentPicAmount === 0){ // Si le post ne contient pas d'images
         this.goToPosts();
@@ -100,7 +102,9 @@ export class CreatePostComponent implements OnInit {
     this.translate.get('app.alertPostWorks').subscribe((re: string) => {
       alert(re);
       this.ref.detectChanges();
-      this.router.navigateByUrl('/t/b/posts');
+      let tripId = this.route.snapshot.paramMap.get('tripId');
+      let activityId = this.route.snapshot.paramMap.get('activityId');
+      this.router.navigateByUrl('trip/' + tripId + '/activity/' + activityId + '/posts');
     });
   }
 

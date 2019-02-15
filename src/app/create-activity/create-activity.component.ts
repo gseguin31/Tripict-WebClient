@@ -35,14 +35,15 @@ export class CreateActivityComponent implements OnInit {
   }
 
   upload() {
-    if (this.name.trim().length <= 0) { // Vérifie qu'un nom est indiqué pour l'activité
+    const trimmedName = this.name.trim();
+    if (trimmedName.length <= 0 || trimmedName.length > 35) { // Vérifie qu'un nom est indiqué pour l'activité
       this.translate.get('app.alertActivityLength').subscribe((res: string) => {
         alert(res);
       });
       return;
     }
 
-    let dto = new CreateActivityDto(this.name.trim(), this.apiService.currentTrip);
+    let dto = new CreateActivityDto(trimmedName, this.apiService.currentTrip);
     this.apiService.addActivity(dto).subscribe((r) => {
         this.translate.get('app.alertActivityCreate').subscribe((res: string) => {
           alert(res);

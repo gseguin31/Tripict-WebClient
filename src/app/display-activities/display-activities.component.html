@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row"><h1>
+  <div *ngIf="activities.length > 0 || activities === undefined" class="row"><h1>
     {{'app.titleActivity' | translate}}</h1>
   </div>
   <div class="row" *ngFor="let a of activities; i as index">
@@ -10,5 +10,7 @@
     </div>
   </div>
 </div>
+
+<h1 class="noActivity" *ngIf="activities.length === 0" >{{'app.addActivity' | translate}}</h1>
 
 <button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>
