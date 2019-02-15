@@ -25,9 +25,14 @@ export class WebApiService {
 
   public currentActivity: number;
   public currentTrip: number;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
 
-  // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
-  public baseUrl = 'http://localhost:52090/';
+   // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
+    public baseUrl = 'http://localhost:52090/';
 
   getOptions() {
     return {
@@ -38,9 +43,11 @@ export class WebApiService {
     };
   }
 
+
 // Méthodes pour users --------------------------------------------------------------------
   createUser(user: CreateUserDto): Observable<SignedInUserDto> {
-    return this.http.post(this.baseUrl + 'api/Account/Register', user, this.getOptions()) as any;
+
+    return this.http.post(this.baseUrl + 'api/Account/Register', user, this.httpOptions) as any;
   }
 
   loginUser(user: LoginUserDto): Observable<any> {
@@ -56,7 +63,7 @@ export class WebApiService {
       .set('password', user.password)
       .set('grant_type', 'password');
 
-    return this.http.post<any>('/api/Token', body.toString(), httpOptions);
+    return this.http.post<any>(this.baseUrl + 'api/Token', body.toString(), httpOptions);
   }
 
   checkAuthorisation(): Observable<any> {
@@ -76,7 +83,7 @@ export class WebApiService {
   }
 
   getPostForActivity(activityId: number): Observable<PostDto[]> {
-    return this.http.get(this.baseUrl + '/api/Posts/GetPostsForActivity/' + activityId, this.getOptions()).pipe(map(r => {
+    return this.http.get(this.baseUrl + 'api/Posts/GetPostsForActivity/' + activityId, this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
