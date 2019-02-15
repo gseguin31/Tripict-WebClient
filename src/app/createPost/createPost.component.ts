@@ -50,7 +50,6 @@ export class CreatePostComponent implements OnInit {
     this.MAX_PIC_SIZE = 5242880;
 
     this.apiService.checkAuthorisation().subscribe(r => {
-
       },
       e => {
         if (e.status === 401) {
