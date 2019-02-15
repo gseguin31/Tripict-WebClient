@@ -34,6 +34,13 @@
     "lastNameLengthError": "The last name must be between 1 and 50 characters. Spaces before and after the word will not be counted",
     "passwordLengthError": "The password must be between 8 and 35 characters. Spaces before and after the word will not be counted",
     "userNameAlreadyTaken": "The desired username is already taken",
-    "invalidUsernameOrPassword": "Invalid username or password"
+    "invalidUsernameOrPassword": "Invalid username or password",
+    "signUp": "Sign up",
+    "register": "Register",
+    "confirm": "Confirm",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "passwordConfirm": "Confirm password"
+
   }
 }

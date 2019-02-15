@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   constructor(public http: WebApiService,
               public navBar: NavbarService,
               private translate: TranslateService,
-              private router: Router
+              private router: Router,
   ) {
   }
 
@@ -44,6 +44,16 @@ export class LoginComponent implements OnInit {
   toggleRegister() {
     this.viewRegister = !this.viewRegister;
 
+  }
+
+  switchLanguage() {
+    if (this.translate.currentLang === 'fr'){
+      this.translate.use('en');
+    }
+    else {
+      this.translate.use('fr');
+    }
+    console.log(this.translate.currentLang);
   }
 
   register() {

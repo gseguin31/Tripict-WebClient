@@ -34,6 +34,12 @@
     "lastNameLengthError": "Le nom de famille doit comporter 1 à 50 caractères",
     "passwordLengthError": "Le mot de passe doit être entre 8 et 35 caractères",
     "userNameAlreadyTaken": "Le nom d'utilisateur désiré est déjà pris",
-    "invalidUsernameOrPassword": "Le nom de compte ou le mot de passe est invalide"
+    "invalidUsernameOrPassword": "Le nom de compte ou le mot de passe est invalide",
+    "signUp": "Se connecter",
+    "register": "S'enregistrer",
+    "confirm": "Confirmer",
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "passwordConfirm": "Confirmation de mot de passe"
   }
 }

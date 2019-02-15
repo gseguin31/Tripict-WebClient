@@ -23,59 +23,62 @@
 <div class="container" [class.active]="viewRegister">
   <div class="card"></div>
   <div class="card">
-    <h1 class="title">Connection</h1>
+    <h1 class="title">{{ 'app.signUp' | translate}}</h1>
     <form>
       <div class="input-container">
-        <input type="text" id="loginUser" required="required" [(ngModel)]="loginUserName" name="loginUser"/>
-        <label for="loginUser">Nom de compte</label>
+        <input type="text" maxlength="35" id="loginUser" required="required" [(ngModel)]="loginUserName" name="loginUser"/>
+        <label for="loginUser">{{ 'app.username' | translate}}</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-        <input type="password" id="loginPassword" required="required" [(ngModel)]="loginPassword" name="loginPassword"/>
-        <label for="loginPassword">Mot de passe</label>
+        <input type="password" maxlength="35" id="loginPassword" required="required" [(ngModel)]="loginPassword" name="loginPassword"/>
+        <label for="loginPassword">{{ 'app.password' | translate}}</label>
         <div class="bar"></div>
       </div>
       <div class="button-container">
         <button (click)="login()">
-          <span>SE CONNECTER</span>
+          <span>{{ 'app.confirm' | translate}}</span>
         </button>
+      </div>
+      <div class="footer">
+        <a (click)="switchLanguage()" href="#">{{ 'app.translateBtn' | translate}}</a>
       </div>
     </form>
   </div>
   <div [className]="viewRegister ? 'card alt unclickable' : 'card alt'" style="border:none">
     <div class="toggle" (click)="toggleRegister()">
     </div>
-    <h1 class="title">Inscription
+    <h1 class="title">{{ 'app.register' | translate}}
       <div class="close clickable" (click)="toggleRegister()"></div>
     </h1>
     <form>
       <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
-        <input type="text" id="registerUser" required="required" [(ngModel)]="registerUserName" name="registerUserName"/>
-        <label for="registerUser">Nom de compte</label>
+        <input type="text" maxlength="35" id="registerUser" required="required" [(ngModel)]="registerUserName" name="registerUserName"/>
+        <label for="registerUser">{{ 'app.username' | translate}}</label>
         <div class="bar"></div>
       </div>
       <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
-        <input type="text" id="registerName" required="required" [(ngModel)]="firstName" name="firstName"/>
-        <label for="registerName">Prénom</label>
+        <input type="text" maxlength="35" id="registerName" required="required" [(ngModel)]="firstName" name="firstName"/>
+        <label for="registerName">{{ 'app.firstName' | translate}}</label>
         <div class="bar"></div>
       </div>
       <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
-        <input type="text" id="registerLastName" required="required" [(ngModel)]="lastName" name="lastName"/>
-        <label for="registerLastName">Nom</label>
+        <input type="text" maxlength="35" id="registerLastName" required="required" [(ngModel)]="lastName" name="lastName"/>
+        <label for="registerLastName">{{ 'app.lastName' | translate}}</label>
         <div class="bar"></div>
       </div>
       <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
-        <input type="password" id="registerPassword" required="required" [(ngModel)]="registerPassword" name="registerPassword"/>
-        <label for="registerPassword">Mot de passe</label>
+        <input type="password" maxlength="35" id="registerPassword" required="required" [(ngModel)]="registerPassword" name="registerPassword"/>
+        <label for="registerPassword">{{ 'app.password' | translate}}</label>
         <div class="bar"></div>
       </div>
       <div [className]="viewRegister ? 'input-container clickable' : 'hidden'">
-        <input type="password" id="registerPasswordConfirm" required="required" [(ngModel)]="registerConfirm" name="registerConfirm"/>
-        <label for="registerPasswordConfirm">Mot de passe</label>
+        <input type="password" maxlength="35" id="registerPasswordConfirm" required="required" [(ngModel)]="registerConfirm" name="registerConfirm"/>
+        <label for="registerPasswordConfirm">{{ 'app.passwordConfirm' | translate}}</label>
         <div class="bar"></div>
       </div>
       <div (click)="register()" [className]="viewRegister ? 'button-container clickable' : 'hidden'">
-        <button><span>Confirmer</span></button>
+        <button><span>{{ 'app.confirm' | translate}}</span></button>
       </div>
     </form>
   </div>
