@@ -24,16 +24,12 @@ export class DisplayTripComponent implements OnInit {
   }
 
   trips: DisplayTripDto[];
+  loading = true;
 
   ngOnInit() {
     this.navBar.show();
     this.trips = [];
     this.showTrips();
-    // Temporaire, en attendant l'API
-    /*for (let i = 0; i < 5; i++) {
-      let act = new DisplayTripDto(i, 'Spradarajan voyage ' + i);
-      this.trips.push(act);
-    }*/
   }
 
   moveToActivities(tripId: number, name: string) {
@@ -50,19 +46,25 @@ export class DisplayTripComponent implements OnInit {
       minWidth: '20em'
     });
 
-    dialogRef.afterClosed().subscribe( r => {
+    dialogRef.afterClosed().subscribe(r => {
       this.showTrips();
     });
   }
 
-  public showTrips(){
-    this.apiService.getTripsForUser().subscribe( r => {
-      this.trips = [];
-      for (let i = 0; i < r.length; i++){
-        let trip = new DisplayTripDto(r[i].id, r[i].name);
-        this.trips.push(trip);
-        console.log(this.trips);
-      }
-    });
+  public showTrips() {
+    this.apiService.getTripsForUser().subscribe(r => {
+        this.loading = false;
+        this.trips = [];
+        for (let i = 0; i < r.length; i++) {
+          let trip = new DisplayTripDto(r[i].id, r[i].name);
+          this.trips.push(trip);
+          console.log(this.trips);
+        }
+      },
+      e => {
+        if (e.status === 401) {
+          this.router.navigateByUrl('/login');
+        }
+      });
   }
 }

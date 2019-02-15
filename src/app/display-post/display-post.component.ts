@@ -22,6 +22,7 @@ export class DisplayPostComponent implements OnInit {
   public isLoading = true;
   public allPostsFromServer = [];
   public prefix = 'http://localhost:52090/';
+
   // public prefix = 'http://e1-test.projet.college-em.info:8080/';
 
 
@@ -31,21 +32,26 @@ export class DisplayPostComponent implements OnInit {
     let id = +activityId;
     this.navBar.show();
     // t mettre pour recuperer seulement d'une activité
-     /*this.http.getPostForActivity(id de lactivité).subscribe(r => {
-       // console.log(r);
-       this.isLoading = false;
-       this.allPostsFromServer = r;
-     });*/
+    /*this.http.getPostForActivity(id de lactivité).subscribe(r => {
+      // console.log(r);
+      this.isLoading = false;
+      this.allPostsFromServer = r;
+    });*/
 
 
     this.http.getPostForActivity(id).subscribe(r => {
-      this.isLoading = false;
-      this.allPostsFromServer = r;
-    });
+        this.isLoading = false;
+        this.allPostsFromServer = r;
+      },
+      e => {
+        if (e.status === 401) {
+          this.router.navigateByUrl('/login');
+        }
+      });
   }
 
   open(content) {
-    this.modalService.open(content, { centered: true }).result;
+    this.modalService.open(content, {centered: true}).result;
   }
 
   createPost() {

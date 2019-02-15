@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {WebApiService} from '../Services/web-api.service';
 import {NavbarService} from '../Services/navbar.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DialogData} from '../interfaces/dialog-data';
 import {TranslateService} from '@ngx-translate/core';
 import {CreateActivityComponent} from '../create-activity/create-activity.component';
@@ -22,6 +22,7 @@ export class CreateTripComponent implements OnInit {
               private translate: TranslateService,
               public navBar: NavbarService,
               public dialogRef: MatDialogRef<CreateTripComponent>,
+              private router: Router,
               @Inject(MAT_DIALOG_DATA) public data: DialogData) {
   }
 
@@ -50,6 +51,9 @@ export class CreateTripComponent implements OnInit {
         });
       },
       (e) => {
+        if (e.status === 401) {
+          this.router.navigateByUrl('/login');
+        }
         this.translate.get('app.alertGenericApiError').subscribe((res: string) => {
           alert(res);
         });

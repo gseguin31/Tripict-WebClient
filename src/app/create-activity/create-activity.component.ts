@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Post} from '../Models/post';
 import {Activity} from '../Models/activity';
 import {CreateActivityDto} from '../Models/DTO/create-activity-dto';
@@ -18,6 +18,7 @@ export class CreateActivityComponent implements OnInit {
 
   constructor(public apiService: WebApiService,
               private route: ActivatedRoute,
+              private router: Router,
               private translate: TranslateService,
               public navBar: NavbarService,
               public dialogRef: MatDialogRef<CreateActivityComponent>,
@@ -51,14 +52,15 @@ export class CreateActivityComponent implements OnInit {
         });
       },
       (e) => {
-      console.log('----');
-      console.log(e);
         if (e.status === 409) {
           this.translate.get('app.alertActivityCreateName').subscribe((res: string) => {
             alert(res);
           });
         }
         else {
+          if (e.status === 401) {
+            this.router.navigateByUrl('/login');
+          }
           this.translate.get('app.alertGenericApiError').subscribe((res: string) => {
             alert(res);
           });

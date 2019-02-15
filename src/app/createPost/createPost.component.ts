@@ -48,6 +48,15 @@ export class CreatePostComponent implements OnInit {
 
     this.MAX_PIC_AMOUNT = 10;
     this.MAX_PIC_SIZE = 5242880;
+
+    this.apiService.checkAuthorisation().subscribe(r => {
+
+      },
+      e => {
+        if (e.status === 401) {
+          this.router.navigateByUrl('/login');
+        }
+      });
   }
 
   // Prépare les objets de transfert de la liste et les envoie
@@ -68,33 +77,42 @@ export class CreatePostComponent implements OnInit {
     let actId = activityId as unknown;
     let p: CreatePostDto = new CreatePostDto(this.text, this.currentPicAmount, actId as number);
     this.apiService.addPost(p).subscribe(r => {
-      if (this.currentPicAmount === 0){ // Si le post ne contient pas d'images
-        this.goToPosts();
-      }
-      let id = r;
-      let postsSent = 0;
-      for (let i = 0; i < this.pictureURLS.length; i++) {
-        let base64 = this.pictureURLS[i].src;
-        let picToSend = new CreatePictureDto(base64, id);
-        this.pictureURLS[i].status = 'sending';
-        this.apiService.addPicture(picToSend).subscribe(
-          (res) => {
-            this.pictureURLS[i].status = 'ok';
-            postsSent++;
-            if (postsSent === this.currentPicAmount) {
+        if (this.currentPicAmount === 0) { // Si le post ne contient pas d'images
+          this.goToPosts();
+        }
+        let id = r;
+        let postsSent = 0;
+        for (let i = 0; i < this.pictureURLS.length; i++) {
+          let base64 = this.pictureURLS[i].src;
+          let picToSend = new CreatePictureDto(base64, id);
+          this.pictureURLS[i].status = 'sending';
+          this.apiService.addPicture(picToSend).subscribe(
+            (res) => {
+              this.pictureURLS[i].status = 'ok';
+              postsSent++;
+              if (postsSent === this.currentPicAmount) {
+                this.currentlyUploading = false;
+                this.ref.detectChanges();
+                setTimeout((e) => {
+                  this.goToPosts();
+                }, 300);
+              }
+            },
+            (err) => {
+              this.pictureURLS[i].status = 'failed';
               this.currentlyUploading = false;
-              this.ref.detectChanges();
-              setTimeout( (e) => {
-                this.goToPosts();
-              }, 300);
+              if (err.status === 401) {
+                this.router.navigateByUrl('/');
+              }
             }
-          },
-          (err) => {
-            this.pictureURLS[i].status = 'failed';
-          }
-        );
-      }
-    });
+          );
+        }
+      },
+      e => {
+        if (e.status === 401) {
+          this.router.navigateByUrl('/');
+        }
+      });
   }
 
   // Avertis l'utilisateur du succès du post et redirige vers la liste des posts
