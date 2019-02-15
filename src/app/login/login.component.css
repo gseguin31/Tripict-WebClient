@@ -139,6 +139,7 @@
   background:none;
   border:none;
   color: #2b8087;
+  cursor: pointer;
 }
 
 .textOnlyButton:active,

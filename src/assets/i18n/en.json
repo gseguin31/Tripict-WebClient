@@ -44,7 +44,7 @@
     "confirm": "Confirm",
     "firstName": "First name",
     "lastName": "Last name",
-    "passwordConfirm": "Confirm password"
-
+    "passwordConfirm": "Confirm password",
+    "disconnect": "Disconnect"
   }
 }

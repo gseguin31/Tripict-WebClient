@@ -43,6 +43,11 @@ export class WebApiService {
     return this.http.post(this.baseUrl + 'api/Account/Register', user, this.getOptions()) as any;
   }
 
+  signout() {
+    this.http.post( 'api/Account/Logout', null, this.getOptions()).subscribe();
+    localStorage.removeItem('Token');
+  }
+
   loginUser(user: LoginUserDto): Observable<any> {
 
     const httpOptions = {
@@ -56,7 +61,7 @@ export class WebApiService {
       .set('password', user.password)
       .set('grant_type', 'password');
 
-    return this.http.post<any>('/api/Token', body.toString(), httpOptions);
+    return this.http.post<any>(this.baseUrl + 'api/Token', body.toString(), httpOptions);
   }
 
   checkAuthorisation(): Observable<any> {
