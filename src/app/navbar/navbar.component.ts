@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from '../Services/navbar.service';
 import {TranslateService} from '@ngx-translate/core';
+import {WebApiService} from '../Services/web-api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +12,9 @@ import {TranslateService} from '@ngx-translate/core';
 export class NavbarComponent implements OnInit {
 
   constructor(public navBar: NavbarService,
-              private translate: TranslateService) { }
+              private translate: TranslateService,
+              private http: WebApiService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,5 +28,11 @@ export class NavbarComponent implements OnInit {
     }
     console.log(this.translate.currentLang);
   }
+
+  signout(){
+    this.http.signout();
+    this.router.navigateByUrl('/login');
+  }
+
 
 }

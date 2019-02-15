@@ -42,6 +42,7 @@
     "confirm": "Confirmer",
     "firstName": "Prénom",
     "lastName": "Nom de famille",
-    "passwordConfirm": "Confirmation de mot de passe"
+    "passwordConfirm": "Confirmation de mot de passe",
+    "disconnect": "Déconnecter"
   }
 }
