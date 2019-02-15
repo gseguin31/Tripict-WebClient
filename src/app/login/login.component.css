@@ -135,6 +135,17 @@
   pointer-events: all !important;
 }
 
+.textOnlyButton{
+  background:none;
+  border:none;
+  color: #2b8087;
+}
+
+.textOnlyButton:active,
+.textOnlyButton:focus{
+  outline:none;
+}
+
 /* Container */
 .container {
   position: relative;
@@ -349,9 +360,9 @@
   transform: scale(10);
 }
 .card .footer {
-  margin: 40px 0 0;
+  margin: 10px 0 0;
   color: #d3d3d3;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 300;
   text-align: center;
 }
