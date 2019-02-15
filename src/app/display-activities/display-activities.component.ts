@@ -24,11 +24,14 @@ export class DisplayActivitiesComponent implements OnInit {
   }
 
   activities: DisplayActivityDto[];
+  loading = true;
+  tripTitle = '';
 
   ngOnInit() {
     this.navBar.show();
     this.activities = [];
     this.apiService.currentTrip = this.route.snapshot.paramMap.get('tripId') as any;
+    this.getTripTitle(this.apiService.currentTrip);
     this.showActivities();
     console.log(this.activities);
   }
@@ -46,17 +49,29 @@ export class DisplayActivitiesComponent implements OnInit {
       minWidth: '20em'
     });
 
-    dialogRef.afterClosed().subscribe( r => {
+    dialogRef.afterClosed().subscribe(r => {
       this.showActivities();
     });
   }
 
-  showActivities(){
-    this.apiService.getActivitiesForTrip(this.apiService.currentTrip).subscribe(r => {
-      this.activities = [];
-      for (let i = 0; i < r.length; i++){
-        this.activities.push(r[i]);
-      }
+  getTripTitle(tripId: number) {
+    this.apiService.getTripById(tripId).subscribe(r => {
+      this.tripTitle = r.name;
     });
+  }
+
+  showActivities() {
+    this.apiService.getActivitiesForTrip(this.apiService.currentTrip).subscribe(r => {
+        this.loading = false;
+        this.activities = [];
+        for (let i = 0; i < r.length; i++) {
+          this.activities.push(r[i]);
+        }
+      },
+      e => {
+        if (e.status === 401) {
+          this.router.navigateByUrl('/login');
+        }
+      });
   }
 }

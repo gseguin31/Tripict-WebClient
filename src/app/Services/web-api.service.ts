@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Post} from '../Models/post';
 import {CreatePostDto} from '../Models/DTO/create-post-dto';
@@ -20,18 +20,19 @@ import {LoginUserDto} from '../Models/DTO/login-user-dto';
 })
 export class WebApiService {
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {
+  }
 
   public currentActivity: number;
   public currentTrip: number;
 
-   // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
-     public baseUrl = 'http://localhost:52090/';
+  // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
+  public baseUrl = 'http://localhost:52090/';
 
   getOptions() {
     return {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('Token')
       })
     };
@@ -58,6 +59,9 @@ export class WebApiService {
     return this.http.post<any>('/api/Token', body.toString(), httpOptions);
   }
 
+  checkAuthorisation(): Observable<any> {
+    return this.http.get(this.baseUrl + 'api/Account/UserInfo', this.getOptions()) as any;
+  }
 
 
   // Méthodes pour posts --------------------------------------------------------------------
@@ -65,17 +69,17 @@ export class WebApiService {
     return this.http.post(this.baseUrl + 'api/Posts/CreatePost', post, this.getOptions()) as any;
   }
 
-  getPostForUser(): Observable<PostDto[]>{
+  getPostForUser(): Observable<PostDto[]> {
     return this.http.get(this.baseUrl + 'api/Posts', this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
-  getPostForActivity(activityId: number): Observable<PostDto[]>{
+
+  getPostForActivity(activityId: number): Observable<PostDto[]> {
     return this.http.get(this.baseUrl + '/api/Posts/GetPostsForActivity/' + activityId, this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
-
 
 
   // Méthodes pour pictures --------------------------------------------------------------------
@@ -84,30 +88,34 @@ export class WebApiService {
   }
 
 
-
   // Méthodes pour Activities --------------------------------------------------------------------
-  addActivity(activity: CreateActivityDto): Observable<Response>{
+  addActivity(activity: CreateActivityDto): Observable<Response> {
     // let dto = activity.toCreateActivityDTO(activity);
     console.log(this.currentTrip);
     console.log(activity);
     return this.http.post(this.baseUrl + 'api/Activities/createActivity', activity, this.getOptions()) as any;
   }
 
-  getActivitiesForTrip(tripId: number): Observable<DisplayActivityDto[]>{
-    return this.http.get(this.baseUrl + 'api/Activities/getActivitiesForTrip/' + tripId, this.getOptions()).pipe(map( r => {
+  getActivitiesForTrip(tripId: number): Observable<DisplayActivityDto[]> {
+    return this.http.get(this.baseUrl + 'api/Activities/getActivitiesForTrip/' + tripId, this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }
 
 
-
   // Méthodes pour Trips --------------------------------------------------------------------
-  addTrip(trip: CreateTripDto): Observable<Response>{
+  addTrip(trip: CreateTripDto): Observable<Response> {
     return this.http.post(this.baseUrl + 'api/Trips/createTrip', trip, this.getOptions()) as any;
   }
 
-  getTripsForUser(): Observable<DisplayTripDto[]>{
-    return this.http.get(this.baseUrl + 'api/Trips/getTripsForUser', this.getOptions()).pipe(map( r => {
+  getTripsForUser(): Observable<DisplayTripDto[]> {
+    return this.http.get(this.baseUrl + 'api/Trips/getTripsForUser', this.getOptions()).pipe(map(r => {
+      return r as any;
+    }));
+  }
+
+  getTripById(tripId: number): Observable<DisplayTripDto> {
+    return this.http.get(this.baseUrl + 'api/Trips/GetTripById/' + tripId, this.getOptions()).pipe(map(r => {
       return r as any;
     }));
   }

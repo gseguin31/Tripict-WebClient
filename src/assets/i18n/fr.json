@@ -19,6 +19,8 @@
     "alertGenericApiError" : "Une erreur s'est produite, veuillez réessayer plus tard.",
     "addTrip": "Créez un nouveau voyage !",
     "addActivity": "Créez une nouvelle activité !",
+    "noPost": "Aucune publication à afficher",
+    "loading": "Chargement . . .",
 	  "upload": "Envoyer",
 	  "browse": "Parcourir",
     "toPosts": "Voir les publications",

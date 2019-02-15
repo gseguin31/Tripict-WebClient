@@ -11,6 +11,7 @@
   </div>
 </div>
 
-<h1 class="noTrip" *ngIf="trips.length === 0" >{{'app.addTrip' | translate}}</h1>
+<h1 class="noTrip" *ngIf="loading">{{'app.loading' | translate}}</h1>
+<h1 class="noTrip" *ngIf="trips.length === 0 && !loading">{{'app.addTrip' | translate}}</h1>
 
 <button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>

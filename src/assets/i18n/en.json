@@ -19,6 +19,8 @@
     "alertGenericApiError" : "An error has occured, please try again later.",
     "addTrip": "Create a new trip !",
     "addActivity": "Create a new activity !",
+    "noPost": "There is no post to show",
+    "loading": "Loading . . .",
     "upload": "Upload",
     "browse": "Browse",
     "toPosts": "View other posts",

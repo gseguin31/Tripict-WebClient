@@ -1,6 +1,6 @@
 <div class="container">
   <div *ngIf="activities.length > 0 || activities === undefined" class="row"><h1>
-    {{'app.titleActivity' | translate}}</h1>
+    {{'app.titleActivity' | translate}} : {{tripTitle}}</h1>
   </div>
   <div class="row" *ngFor="let a of activities; i as index">
     <div class="col-md-12">
@@ -11,6 +11,7 @@
   </div>
 </div>
 
-<h1 class="noActivity" *ngIf="activities.length === 0" >{{'app.addActivity' | translate}}</h1>
+<h1 class="noActivity" *ngIf="loading">{{'app.loading' | translate}}</h1>
+<h1 class="noActivity" *ngIf="activities.length === 0 && !loading">{{'app.addActivity' | translate}}</h1>
 
 <button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>
