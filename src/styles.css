@@ -97,6 +97,8 @@ body, html{
 
 h1{
   margin-top: 0;
+  text-align: center;
+  width: 100%;
 }
 
 h2{

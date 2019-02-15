@@ -50,6 +50,11 @@ export class WebApiService {
     return this.http.post(this.baseUrl + 'api/Account/Register', user, this.httpOptions) as any;
   }
 
+  signout() {
+    this.http.post( 'api/Account/Logout', null, this.getOptions()).subscribe();
+    localStorage.removeItem('Token');
+  }
+
   loginUser(user: LoginUserDto): Observable<any> {
 
     const httpOptions = {

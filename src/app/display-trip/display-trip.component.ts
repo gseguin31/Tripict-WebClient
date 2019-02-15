@@ -24,11 +24,13 @@ export class DisplayTripComponent implements OnInit {
   }
 
   trips: DisplayTripDto[];
+  newTrips: DisplayTripDto[];
   loading = true;
 
   ngOnInit() {
     this.navBar.show();
     this.trips = [];
+    this.newTrips = [];
     this.showTrips();
   }
 
@@ -56,8 +58,12 @@ export class DisplayTripComponent implements OnInit {
         this.loading = false;
         this.trips = [];
         for (let i = 0; i < r.length; i++) {
-          let trip = new DisplayTripDto(r[i].id, r[i].name);
-          this.trips.push(trip);
+          let trip = new DisplayTripDto(r[i].id, r[i].name, r[i].seen);
+          if (trip.seen) {
+            this.trips.push(trip);
+          } else {
+            this.newTrips.push(trip);
+          }
           console.log(this.trips);
         }
       },
