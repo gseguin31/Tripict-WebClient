@@ -5,6 +5,8 @@
     "titleActivityCreate": "New Activity",
     "titleTripCreate": "New Trip",
     "titleTrip": "Trips",
+    "titleAllTrip": "All Trips",
+    "titleNewTrip": "New Trips",
     "titleActivity": "Activities",
     "alertImageType": "Selected files must be images.",
     "alertImageSize": "You can't send pictures with a file size over 5 mb.",

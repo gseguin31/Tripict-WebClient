@@ -2,16 +2,25 @@
   <div *ngIf="trips.length > 0 || trips === undefined" class="row">
     <h1>{{'app.titleTrip' | translate}}</h1>
   </div>
+  <h4 *ngIf="newTrips.length > 0">{{'app.titleNewTrip' | translate}}</h4>
+  <div class="row" *ngFor="let t of newTrips; i as index">
+    <div class="col-md-12">
+      <mat-action-list>
+        <button mat-raised-button class="new-trips" (click)="moveToActivities(t.id, t.name)">{{t.name}}</button>
+      </mat-action-list>
+    </div>
+  </div>
+  <h4 *ngIf="trips.length > 0">{{'app.titleAllTrip' | translate}}</h4>
   <div class="row" *ngFor="let t of trips; i as index">
     <div class="col-md-12">
       <mat-action-list>
-        <button (click)="moveToActivities(t.id, t.name)">{{t.name}}</button>
+        <button mat-raised-button (click)="moveToActivities(t.id, t.name)">{{t.name}}</button>
       </mat-action-list>
     </div>
   </div>
 </div>
 
 <h1 class="noTrip" *ngIf="loading">{{'app.loading' | translate}}</h1>
-<h1 class="noTrip" *ngIf="trips.length === 0 && !loading">{{'app.addTrip' | translate}}</h1>
+<h1 class="noTrip" *ngIf="trips.length === 0 && newTrips.length === 0 && !loading">{{'app.addTrip' | translate}}</h1>
 
 <button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>

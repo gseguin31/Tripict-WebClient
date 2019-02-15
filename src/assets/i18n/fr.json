@@ -5,6 +5,8 @@
 	  "titleActivityCreate": "Nouvelle Activité",
     "titleTripCreate": "Nouveau Voyage",
     "titleTrip": "Voyages",
+    "titleAllTrip": "Tous les voyages",
+    "titleNewTrip": "Nouveaux voyages",
     "titleActivity": "Activités",
 	  "alertImageType": "Les fichiers sélectionnés doivent être de type image",
 	  "alertImageSize": "Attention, vous ne pouvez pas envoyer des images de plus de 5 mb",
