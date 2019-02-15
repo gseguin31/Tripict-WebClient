@@ -127,6 +127,14 @@
   font-size: 12px;
 }
 
+.unclickable{
+  pointer-events:none;
+}
+
+.clickable{
+  pointer-events: all !important;
+}
+
 /* Container */
 .container {
   position: relative;
@@ -158,8 +166,8 @@
   top: 40px;
   right: -70px;
   box-shadow: none;
-  -webkit-transform: scale(12);
-  transform: scale(12);
+  -webkit-transform: scale(15);
+  transform: scale(15);
   transition: -webkit-transform .3s ease;
   transition: transform .3s ease;
   transition: transform .3s ease, -webkit-transform .3s ease;
@@ -358,10 +366,10 @@
 .card.alt {
   position: absolute;
   top: 40px;
-  right: -70px;
+  right: -20px;
   z-index: 10;
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 100px;
   background: none;
   border-radius: 100%;
   box-shadow: none;
@@ -375,9 +383,8 @@
 .card.alt .toggle {
   position: relative;
   background: #2b8087;
-  padding: 20px;
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   color: #ffffff;
@@ -387,13 +394,14 @@
   cursor: pointer;
 }
 .card.alt .toggle:before {
-  content: url("../../assets/images/pencil.png");
+  content: url("../../assets/images/add-user.png");
   display: inline-block;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .card.alt .title,
 .card.alt .input-container,
 .card.alt .button-container {
@@ -419,6 +427,11 @@
 .card.alt .title .close:before {
   content: '\00d7';
 }
+
+.card.alt .input-container{
+  pointer-events:none;
+}
+
 .card.alt .input-container input {
   color: #ffffff;
 }
