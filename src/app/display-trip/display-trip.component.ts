@@ -34,6 +34,7 @@ export class DisplayTripComponent implements OnInit {
     this.showTrips();
   }
 
+  // Redirige vers le component d'affichage d'activités en spécifiant le voyage
   moveToActivities(tripId: number, name: string) {
     this.apiService.currentTrip = tripId;
     console.log(tripId);
@@ -41,6 +42,7 @@ export class DisplayTripComponent implements OnInit {
     this.router.navigateByUrl('trip/' + tripId + '/activities');
   }
 
+  // Ouvre le component de création de voyage
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateTripComponent, {
       width: '40%',
@@ -48,27 +50,28 @@ export class DisplayTripComponent implements OnInit {
       minWidth: '20em'
     });
 
+    // Rafraichit la liste après la fermeture du dialogue
     dialogRef.afterClosed().subscribe(r => {
       this.showTrips();
     });
   }
 
+  // Affiche la liste des voyages pour l'utilisateur
   public showTrips() {
     this.apiService.getTripsForUser().subscribe(r => {
-        this.loading = false;
+        this.loading = false; // Cache la bannière à la fin du chargement
         this.trips = [];
         for (let i = 0; i < r.length; i++) {
           let trip = new DisplayTripDto(r[i].id, r[i].name, r[i].seen);
-          if (trip.seen) {
+          if (trip.seen) { // Trie les voyages en fonction de si l'utilisateur les as déjà vus ou non
             this.trips.push(trip);
           } else {
             this.newTrips.push(trip);
           }
-          console.log(this.trips);
         }
       },
       e => {
-        if (e.status === 401) {
+        if (e.status === 401) { // Code 401 quand la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
         }
       });

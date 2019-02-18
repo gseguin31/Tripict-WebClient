@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  // Gère le passage du français à l'anglais par le bouton de la navbar
   switchLanguage() {
     if (this.translate.currentLang === 'fr'){
       this.translate.use('en');
@@ -26,9 +28,9 @@ export class NavbarComponent implements OnInit {
     else {
       this.translate.use('fr');
     }
-    console.log(this.translate.currentLang);
   }
 
+  // Déconnecte l'utilisateur
   signout(){
     this.http.signout();
     this.router.navigateByUrl('/login');
