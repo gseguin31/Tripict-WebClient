@@ -21,9 +21,9 @@ export class DisplayPostComponent implements OnInit {
 
   public isLoading = true;
   public allPostsFromServer = [];
-  // public prefix = 'http://localhost:52090/';
+  public prefix = 'http://localhost:52090/';
 
-   public prefix = 'http://e1-test.projet.college-em.info:8080/';
+  // public prefix = 'http://e1-test.projet.college-em.info:8080/';
 
 
   ngOnInit() {
@@ -31,15 +31,9 @@ export class DisplayPostComponent implements OnInit {
     let activityId = this.route.snapshot.paramMap.get('activityId');
     let id = +activityId;
     this.navBar.show();
-    // t mettre pour recuperer seulement d'une activité
-    /*this.http.getPostForActivity(id de lactivité).subscribe(r => {
-      // console.log(r);
-      this.isLoading = false;
-      this.allPostsFromServer = r;
-    });*/
-
 
     this.http.getPostForActivity(id).subscribe(r => {
+        console.log(r);
         this.isLoading = false;
         this.allPostsFromServer = r;
       },
@@ -51,6 +45,7 @@ export class DisplayPostComponent implements OnInit {
   }
 
   open(content) {
+    console.log(content);
     this.modalService.open(content, {centered: true}).result;
   }
 
@@ -58,5 +53,10 @@ export class DisplayPostComponent implements OnInit {
     let tripId = this.route.snapshot.paramMap.get('tripId');
     let activityId = this.route.snapshot.paramMap.get('activityId');
     this.router.navigateByUrl('trip/' + tripId + '/activity/' + activityId + '/create-post');
+  }
+
+  wasSeen(id) {
+    this.http.postWasSeen(id);
+    this.http.getPostForActivity(id).subscribe(r => this.allPostsFromServer = r);
   }
 }

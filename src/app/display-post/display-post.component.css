@@ -65,6 +65,10 @@ mat-card-header{
   margin-top: 1em;
 }
 
+.notSeen{
+  background-color: #ff9f19;
+}
+
 /* MODAL SECTION */
 .modal-header{
   text-align: center;

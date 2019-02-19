@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1>{{tripTitle}}</h1>
+    <h1>{{'app.titleActivity' | translate}} : {{tripTitle}}</h1>
   </div>
 
   <img class="usersImgBtn" src="../../assets/images/icons8-find-user-male-96.png" height="96" width="96" (click)="openFindUser()"/>
@@ -9,7 +9,7 @@
   <div class="row" *ngFor="let a of activities; i as index">
     <div class="col-md-12">
       <mat-action-list>
-        <button mat-raised-button (click)="moveToPosts(a.id, a.name)">{{a.name}}</button>
+        <button (click)="moveToPosts(a.id, a.name)">{{a.name}}</button>
       </mat-action-list>
     </div>
   </div>
