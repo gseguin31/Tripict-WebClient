@@ -37,8 +37,6 @@ export class DisplayTripComponent implements OnInit {
   // Redirige vers le component d'affichage d'activités en spécifiant le voyage
   moveToActivities(tripId: number, name: string) {
     this.apiService.currentTrip = tripId;
-    console.log(tripId);
-    console.log(name + '/' + tripId + '/activities');
     this.router.navigateByUrl('trip/' + tripId + '/activities');
   }
 

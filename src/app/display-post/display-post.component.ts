@@ -71,7 +71,6 @@ export class DisplayPostComponent implements OnInit {
     this.http.getPostForActivity(id).subscribe(r => {
         this.isLoading = false;
         this.allPostsFromServer = r;
-        console.log(r);
       },
       e => {
         if (e.status === 401) {

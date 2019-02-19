@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
     else {
       this.translate.use('fr');
     }
-    console.log(this.translate.currentLang);
   }
 
   register() {

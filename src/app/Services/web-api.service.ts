@@ -28,7 +28,7 @@ export class WebApiService {
   public currentTrip: number;
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
+      'Content-Type': 'application/json',
     })
   };
 
@@ -52,7 +52,7 @@ export class WebApiService {
   }
 
   signout() {
-    this.http.post( this.baseUrl + 'api/Account/Logout', null, this.getOptions()).subscribe(r => {
+    this.http.post(this.baseUrl + 'api/Account/Logout', null, this.getOptions()).subscribe(r => {
       localStorage.removeItem('Token');
     });
   }
@@ -87,11 +87,11 @@ export class WebApiService {
     }));
   }
 
-  inviteUsers(userIds): Observable<any>{
+  inviteUsers(userIds): Observable<any> {
     return this.http.post<any>(this.baseUrl + 'api/Trips/InviteUserToTrip', userIds, this.getOptions());
   }
 
-  getUsersForTrip(id): Observable<any>{
+  getUsersForTrip(id): Observable<any> {
     return this.http.get(this.baseUrl + 'api/Trips/GetUsersForTrip/' + id, this.getOptions());
   }
 
@@ -126,8 +126,6 @@ export class WebApiService {
   // Méthodes pour Activities --------------------------------------------------------------------
   addActivity(activity: CreateActivityDto): Observable<Response> {
     // let dto = activity.toCreateActivityDTO(activity);
-    console.log(this.currentTrip);
-    console.log(activity);
     return this.http.post(this.baseUrl + 'api/Activities/createActivity', activity, this.getOptions()) as any;
   }
 
