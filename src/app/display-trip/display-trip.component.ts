@@ -61,6 +61,7 @@ export class DisplayTripComponent implements OnInit {
     this.apiService.getTripsForUser().subscribe(r => {
         this.loading = false; // Cache la bannière à la fin du chargement
         this.trips = [];
+        this.newTrips = [];
         for (let i = 0; i < r.length; i++) {
           let trip = new DisplayTripDto(r[i].id, r[i].name, r[i].seen);
           if (trip.seen) { // Trie les voyages en fonction de si l'utilisateur les as déjà vus ou non
