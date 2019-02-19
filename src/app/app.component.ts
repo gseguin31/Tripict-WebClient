@@ -33,6 +33,7 @@ export class AppComponent {
     this.http.get('/api/values').subscribe(r => console.log(r));
   }
 
+  // Change la langue entre le français et l'anglais
   switchLanguage() {
     if (this.translate.currentLang === 'fr'){
       this.translate.use('en');
@@ -40,6 +41,5 @@ export class AppComponent {
     else {
       this.translate.use('fr');
     }
-    console.log(this.translate.currentLang);
   }
 }

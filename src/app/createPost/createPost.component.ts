@@ -83,21 +83,21 @@ export class CreatePostComponent implements OnInit {
         let postsSent = 0;
         for (let i = 0; i < this.pictureURLS.length; i++) {
           let base64 = this.pictureURLS[i].src;
-          let picToSend = new CreatePictureDto(base64, id);
+          let picToSend = new CreatePictureDto(base64, id); // Crée une string en base 64 pour représenter la photo
           this.pictureURLS[i].status = 'sending';
           this.apiService.addPicture(picToSend).subscribe(
             (res) => {
               this.pictureURLS[i].status = 'ok';
               postsSent++;
-              if (postsSent === this.currentPicAmount) {
+              if (postsSent === this.currentPicAmount) { // Vrai quand toutes les images on bien été envoyées
                 this.currentlyUploading = false;
                 this.ref.detectChanges();
-                setTimeout((e) => {
+                setTimeout((e) => { // Nécessaire pour donner le temps au spinners de se mettre à jour
                   this.goToPosts();
                 }, 300);
               }
             },
-            (err) => {
+            (err) => { // Code 401 quand la page est atteinte directement sans être connecté
               this.pictureURLS[i].status = 'failed';
               this.currentlyUploading = false;
               if (err.status === 401) {
@@ -107,7 +107,7 @@ export class CreatePostComponent implements OnInit {
           );
         }
       },
-      e => {
+      e => { // Code 401 quand la page est atteinte directement sans être connecté
         if (e.status === 401) {
           this.router.navigateByUrl('/');
         }

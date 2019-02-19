@@ -36,7 +36,7 @@ export class CreateTripComponent implements OnInit {
   upload() {
     console.log(this.name);
     const trimmedName = this.name.trim();
-    if (trimmedName.length <= 0 || trimmedName.length > 35) {
+    if (trimmedName.length <= 0 || trimmedName.length > 35) { // Validation de longueur du nom du voyage
       this.translate.get('app.alertTripLength').subscribe((res: string) => {
         alert(res);
       });
@@ -51,7 +51,7 @@ export class CreateTripComponent implements OnInit {
         });
       },
       (e) => {
-        if (e.status === 401) {
+        if (e.status === 401) { // Code 401 quand la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
         }
         this.translate.get('app.alertGenericApiError').subscribe((res: string) => {

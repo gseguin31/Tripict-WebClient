@@ -37,12 +37,14 @@ export class DisplayActivitiesComponent implements OnInit {
     console.log(this.activities);
   }
 
+  // Redirige vers la liste des posts d'une activité
   moveToPosts(id: number, name: string) {
     this.apiService.currentActivity = id;
     let tripId = this.route.snapshot.paramMap.get('tripId');
     this.router.navigateByUrl('trip/' + tripId + '/activity/' + id + '/posts');
   }
 
+  // Ouvre le component de création d'activité
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateActivityComponent, {
       width: '40%',
@@ -50,11 +52,13 @@ export class DisplayActivitiesComponent implements OnInit {
       minWidth: '20em'
     });
 
+    // Rafraichit la liste après la fermeture du dialogue
     dialogRef.afterClosed().subscribe(r => {
       this.showActivities();
     });
   }
 
+  // Utilisé pour afficher le nom du voyage
   getTripTitle(tripId: number) {
     this.apiService.getTripById(tripId).subscribe(r => {
       this.tripTitle = r.name;
@@ -63,14 +67,14 @@ export class DisplayActivitiesComponent implements OnInit {
 
   showActivities() {
     this.apiService.getActivitiesForTrip(this.apiService.currentTrip).subscribe(r => {
-        this.loading = false;
+        this.loading = false; // Cache la bannière lorsque le chargement est fini
         this.activities = [];
         for (let i = 0; i < r.length; i++) {
           this.activities.push(r[i]);
         }
       },
       e => {
-        if (e.status === 401) {
+        if (e.status === 401) { // Code 401 quand la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
         }
       });
