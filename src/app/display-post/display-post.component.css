@@ -66,8 +66,13 @@ mat-card-header{
 }
 
 .notSeen{
-  background-color: #ff9f19;
+  background-color: rgba(255, 159, 25, 0.6);
 }
+
+.userName{
+  margin-left: 5px;
+}
+
 
 /* MODAL SECTION */
 .modal-header{

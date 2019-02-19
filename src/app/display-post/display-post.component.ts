@@ -32,20 +32,11 @@ export class DisplayPostComponent implements OnInit {
     let id = +activityId;
     this.navBar.show();
 
-    this.http.getPostForActivity(id).subscribe(r => {
-        console.log(r);
-        this.isLoading = false;
-        this.allPostsFromServer = r;
-      },
-      e => {
-        if (e.status === 401) {
-          this.router.navigateByUrl('/login');
-        }
-      });
+    this.getPosts();
+
   }
 
   open(content) {
-    console.log(content);
     this.modalService.open(content, {centered: true}).result;
   }
 
@@ -57,6 +48,21 @@ export class DisplayPostComponent implements OnInit {
 
   wasSeen(id) {
     this.http.postWasSeen(id);
-    this.http.getPostForActivity(id).subscribe(r => this.allPostsFromServer = r);
+    this.getPosts();
+  }
+
+  getPosts(){
+    let activityId = this.route.snapshot.paramMap.get('activityId');
+    let id = +activityId;
+    this.http.getPostForActivity(id).subscribe(r => {
+        this.isLoading = false;
+        this.allPostsFromServer = r;
+        console.log(r);
+      },
+      e => {
+        if (e.status === 401) {
+          this.router.navigateByUrl('/login');
+        }
+      });
   }
 }

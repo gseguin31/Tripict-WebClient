@@ -50,6 +50,7 @@
     "addUser": "Ajouter",
     "confirmUser": "Confirmer",
     "UsersAddedSuccessful": "Les utilisateurs ont été ajouté avec succès",
-    "InvitedUsers": "Utilisateurs dans ce voyage"
+    "InvitedUsers": "Utilisateurs dans ce voyage",
+    "noUsersToInvite": "Veuillez saisir un utilisateur valide"
   }
 }
