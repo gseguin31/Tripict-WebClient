@@ -22,7 +22,7 @@
                           <!--<mat-card-title>Username</mat-card-title>-->
                         </mat-card-header>
 
-                        <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'" [interval]="0">
+                        <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'slide'" [interval]="0">
                           <mdb-carousel-item *ngFor="let imageId of currentPost.idTable">
                             <img class="d-block w-100" src="{{prefix}}api/Pictures/GetPictureFromId/{{imageId}}" alt="First slide">
                           </mdb-carousel-item>
