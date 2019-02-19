@@ -34,7 +34,6 @@ export class CreateTripComponent implements OnInit {
   }
 
   upload() {
-    console.log(this.name);
     const trimmedName = this.name.trim();
     if (trimmedName.length <= 0 || trimmedName.length > 35) { // Validation de longueur du nom du voyage
       this.translate.get('app.alertTripLength').subscribe((res: string) => {

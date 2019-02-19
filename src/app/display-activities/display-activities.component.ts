@@ -35,7 +35,6 @@ export class DisplayActivitiesComponent implements OnInit {
     this.apiService.currentTrip = this.route.snapshot.paramMap.get('tripId') as any;
     this.getTripTitle(this.apiService.currentTrip);
     this.showActivities();
-    console.log(this.activities);
   }
 
   // Redirige vers la liste des posts d'une activité
