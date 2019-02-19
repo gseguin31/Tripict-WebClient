@@ -65,6 +65,15 @@ mat-card-header{
   margin-top: 1em;
 }
 
+.notSeen{
+  background-color: rgba(255, 159, 25, 0.6);
+}
+
+.userName{
+  margin-left: 5px;
+}
+
+
 /* MODAL SECTION */
 .modal-header{
   text-align: center;

@@ -51,6 +51,7 @@
     "addUser": "Add",
     "confirmUser": "Confirm",
     "UsersAddedSuccessful": "Users have been added successfully",
-    "InvitedUsers": "Users in this trip"
+    "InvitedUsers": "Users in this trip",
+    "noUsersToInvite": "Please enter a valid user"
   }
 }

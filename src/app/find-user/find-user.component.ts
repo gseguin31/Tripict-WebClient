@@ -71,12 +71,20 @@ export class FindUserComponent implements OnInit {
       ids.push(i.userId.toString());
     }
     let dto = new InviteUserToTripDto(ids, this.apiService.currentTrip);
-    this.apiService.inviteUsers(dto).subscribe(r => {
-      this.translate.get('app.UsersAddedSuccessful').subscribe((res: string) => {
+    if (this.userIdsToAdd.length > 0){
+      this.apiService.inviteUsers(dto).subscribe(r => {
+        this.translate.get('app.UsersAddedSuccessful').subscribe((res: string) => {
+          alert(res);
+        });
+        this.dialogRef.close();
+      });
+    }
+    else{
+      this.translate.get('app.noUsersToInvite').subscribe((res: string) => {
         alert(res);
       });
-      this.dialogRef.close();
-    });
+    }
+
   }
 
   cancel() {

@@ -32,8 +32,8 @@ export class WebApiService {
     })
   };
 
-    public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
-   // public baseUrl = 'http://localhost:52090/';
+  // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
+  public baseUrl = 'http://localhost:52090/';
 
   getOptions() {
     return {
@@ -113,6 +113,9 @@ export class WebApiService {
     }));
   }
 
+  postWasSeen(id) {
+    this.http.get(this.baseUrl + 'api/Posts/postWasSeen/' + id, this.getOptions()).subscribe(r => r);
+  }
 
   // Méthodes pour pictures --------------------------------------------------------------------
   addPicture(pic: CreatePictureDto): Observable<Response> {
