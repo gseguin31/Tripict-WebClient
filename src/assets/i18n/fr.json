@@ -48,6 +48,8 @@
     "disconnect": "Déconnecter",
     "findUser": "Trouver vos amis",
     "addUser": "Ajouter",
-    "confirmUser": "Confirmer"
+    "confirmUser": "Confirmer",
+    "UsersAddedSuccessful": "Les utilisateurs ont été ajouté avec succès",
+    "InvitedUsers": "Utilisateurs dans ce voyage"
   }
 }

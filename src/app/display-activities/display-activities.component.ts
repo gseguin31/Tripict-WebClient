@@ -7,6 +7,7 @@ import {NavbarService} from '../Services/navbar.service';
 import {MatDialog} from '@angular/material';
 import {CreateActivityComponent} from '../create-activity/create-activity.component';
 import {FindUserComponent} from '../find-user/find-user.component';
+import {InvitedUsersComponent} from '../invited-users/invited-users.component';
 
 @Component({
   selector: 'app-display-activities',
@@ -93,7 +94,7 @@ export class DisplayActivitiesComponent implements OnInit {
   }
 
   openInvitedUsers() {
-    const dialogRef = this.dialog.open(CreateActivityComponent, {
+    const dialogRef = this.dialog.open(InvitedUsersComponent, {
       width: '40%',
       maxWidth: '50em',
       minWidth: '20em'

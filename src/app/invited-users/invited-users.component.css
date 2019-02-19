@@ -1,0 +1,26 @@
+body {
+  padding: 20px;
+}
+.image-area {
+  position: relative;
+  text-align: center;
+}
+.image-area img{
+  max-width: 100%;
+  height: auto;
+}
+.userNames{
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: none;
+  font-family: "helvetica";
+}
+.userNames:active {
+  outline: none;
+  border: none;
+  outline:0;
+}
+.userNames:focus {
+  outline:0;
+}

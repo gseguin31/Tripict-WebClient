@@ -86,8 +86,12 @@ export class WebApiService {
     }));
   }
 
-  inviteUsers(userIds){
-    this.http.post<any>(this.baseUrl + 'api/Trips/InviteUserToTrip', userIds, this.getOptions()).subscribe(r => r);
+  inviteUsers(userIds): Observable<any>{
+    return this.http.post<any>(this.baseUrl + 'api/Trips/InviteUserToTrip', userIds, this.getOptions());
+  }
+
+  getUsersForTrip(id): Observable<any>{
+    return this.http.get(this.baseUrl + 'api/Trips/GetUsersForTrip/' + id, this.getOptions());
   }
 
 

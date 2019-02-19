@@ -45,3 +45,12 @@ body {
   border: none;
   font-family: "helvetica";
 }
+
+.userNames:active {
+  outline: none;
+  border: none;
+  outline:0;
+}
+.userNames:focus {
+  outline:0;
+}
