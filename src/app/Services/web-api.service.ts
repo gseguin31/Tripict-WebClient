@@ -76,7 +76,7 @@ export class WebApiService {
     return this.http.get(this.baseUrl + 'api/Account/UserInfo', this.getOptions()) as any;
   }
 
-  findUsers(user: String): Observable<UserSearchResultDto> {
+  findUsers(user): Observable<any> {
     if (user.length === 0) {
       // mettre une chaine sinon le endpoint ne sera pas trouvé
       user = 'ijasdoifjasodjfasdkjf';
@@ -86,7 +86,7 @@ export class WebApiService {
     }));
   }
 
-  inviteUsers(userIds: String[]){
+  inviteUsers(userIds){
     this.http.post<any>(this.baseUrl + 'api/Trips/InviteUserToTrip', userIds, this.getOptions()).subscribe(r => r);
   }
 
