@@ -37,4 +37,7 @@ export class NavbarComponent implements OnInit {
   }
 
 
+  home() {
+    this.router.navigateByUrl('/');
+  }
 }

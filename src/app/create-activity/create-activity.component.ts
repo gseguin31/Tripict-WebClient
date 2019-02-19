@@ -54,18 +54,12 @@ export class CreateActivityComponent implements OnInit {
         });
       },
       (e) => {
-        if (e.status === 409) { // Code 409 quand une activité avec le même nom existe déjà
-          this.translate.get('app.alertActivityCreateName').subscribe((res: string) => {
+        if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
+          this.router.navigateByUrl('/login');
+          this.translate.get('app.alertBadToken').subscribe((res: string) => {
             alert(res);
           });
-        }
-        else {
-          if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
-            this.router.navigateByUrl('/login');
-          }
-          this.translate.get('app.alertGenericApiError').subscribe((res: string) => {
-            alert(res);
-          });
+          this.dialogRef.close();
         }
       });
   }

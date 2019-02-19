@@ -4,6 +4,7 @@ import {Post} from '../Models/post';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarService} from '../Services/navbar.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-display-post',
@@ -16,7 +17,8 @@ export class DisplayPostComponent implements OnInit {
               public modalService: NgbModal,
               public navBar: NavbarService,
               private route: ActivatedRoute,
-              public router: Router) {
+              public router: Router,
+              private translate: TranslateService) {
   }
 
   public isLoading = true;
@@ -44,8 +46,11 @@ export class DisplayPostComponent implements OnInit {
         this.allPostsFromServer = r;
       },
       e => {
-        if (e.status === 401) {
+        if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
+          this.translate.get('app.alertBadToken').subscribe((res: string) => {
+            alert(res);
+          });
         }
       });
   }

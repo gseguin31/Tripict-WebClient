@@ -39,6 +39,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.navBar.hide();
+
+    this.http.checkAuthorisation().subscribe(r => {
+      this.router.navigateByUrl('/trips');
+    });
   }
 
   toggleRegister() {
@@ -47,7 +51,7 @@ export class LoginComponent implements OnInit {
   }
 
   switchLanguage() {
-    if (this.translate.currentLang === 'fr'){
+    if (this.translate.currentLang === 'fr') {
       this.translate.use('en');
     }
     else {
@@ -65,10 +69,10 @@ export class LoginComponent implements OnInit {
         this.registerPassword);
 
       this.http.createUser(cud).subscribe(r => {
-        this.http.loginUser(new LoginUserDto(this.registerUserName, this.registerPassword)).subscribe(r => {
-          localStorage.setItem('Token', r.access_token);
-          this.router.navigateByUrl('/trips');
-        });
+          this.http.loginUser(new LoginUserDto(this.registerUserName, this.registerPassword)).subscribe(r => {
+            localStorage.setItem('Token', r.access_token);
+            this.router.navigateByUrl('/trips');
+          });
         },
         e => {
           if (e.status === 409) {

@@ -71,8 +71,11 @@ export class DisplayTripComponent implements OnInit {
         }
       },
       e => {
-        if (e.status === 401) { // Code 401 quand la page est atteinte directement sans être connecté
+        if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
+          this.translate.get('app.alertBadToken').subscribe((res: string) => {
+            alert(res);
+          });
         }
       });
   }

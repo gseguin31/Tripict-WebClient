@@ -60,22 +60,23 @@ export class CreatePostComponent implements OnInit {
 
   // Prépare les objets de transfert de la liste et les envoie
   upload() {
-    for (let i = 0; i < this.pictureURLS.length; i++) {
-    }
     // Ne permet pas l'envoi si rien n'est envoyé
-    if (this.pictureURLS.length === 0 && this.text === '') {
+    if (this.pictureURLS.length === 0 && (this.text === '' || this.text.trim().length === 0)) {
       this.translate.get('app.alertPostCreate').subscribe((res: string) => {
         alert(res);
       });
       return;
     }
-
     this.currentlyUploading = true; // Indique que l'appel réseau est en attente de résolution
     // Crée le post puis envoie les images dedans de manière asynchrone
     let activityId = this.route.snapshot.paramMap.get('activityId');
     let actId = activityId as unknown;
-    let p: CreatePostDto = new CreatePostDto(this.text, this.currentPicAmount, actId as number);
-    this.apiService.addPost(p).subscribe(r => {
+    let p: CreatePostDto = new CreatePostDto(this.text.trim(), this.currentPicAmount, actId as number);
+    this.sendUpload(p);
+  }
+
+  sendUpload(post: CreatePostDto) {
+    this.apiService.addPost(post).subscribe(r => {
         if (this.currentPicAmount === 0) { // Si le post ne contient pas d'images
           this.goToPosts();
         }
@@ -85,7 +86,7 @@ export class CreatePostComponent implements OnInit {
           let base64 = this.pictureURLS[i].src;
           let picToSend = new CreatePictureDto(base64, id); // Crée une string en base 64 pour représenter la photo
           this.pictureURLS[i].status = 'sending';
-          this.apiService.addPicture(picToSend).subscribe(
+          this.apiService.addPicture(picToSend).subscribe( // Envoie les images une par une
             (res) => {
               this.pictureURLS[i].status = 'ok';
               postsSent++;
@@ -97,10 +98,10 @@ export class CreatePostComponent implements OnInit {
                 }, 300);
               }
             },
-            (err) => { // Code 401 quand la page est atteinte directement sans être connecté
+            (err) => {
               this.pictureURLS[i].status = 'failed';
               this.currentlyUploading = false;
-              if (err.status === 401) {
+              if (err.status === 401) { // Code 401 quand la page est atteinte directement sans être connecté
                 this.router.navigateByUrl('/');
               }
             }
@@ -108,8 +109,12 @@ export class CreatePostComponent implements OnInit {
         }
       },
       e => { // Code 401 quand la page est atteinte directement sans être connecté
-        if (e.status === 401) {
-          this.router.navigateByUrl('/');
+
+        if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
+          this.router.navigateByUrl('/login');
+          this.translate.get('app.alertBadToken').subscribe((res: string) => {
+            alert(res);
+          });
         }
       });
   }
