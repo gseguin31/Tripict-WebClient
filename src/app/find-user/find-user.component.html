@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>{{'app.findUser' | translate}}</h1>
+<div mat-dialog-content>
+
+  <form class="example-form" [formGroup]='usersForm'>
+    <mat-form-field class="example-full-width">
+      <input matInput  [matAutocomplete]="auto" formControlName='userInput'>
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+      <ng-container *ngIf="!isLoading">
+        <mat-option *ngFor="let user of filteredUsers" [value]="user">
+          <span>{{ user.lastName }}</span>
+          <span>, {{ user.firstName }}</span>
+          <span> | {{ user.userName }}</span>
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
+  </form>
+
+  <div class="image-area" *ngFor="let a of userIdsToAdd">
+    <button class="userNames">{{beautifyName(a)}}</button>
+    <a class="remove-image" (click)="removeUserFromList(a)" style="display: inline;">&#215;</a>
+  </div>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">{{'app.modalCancel' | translate}}</button>
+  <button mat-button (click)="add()">{{'app.addUser' | translate}}</button>
+  <button mat-button (click)="confirm()">{{'app.confirmUser' | translate}}</button>
+</div>

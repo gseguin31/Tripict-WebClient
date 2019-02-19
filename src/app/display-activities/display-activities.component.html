@@ -3,8 +3,8 @@
     <h1>{{'app.titleActivity' | translate}} : {{tripTitle}}</h1>
   </div>
 
-  <img src="../../assets/images/icons8-find-user-male-96.png" height="96" width="96"/>
-  <img src="../../assets/images/icons8-user-account-96.png" height="96" width="96"/>
+  <img class="usersImgBtn" src="../../assets/images/icons8-find-user-male-96.png" height="96" width="96" (click)="openFindUser()"/>
+  <img class="usersImgBtn" src="../../assets/images/icons8-user-account-96.png" height="96" width="96" (click)="openInvitedUsers()"/>
 
   <div class="row" *ngFor="let a of activities; i as index">
     <div class="col-md-12">
@@ -19,3 +19,6 @@
 <h1 class="noActivity" *ngIf="activities.length === 0 && !loading">{{'app.addActivity' | translate}}</h1>
 
 <button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>
+
+
+

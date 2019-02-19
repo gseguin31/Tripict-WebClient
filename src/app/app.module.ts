@@ -10,7 +10,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatList} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatList, MatProgressSpinnerModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -26,6 +26,8 @@ import {DisplayActivitiesComponent} from './display-activities/display-activitie
 import {NavbarComponent} from './navbar/navbar.component';
 import {DisplayTripComponent} from './display-trip/display-trip.component';
 import {CreateTripComponent} from './create-trip/create-trip.component';
+import { FindUserComponent } from './find-user/find-user.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -43,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DisplayActivitiesComponent,
     NavbarComponent,
     DisplayTripComponent,
-    CreateTripComponent
+    CreateTripComponent,
+    FindUserComponent
   ],
   imports: [
     BrowserModule,
@@ -58,11 +61,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCardModule,
     MatListModule,
     MatDialogModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule,
     NgbModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'trips', component: DisplayTripComponent},
       {path: 'trips/create-trip', component: CreateTripComponent}, // pour le modale de cree un voyage ... ne sera jamais routé
+      {path: 'FindUser', component: FindUserComponent}, // pour le modale de trouver un utilisateur ... ne sera jamais routé
       {path: ':trip/create-activity', component: CreateActivityComponent}, // pour le modal pour cree une activite .. ne sera jamais routé
       {path: 'trip/:tripId/activities', component: DisplayActivitiesComponent}, // route vers la liste des activitée pour un voyage, prend un parametre tripId
       {path: 'trip/:tripId/activity/:activityId/create-post', component: CreatePostComponent},

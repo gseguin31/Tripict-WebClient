@@ -6,6 +6,7 @@ import {DisplayActivityDto} from '../Models/DTO/display-activity-dto';
 import {NavbarService} from '../Services/navbar.service';
 import {MatDialog} from '@angular/material';
 import {CreateActivityComponent} from '../create-activity/create-activity.component';
+import {FindUserComponent} from '../find-user/find-user.component';
 
 @Component({
   selector: 'app-display-activities',
@@ -73,5 +74,29 @@ export class DisplayActivitiesComponent implements OnInit {
           this.router.navigateByUrl('/login');
         }
       });
+  }
+
+  openFindUser() {
+    const dialogRef = this.dialog.open(FindUserComponent, {
+      width: '40%',
+      maxWidth: '50em',
+      minWidth: '20em'
+    });
+
+    dialogRef.afterClosed().subscribe(r => {
+      this.showActivities();
+    });
+  }
+
+  openInvitedUsers() {
+    const dialogRef = this.dialog.open(CreateActivityComponent, {
+      width: '40%',
+      maxWidth: '50em',
+      minWidth: '20em'
+    });
+
+    dialogRef.afterClosed().subscribe(r => {
+      this.showActivities();
+    });
   }
 }

@@ -12,8 +12,9 @@ import {DisplayActivityDto} from '../Models/DTO/display-activity-dto';
 import {DisplayTripDto} from '../Models/DTO/display-trip-dto';
 import {CreateTripDto} from '../Models/DTO/create-trip-dto';
 import {CreateUserDto} from '../Models/DTO/create-user-dto';
-import {SignedInUserDto} from '../Models/DTO/signed-in-user-dto';
+import {UserSearchResultDto} from '../Models/DTO/userSearchResultDto';
 import {LoginUserDto} from '../Models/DTO/login-user-dto';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,7 @@ export class WebApiService {
 
 
 // Méthodes pour users --------------------------------------------------------------------
-  createUser(user: CreateUserDto): Observable<SignedInUserDto> {
+  createUser(user: CreateUserDto): Observable<UserSearchResultDto> {
 
     return this.http.post(this.baseUrl + 'api/Account/Register', user, this.httpOptions) as any;
   }
@@ -73,6 +74,20 @@ export class WebApiService {
 
   checkAuthorisation(): Observable<any> {
     return this.http.get(this.baseUrl + 'api/Account/UserInfo', this.getOptions()) as any;
+  }
+
+  findUsers(user: String): Observable<UserSearchResultDto> {
+    if (user.length === 0) {
+      // mettre une chaine sinon le endpoint ne sera pas trouvé
+      user = 'ijasdoifjasodjfasdkjf';
+    }
+    return this.http.get(this.baseUrl + 'api/Account/FindUsers/' + user, this.getOptions()).pipe(map(r => {
+      return r;
+    }));
+  }
+
+  inviteUsers(userIds: String[]){
+    this.http.post<any>(this.baseUrl + 'api/Trips/InviteUserToTrip', userIds, this.getOptions()).subscribe(r => r);
   }
 
 

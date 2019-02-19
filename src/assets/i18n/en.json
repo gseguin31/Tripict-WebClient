@@ -45,6 +45,9 @@
     "firstName": "First name",
     "lastName": "Last name",
     "passwordConfirm": "Confirm password",
-    "disconnect": "Disconnect"
+    "disconnect": "Disconnect",
+    "findUser": "Find your friends",
+    "addUser": "Add",
+    "confirmUser": "Confirm"
   }
 }
