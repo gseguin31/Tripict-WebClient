@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {WebApiService} from '../Services/web-api.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreatePostDto} from '../Models/DTO/create-post-dto';
@@ -6,6 +6,8 @@ import {CreatePictureDto} from '../Models/DTO/create-picture-dto';
 import {forEach} from '@angular/router/src/utils/collection';
 import {TranslateService} from '@ngx-translate/core';
 import {NavbarService} from '../Services/navbar.service';
+import {DialogData} from '../interfaces/dialog-data';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 class ImgUpload {
   status = 'waiting';
@@ -26,7 +28,9 @@ export class CreatePostComponent implements OnInit {
               private translate: TranslateService,
               private router: Router,
               private ref: ChangeDetectorRef,
-              public navBar: NavbarService) {
+              public navBar: NavbarService,
+              public dialogRef: MatDialogRef<CreatePostComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
   }
 
   text: string;
@@ -69,9 +73,9 @@ export class CreatePostComponent implements OnInit {
     }
     this.currentlyUploading = true; // Indique que l'appel réseau est en attente de résolution
     // Crée le post puis envoie les images dedans de manière asynchrone
-    let activityId = this.route.snapshot.paramMap.get('activityId');
-    let actId = activityId as unknown;
-    let p: CreatePostDto = new CreatePostDto(this.text.trim(), this.currentPicAmount, actId as number);
+    // let activityId = +this.route.snapshot.paramMap.get('activityId');
+    let activityId = this.apiService.currentActivity;
+    let p: CreatePostDto = new CreatePostDto(this.text.trim(), this.currentPicAmount, activityId);
     this.sendUpload(p);
   }
 
@@ -123,10 +127,13 @@ export class CreatePostComponent implements OnInit {
   goToPosts() {
     this.translate.get('app.alertPostWorks').subscribe((re: string) => {
       alert(re);
-      this.ref.detectChanges();
-      let tripId = this.route.snapshot.paramMap.get('tripId');
-      let activityId = this.route.snapshot.paramMap.get('activityId');
+      // this.ref.detectChanges();
+      // let tripId = this.route.snapshot.paramMap.get('tripId');
+      let tripId = this.apiService.currentTrip;
+      // let activityId = this.route.snapshot.paramMap.get('activityId');
+      let activityId = this.apiService.currentActivity;
       this.router.navigateByUrl('trip/' + tripId + '/activity/' + activityId + '/posts');
+      this.dialogRef.close();
     });
   }
 

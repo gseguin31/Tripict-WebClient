@@ -20,6 +20,7 @@
     "alertTripCreate": "Your trip was successfully created.",
     "alertGenericApiError" : "An error has occured, please try again later.",
     "alertBadToken" : "You must be connected to use this page",
+    "maxPostChar" : "Max 250 characters",
     "addTrip": "Create a new trip !",
     "addActivity": "Create a new activity !",
     "noPost": "There is no post to show",
