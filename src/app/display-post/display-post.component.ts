@@ -35,9 +35,11 @@ export class DisplayPostComponent implements OnInit {
 
   ngOnInit() {
 
-    let activityId = this.route.snapshot.paramMap.get('activityId');
-    let id = +activityId;
-    this.http.currentActivity = id;
+    let activityId = +this.route.snapshot.paramMap.get('activityId');
+    let tripId = +this.route.snapshot.paramMap.get('tripId');
+    // let id = +activityId;
+    this.http.currentActivity = activityId;
+    this.http.currentTrip = tripId;
     this.navBar.show();
 
     this.getPosts();
@@ -45,14 +47,14 @@ export class DisplayPostComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CreatePostComponent, {
-      width: '40%',
-      maxWidth: '50em',
+      width: '70%',
+      // maxWidth: '50em',
       minWidth: '20em'
     });
 
     // Rafraichit la liste après la fermeture du dialogue
     dialogRef.afterClosed().subscribe(r => {
-      // this.showActivities();
+      this.getPosts();
     });
   }
 
