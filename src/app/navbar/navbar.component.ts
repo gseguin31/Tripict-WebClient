@@ -32,8 +32,10 @@ export class NavbarComponent implements OnInit {
 
   // Déconnecte l'utilisateur
   signout(){
-    this.http.signout();
-    this.router.navigateByUrl('/login');
+    this.http.signout().subscribe(r => {
+      localStorage.removeItem('Token');
+      this.router.navigateByUrl('/login');
+    });
   }
 
 
