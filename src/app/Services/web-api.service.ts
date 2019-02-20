@@ -33,7 +33,7 @@ export class WebApiService {
   };
 
   // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
-  public baseUrl = 'http://localhost:52090/';
+   public baseUrl = 'http://localhost:52090/';
 
   getOptions() {
     return {
@@ -108,9 +108,9 @@ export class WebApiService {
   }
 
   getPostForActivity(activityId: number): Observable<PostDto[]> {
-    return this.http.get(this.baseUrl + 'api/Posts/GetPostsForActivity/' + activityId, this.getOptions()).pipe(map(r => {
+    return this.http.get<PostDto[]>(this.baseUrl + 'api/Posts/GetPostsForActivity/' + activityId, this.getOptions()); /* .pipe(map(r => {
       return r as any;
-    }));
+    }));*/
   }
 
   postWasSeen(id) {

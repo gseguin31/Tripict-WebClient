@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
     this.navBar.hide();
 
     this.http.checkAuthorisation().subscribe(r => {
+      // debugger;
       this.router.navigateByUrl('/trips');
     });
   }

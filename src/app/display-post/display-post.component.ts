@@ -26,6 +26,7 @@ export class DisplayPostComponent implements OnInit {
   }
 
   public isLoading = true;
+  public noAccess = false;
   public allPostsFromServer = [];
   public prefix = 'http://localhost:52090/';
 
@@ -40,19 +41,6 @@ export class DisplayPostComponent implements OnInit {
     this.navBar.show();
 
     this.getPosts();
-
-    this.http.getPostForActivity(id).subscribe(r => {
-        this.isLoading = false;
-        this.allPostsFromServer = r;
-      },
-      e => {
-        if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
-          this.router.navigateByUrl('/login');
-          this.translate.get('app.alertBadToken').subscribe((res: string) => {
-            alert(res);
-          });
-        }
-      });
   }
 
   openDialog(): void {
@@ -93,6 +81,9 @@ export class DisplayPostComponent implements OnInit {
       e => {
         if (e.status === 401) {
           this.router.navigateByUrl('/login');
+        }
+        if (e.status === 403) {
+          this.noAccess = true;
         }
       });
   }
