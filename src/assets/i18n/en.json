@@ -54,6 +54,7 @@
     "UsersAddedSuccessful": "Users have been added successfully",
     "InvitedUsers": "Users in this trip",
     "noUsersToInvite": "Please enter a valid user",
-    "noAccess": "You do not have permission to view these posts"
+    "noAccess": "You do not have permission to view these posts",
+    "noActivity": "The activity does not exist"
   }
 }

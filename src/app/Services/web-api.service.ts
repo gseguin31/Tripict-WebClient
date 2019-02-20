@@ -48,7 +48,7 @@ export class WebApiService {
 // Méthodes pour users --------------------------------------------------------------------
   createUser(user: CreateUserDto): Observable<UserSearchResultDto> {
 
-    return this.http.post(this.baseUrl + 'api/Account/Register', user, this.httpOptions) as any;
+    return this.http.post<UserSearchResultDto>(this.baseUrl + 'api/Account/Register', user, this.httpOptions); // as any;
   }
 
   signout() {
@@ -74,7 +74,7 @@ export class WebApiService {
   }
 
   checkAuthorisation(): Observable<any> {
-    return this.http.get(this.baseUrl + 'api/Account/UserInfo', this.getOptions()) as any;
+    return this.http.get<any>(this.baseUrl + 'api/Account/UserInfo', this.getOptions()); // as any;
   }
 
   findUsers(tripId, search): Observable<any> {
@@ -82,9 +82,9 @@ export class WebApiService {
       // mettre une chaine sinon le endpoint ne sera pas trouvé
       search = 'ijasdoifjasodjfasdkjf';
     }
-    return this.http.get(this.baseUrl + 'api/Account/FindUsers/' + tripId + '/' + search, this.getOptions()).pipe(map(r => {
-      return r;
-    }));
+    return this.http.get<any>(this.baseUrl + 'api/Account/FindUsers/' + tripId + '/' + search, this.getOptions()); /* .pipe(map(r => {
+      return r as any;
+    }));*/
   }
 
   inviteUsers(userIds): Observable<any> {
@@ -98,16 +98,17 @@ export class WebApiService {
 
   // Méthodes pour posts --------------------------------------------------------------------
   addPost(post: CreatePostDto): Observable<number> {
-    return this.http.post(this.baseUrl + 'api/Posts/CreatePost', post, this.getOptions()) as any;
+    return this.http.post<any>(this.baseUrl + 'api/Posts/CreatePost', post, this.getOptions()); // as any;
   }
 
   getPostForUser(): Observable<PostDto[]> {
-    return this.http.get(this.baseUrl + 'api/Posts', this.getOptions()).pipe(map(r => {
+    return this.http.get<PostDto>(this.baseUrl + 'api/Posts', this.getOptions()); /* .pipe(map(r => {
       return r as any;
-    }));
+    }));*/
   }
 
   getPostForActivity(activityId: number): Observable<PostDto[]> {
+    console.log('dans le webapi get posts');
     return this.http.get<PostDto[]>(this.baseUrl + 'api/Posts/GetPostsForActivity/' + activityId, this.getOptions()); /* .pipe(map(r => {
       return r as any;
     }));*/
@@ -119,37 +120,37 @@ export class WebApiService {
 
   // Méthodes pour pictures --------------------------------------------------------------------
   addPicture(pic: CreatePictureDto): Observable<Response> {
-    return this.http.post(this.baseUrl + 'api/Pictures/CreatePicture', pic, this.getOptions()) as any;
+    return this.http.post<any>(this.baseUrl + 'api/Pictures/CreatePicture', pic, this.getOptions()); // as any;
   }
 
 
   // Méthodes pour Activities --------------------------------------------------------------------
   addActivity(activity: CreateActivityDto): Observable<Response> {
     // let dto = activity.toCreateActivityDTO(activity);
-    return this.http.post(this.baseUrl + 'api/Activities/createActivity', activity, this.getOptions()) as any;
+    return this.http.post<any>(this.baseUrl + 'api/Activities/createActivity', activity, this.getOptions()); // as any;
   }
 
   getActivitiesForTrip(tripId: number): Observable<DisplayActivityDto[]> {
-    return this.http.get(this.baseUrl + 'api/Activities/getActivitiesForTrip/' + tripId, this.getOptions()).pipe(map(r => {
+    return this.http.get<DisplayActivityDto[]>(this.baseUrl + 'api/Activities/getActivitiesForTrip/' + tripId, this.getOptions()); /* .pipe(map(r => {
       return r as any;
-    }));
+    }));*/
   }
 
 
   // Méthodes pour Trips --------------------------------------------------------------------
   addTrip(trip: CreateTripDto): Observable<Response> {
-    return this.http.post(this.baseUrl + 'api/Trips/createTrip', trip, this.getOptions()) as any;
+    return this.http.post<any>(this.baseUrl + 'api/Trips/createTrip', trip, this.getOptions()); // as any;
   }
 
   getTripsForUser(): Observable<DisplayTripDto[]> {
-    return this.http.get(this.baseUrl + 'api/Trips/getTripsForUser', this.getOptions()).pipe(map(r => {
+    return this.http.get<DisplayTripDto[]>(this.baseUrl + 'api/Trips/getTripsForUser', this.getOptions()); /* .pipe(map(r => {
       return r as any;
-    }));
+    }));*/
   }
 
   getTripById(tripId: number): Observable<DisplayTripDto> {
-    return this.http.get(this.baseUrl + 'api/Trips/GetTripById/' + tripId, this.getOptions()).pipe(map(r => {
+    return this.http.get<DisplayTripDto>(this.baseUrl + 'api/Trips/GetTripById/' + tripId, this.getOptions()); /* .pipe(map(r => {
       return r as any;
-    }));
+    }));*/
   }
 }

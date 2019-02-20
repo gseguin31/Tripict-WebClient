@@ -54,6 +54,7 @@
     "UsersAddedSuccessful": "Les utilisateurs ont été ajouté avec succès",
     "InvitedUsers": "Utilisateurs dans ce voyage",
     "noUsersToInvite": "Veuillez saisir un utilisateur valide",
-    "noAccess": "Vous n'avez pas les permissions pour visionner ces publications"
+    "noAccess": "Vous n'avez pas les permissions pour visionner ces publications",
+    "noActivity": "L'activité n'existe pas"
   }
 }

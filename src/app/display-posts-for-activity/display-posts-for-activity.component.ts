@@ -11,10 +11,10 @@ import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-display-post',
-  templateUrl: './display-post.component.html',
-  styleUrls: ['./display-post.component.css']
+  templateUrl: './display-posts-for-activity.component.html',
+  styleUrls: ['./display-posts-for-activity.component.css']
 })
-export class DisplayPostComponent implements OnInit {
+export class DisplayPostsForActivityComponent implements OnInit {
 
   constructor(public http: WebApiService,
               public modalService: NgbModal,
@@ -27,6 +27,7 @@ export class DisplayPostComponent implements OnInit {
 
   public isLoading = true;
   public noAccess = false;
+  public noActivity = false;
   public allPostsFromServer = [];
   public prefix = 'http://localhost:52090/';
 
@@ -74,10 +75,11 @@ export class DisplayPostComponent implements OnInit {
   }
 
   getPosts(){
-    this.isLoading = true;
-    console.log("a");
+    this.resetErrorMessages();
+    console.log('dans le get posts');
     let activityId = this.route.snapshot.paramMap.get('activityId');
     let id = +activityId;
+
     this.http.getPostForActivity(id).subscribe(r => {
         this.isLoading = false;
         this.allPostsFromServer = r;
@@ -86,10 +88,20 @@ export class DisplayPostComponent implements OnInit {
         if (e.status === 401) {
           this.router.navigateByUrl('/login');
         }
+        if (e.status === 400) {
+          this.isLoading = false;
+          this.noActivity = true;
+        }
         if (e.status === 403) {
           this.isLoading = false;
           this.noAccess = true;
         }
       });
+  }
+
+  resetErrorMessages(){
+    this.isLoading = true;
+    this.noAccess = false;
+    this.noActivity = false;
   }
 }

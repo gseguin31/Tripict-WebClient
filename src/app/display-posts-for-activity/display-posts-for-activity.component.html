@@ -19,7 +19,7 @@
                       <mat-card class="example-card">
                         <mat-card-header>
                           <div mat-card-avatar class="example-header-image"></div>
-                          <!--<mat-card-title>Username</mat-card-title>-->
+                          <mat-card-title>{{currentPost.userName}}</mat-card-title>
                         </mat-card-header>
 
                         <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'slide'" [interval]="0">
@@ -72,11 +72,12 @@
 </div>
 
 <h1 class="noPosts" *ngIf="isLoading">{{'app.loading' | translate}}</h1>
-<h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading && !noAccess">{{'app.noPost' | translate}}</h1>
+<h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading && !noAccess && !noActivity">{{'app.noPost' | translate}}</h1>
 <h1 class="noPosts" *ngIf="noAccess">{{'app.noAccess' | translate}}</h1>
+<h1 class="noPosts" *ngIf="noActivity">{{'app.noActivity' | translate}}</h1>
 
 <!--FAB-->
-<button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>
+<button *ngIf="!noAccess" mat-fab class="fab" color="primary" (click)="openDialog()">+</button>
 
 
 

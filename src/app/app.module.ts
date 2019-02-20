@@ -15,7 +15,7 @@ import {MatFormFieldModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {CreateActivityComponent} from './create-activity/create-activity.component';
-import {DisplayPostComponent} from './display-posts/display-post.component';
+import {DisplayPostsForActivityComponent} from './display-posts-for-activity/display-posts-for-activity.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
@@ -40,7 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     CreatePostComponent,
     CreateActivityComponent,
-    DisplayPostComponent,
+    DisplayPostsForActivityComponent,
     CreditsComponent,
     LoginComponent,
     DisplayActivitiesComponent,
@@ -75,7 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: ':trip/create-activity', component: CreateActivityComponent}, // pour le modal pour cree une activite .. ne sera jamais routé
       {path: 'trip/:tripId/activities', component: DisplayActivitiesComponent}, // route vers la liste des activitée pour un voyage, prend un parametre tripId
       {path: 'trip/:tripId/activity/:activityId/create-post', component: CreatePostComponent},
-      {path: 'trip/:tripId/activity/:activityId/posts', component: DisplayPostComponent}, // route vers display posts avec parametre activity id
+      {path: 'trip/:tripId/activity/:activityId/posts', component: DisplayPostsForActivityComponent}, // route vers display posts avec parametre activity id
 
       {path: '**', redirectTo: 'trips'}
     ]),
