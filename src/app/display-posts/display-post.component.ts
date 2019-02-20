@@ -5,6 +5,9 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarService} from '../Services/navbar.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {CreateActivityComponent} from '../create-activity/create-activity.component';
+import {CreatePostComponent} from '../createPost/createPost.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-display-post',
@@ -18,7 +21,8 @@ export class DisplayPostComponent implements OnInit {
               public navBar: NavbarService,
               private route: ActivatedRoute,
               public router: Router,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private dialog: MatDialog) {
   }
 
   public isLoading = true;
@@ -31,11 +35,27 @@ export class DisplayPostComponent implements OnInit {
 
   ngOnInit() {
 
-    let activityId = this.route.snapshot.paramMap.get('activityId');
-    let id = +activityId;
+    let activityId = +this.route.snapshot.paramMap.get('activityId');
+    let tripId = +this.route.snapshot.paramMap.get('tripId');
+    // let id = +activityId;
+    this.http.currentActivity = activityId;
+    this.http.currentTrip = tripId;
     this.navBar.show();
 
     this.getPosts();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CreatePostComponent, {
+      width: '70%',
+      // maxWidth: '50em',
+      minWidth: '20em'
+    });
+
+    // Rafraichit la liste après la fermeture du dialogue
+    dialogRef.afterClosed().subscribe(r => {
+      this.getPosts();
+    });
   }
 
   open(content) {

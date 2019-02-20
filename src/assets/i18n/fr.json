@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "TripicT",
-    "titlePostCreate": "Nouveau Post",
+    "titlePostCreate": "Nouvelle Publication",
     "titleActivityCreate": "Nouvelle Activité",
     "titleTripCreate": "Nouveau Voyage",
     "titleTrip": "Voyages",
@@ -20,6 +20,7 @@
     "alertTripCreate": "Le voyage a été créé avec succès.",
     "alertGenericApiError" : "Une erreur s'est produite, veuillez réessayer plus tard.",
     "alertBadToken" : "Vous devez être connecté pour utiliser cette page",
+    "maxPostChar" : "Max 250 caractères",
     "addTrip": "Créez un nouveau voyage !",
     "addActivity": "Créez une nouvelle activité !",
     "noPost": "Aucune publication à afficher",

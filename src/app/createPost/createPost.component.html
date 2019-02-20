@@ -2,8 +2,9 @@
 
 <div class="container">
   <div class="row">
-      <mat-form-field class="comment col-md-12">
-        <textarea matInput id="commentText" maxlength="250" class="form-control col-md-12" [(ngModel)]="text" name="commentText" placeholder="{{ 'app.phComment' | translate}}"></textarea>
+      <mat-form-field class="comment col-md-12" hintLabel="{{ 'app.maxPostChar' | translate }}">
+        <textarea matInput id="commentText" #commentText maxlength="250" class="form-control col-md-12" [(ngModel)]="text" name="commentText" placeholder="{{ 'app.phComment' | translate}}"></textarea>
+        <mat-hint align="end">{{commentText.value?.length || 0}}/250</mat-hint>
       </mat-form-field>
       <input #file type="file" multiple="multiple" style="display: none" accept='image/*' (change)="previewImage(file.files)" #fileInput>
   </div>
