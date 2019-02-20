@@ -77,12 +77,12 @@ export class WebApiService {
     return this.http.get(this.baseUrl + 'api/Account/UserInfo', this.getOptions()) as any;
   }
 
-  findUsers(user): Observable<any> {
-    if (user.length === 0) {
+  findUsers(tripId, search): Observable<any> {
+    if (search.length === 0) {
       // mettre une chaine sinon le endpoint ne sera pas trouvé
-      user = 'ijasdoifjasodjfasdkjf';
+      search = 'ijasdoifjasodjfasdkjf';
     }
-    return this.http.get(this.baseUrl + 'api/Account/FindUsers/' + user, this.getOptions()).pipe(map(r => {
+    return this.http.get(this.baseUrl + 'api/Account/FindUsers/' + tripId + '/' + search, this.getOptions()).pipe(map(r => {
       return r;
     }));
   }

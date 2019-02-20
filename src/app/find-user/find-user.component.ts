@@ -41,7 +41,7 @@ export class FindUserComponent implements OnInit {
       .pipe(
         debounceTime(300),
         tap(() => this.isLoading = true),
-        switchMap(value => this.apiService.findUsers(value)
+        switchMap(value => this.apiService.findUsers(this.apiService.currentTrip, value)
           .pipe(
             finalize(() => this.isLoading = false),
           )
