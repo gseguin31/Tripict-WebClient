@@ -72,7 +72,8 @@
 </div>
 
 <h1 class="noPosts" *ngIf="isLoading">{{'app.loading' | translate}}</h1>
-<h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading">{{'app.noPost' | translate}}</h1>
+<h1 class="noPosts" *ngIf="allPostsFromServer.length == 0 && !isLoading && !noAccess">{{'app.noPost' | translate}}</h1>
+<h1 class="noPosts" *ngIf="noAccess">{{'app.noAccess' | translate}}</h1>
 
 <!--FAB-->
 <button mat-fab class="fab" color="primary" (click)="createPost()">+</button>

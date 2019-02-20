@@ -52,6 +52,7 @@
     "confirmUser": "Confirmer",
     "UsersAddedSuccessful": "Les utilisateurs ont été ajouté avec succès",
     "InvitedUsers": "Utilisateurs dans ce voyage",
-    "noUsersToInvite": "Veuillez saisir un utilisateur valide"
+    "noUsersToInvite": "Veuillez saisir un utilisateur valide",
+    "noAccess": "Vous n'avez pas les permissions pour visionner ces publications"
   }
 }

@@ -54,6 +54,8 @@ export class DisplayPostComponent implements OnInit {
   }
 
   getPosts(){
+    this.isLoading = true;
+    console.log("a");
     let activityId = this.route.snapshot.paramMap.get('activityId');
     let id = +activityId;
     this.http.getPostForActivity(id).subscribe(r => {
@@ -65,6 +67,7 @@ export class DisplayPostComponent implements OnInit {
           this.router.navigateByUrl('/login');
         }
         if (e.status === 403) {
+          this.isLoading = false;
           this.noAccess = true;
         }
       });

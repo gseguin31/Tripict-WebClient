@@ -15,7 +15,7 @@ import {MatFormFieldModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {CreateActivityComponent} from './create-activity/create-activity.component';
-import {DisplayPostComponent} from './display-post/display-post.component';
+import {DisplayPostComponent} from './display-posts/display-post.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
