@@ -23,9 +23,9 @@ export class DisplayPostComponent implements OnInit {
 
   public isLoading = true;
   public allPostsFromServer = [];
-  public prefix = 'http://localhost:52090/';
+  // public prefix = 'http://localhost:52090/';
 
-  // public prefix = 'http://e1-test.projet.college-em.info:8080/';
+   public prefix = 'http://e1-test.projet.college-em.info:8080/';
 
 
   ngOnInit() {
