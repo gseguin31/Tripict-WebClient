@@ -100,7 +100,7 @@ export class WebApiService {
   }
 
   getPostForUser(): Observable<PostDto[]> {
-    return this.http.get<PostDto>(this.baseUrl + 'api/Posts', this.getOptions()); /* .pipe(map(r => {
+    return this.http.get<PostDto[]>(this.baseUrl + 'api/Posts', this.getOptions()); /* .pipe(map(r => {
       return r as any;
     }));*/
   }
