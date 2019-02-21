@@ -93,6 +93,13 @@ export class WebApiService {
     return this.http.get(this.baseUrl + 'api/Trips/GetUsersForTrip/' + id, this.getOptions());
   }
 
+  getCurrentUserInfo(): Observable<any> {
+    return this.http.get(this.baseUrl + 'api/Account/CurrentUser/', this.getOptions()).pipe(map(r => {
+      return r;
+    }));
+  }
+
+
 
   // Méthodes pour posts --------------------------------------------------------------------
   addPost(post: CreatePostDto): Observable<number> {

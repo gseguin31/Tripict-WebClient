@@ -27,6 +27,7 @@ export class DisplayActivitiesComponent implements OnInit {
 
   activities: DisplayActivityDto[];
   loading = true;
+  noAccess = false;
   tripTitle = '';
 
   ngOnInit() {
@@ -74,11 +75,14 @@ export class DisplayActivitiesComponent implements OnInit {
         }
       },
       e => {
+        this.loading = false;
         if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
           this.translate.get('app.alertBadToken').subscribe((res: string) => {
             alert(res);
           });
+        } else if (e.status === 403) { // Code 401 si la page est atteinte directement avec un mauvais id
+          this.noAccess = true;
         }
       });
   }

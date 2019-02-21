@@ -74,12 +74,11 @@ export class DisplayPostsForActivityComponent implements OnInit {
     this.getPosts();
   }
 
-  getPosts(){
+  getPosts() {
     this.resetErrorMessages();
     console.log('dans le get posts');
     let activityId = this.route.snapshot.paramMap.get('activityId');
     let id = +activityId;
-
     this.http.getPostForActivity(id).subscribe(r => {
         this.isLoading = false;
         this.allPostsFromServer = r;
@@ -99,7 +98,7 @@ export class DisplayPostsForActivityComponent implements OnInit {
       });
   }
 
-  resetErrorMessages(){
+  resetErrorMessages() {
     this.isLoading = true;
     this.noAccess = false;
     this.noActivity = false;

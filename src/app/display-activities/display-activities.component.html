@@ -3,8 +3,8 @@
     <h1>{{tripTitle}}</h1>
   </div>
 
-  <img class="usersImgBtn" src="../../assets/images/icons8-find-user-male-96.png" height="96" width="96" (click)="openFindUser()"/>
-  <img class="usersImgBtn" src="../../assets/images/icons8-user-account-96.png" height="96" width="96" (click)="openInvitedUsers()"/>
+  <img *ngIf="!noAccess" class="usersImgBtn" src="../../assets/images/icons8-find-user-male-96.png" height="96" width="96" (click)="openFindUser()"/>
+  <img *ngIf="!noAccess" class="usersImgBtn" src="../../assets/images/icons8-user-account-96.png" height="96" width="96" (click)="openInvitedUsers()"/>
 
   <div class="row" *ngFor="let a of activities; i as index">
     <div class="col-md-12">
@@ -16,6 +16,7 @@
 </div>
 
 <h1 class="noActivity" *ngIf="loading">{{'app.loading' | translate}}</h1>
-<h1 class="noActivity" *ngIf="activities.length === 0 && !loading">{{'app.addActivity' | translate}}</h1>
+<h1 class="noActivity" *ngIf="activities.length === 0 && !loading && !noAccess">{{'app.addActivity' | translate}}</h1>
+<h1 class="noActivity" *ngIf="noAccess">{{'app.noAccess' | translate}}</h1>
 
-<button mat-fab class="fab" color="primary" (click)="openDialog()">+</button>
+<button mat-fab *ngIf="!noAccess" class="fab" color="primary" (click)="openDialog()">+</button>

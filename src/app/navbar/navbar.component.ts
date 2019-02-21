@@ -16,9 +16,19 @@ export class NavbarComponent implements OnInit {
               private http: WebApiService,
               private router: Router) { }
 
+  firstName: string;
+  lastName: string;
+
   ngOnInit() {
+    this.getUserInfo();
   }
 
+  getUserInfo(){
+    this.http.getCurrentUserInfo().subscribe( r => {
+      this.firstName = r.firstName;
+      this.lastName = r.lastName;
+    });
+  }
 
   // Gère le passage du français à l'anglais par le bouton de la navbar
   switchLanguage() {

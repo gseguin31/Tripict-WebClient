@@ -1,4 +1,4 @@
 export class InviteUserToTripDto {
-  constructor(public userId: string[], public tripId: number){
+  constructor(public userIds: string[], public tripId: number){
   }
 }
