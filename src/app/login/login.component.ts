@@ -96,6 +96,7 @@ export class LoginComponent implements OnInit {
 
       this.http.loginUser(lud).subscribe(r => {
           localStorage.setItem('Token', r.access_token);
+          this.navBar.getUserInfo();
           this.router.navigateByUrl('/trips');
         },
         e => {

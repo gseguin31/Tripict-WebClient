@@ -33,6 +33,7 @@ export class WebApiService {
   };
 
   // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
+   // public baseUrl = 'http://e1-dev.projet.college-em.info:8080/';
    public baseUrl = 'http://localhost:52090/';
 
   getOptions() {

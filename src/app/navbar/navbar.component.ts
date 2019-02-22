@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   lastName: string;
 
   ngOnInit() {
-    this.getUserInfo();
+    this.navBar.getUserInfo();
   }
 
   getUserInfo(){
