@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "TripicT",
+    "greetings": "Bonjour",
     "titlePostCreate": "Nouvelle Publication",
     "titleActivityCreate": "Nouvelle Activité",
     "titleTripCreate": "Nouveau Voyage",

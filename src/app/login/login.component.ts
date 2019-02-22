@@ -70,9 +70,10 @@ export class LoginComponent implements OnInit {
         this.registerPassword);
       this.apiCallInProgress = true;
 
-      this.http.createUser(cud).subscribe(r => {
+      this.http.createUser(cud).subscribe(res => {
           this.http.loginUser(new LoginUserDto(this.registerUserName, this.registerPassword)).subscribe(r => {
             localStorage.setItem('Token', r.access_token);
+            this.navBar.getUserInfo();
             this.apiCallInProgress = false;
             this.router.navigateByUrl('/trips');
           });
