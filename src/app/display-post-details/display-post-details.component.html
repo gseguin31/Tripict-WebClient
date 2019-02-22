@@ -13,9 +13,14 @@
           </p>
         </div>
 
-        <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'slide'" [interval]="0">
-          <mdb-carousel-item *ngFor="let imageId of data.currentPost.idTable">
+        <mdb-carousel class="carousel slide carousel-fade" [animation]="'slide'" [interval]="0">
+          <!--<mdb-carousel-item *ngFor="let imageId of data.currentPost.idTable">
             <img class="d-block w-100" src="{{http.baseUrl}}api/Pictures/GetPictureFromId/{{imageId}}" alt="First slide">
+          </mdb-carousel-item>-->
+          <mdb-carousel-item *ngFor="let imageId of data.currentPost.idTable">
+            <div class="view w-100">
+              <img class="d-block w-100" src="{{http.baseUrl}}api/Pictures/GetPictureFromId/{{imageId}}" alt="First slide">
+            </div>
           </mdb-carousel-item>
         </mdb-carousel>
 
