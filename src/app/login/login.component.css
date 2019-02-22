@@ -3,6 +3,12 @@
   display: none;
 }
 
+.img-loading-overlay{
+  z-index: 20;
+  position: fixed;
+  min-height: 100%;
+}
+
 .slider{
   min-height: 100%;
   min-width: 1024px;

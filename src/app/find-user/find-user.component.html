@@ -19,7 +19,7 @@
 
   <div class="image-area" *ngFor="let a of userIdsToAdd">
     <button class="userNames">{{beautifyName(a)}}</button>
-    <a class="remove-image" (click)="removeUserFromList(a)" style="display: inline;">&#215;</a>
+    <a class="remove-image" (click)="removeUserFromList(a)" style="display: inline; cursor: pointer">&#215;</a>
   </div>
 
 </div>

@@ -52,9 +52,6 @@ export class CreateTripComponent implements OnInit {
       (e) => {
         if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
-          this.translate.get('app.alertBadToken').subscribe((res: string) => {
-            alert(res);
-          });
           this.dialogRef.close();
         }
       });

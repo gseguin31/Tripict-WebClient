@@ -36,7 +36,7 @@
         <div class="bar"></div>
       </div>
       <div class="button-container">
-        <button (click)="login()">
+        <button [disabled]="apiCallInProgress" (click)="login()">
           <span>{{ 'app.confirm' | translate}}</span>
         </button>
       </div>
@@ -78,10 +78,15 @@
         <div class="bar"></div>
       </div>
       <div (click)="register()" [className]="viewRegister ? 'button-container clickable' : 'hidden'">
-        <button><span>{{ 'app.confirm' | translate}}</span></button>
+        <button [disabled]="apiCallInProgress" >
+          <span>{{ 'app.confirm' | translate}}</span>
+        </button>
       </div>
     </form>
   </div>
+</div>
+<div [className]="apiCallInProgress ? 'img-loading-overlay' :'' ">
+  <div class="img-spinning-circle"></div>
 </div>
 
 <div class="bottomFiller"></div>
