@@ -63,6 +63,16 @@ mat-card-header{
 
 .card{
   margin-top: 1em;
+  cursor: pointer;
+}
+
+.card-img-top{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-text{
+  padding-left: 10px ;
 }
 
 .notSeen{

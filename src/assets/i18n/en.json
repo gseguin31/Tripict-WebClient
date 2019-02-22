@@ -55,6 +55,9 @@
     "InvitedUsers": "Users in this trip",
     "noUsersToInvite": "Please enter a valid user",
     "noAccess": "You do not have permission to view these posts",
-    "noActivity": "The activity does not exist"
+    "noActivity": "The activity does not exist",
+    "comments": "Comments",
+    "addComment": "Write a comment",
+    "btnAddComment": "Send"
   }
 }

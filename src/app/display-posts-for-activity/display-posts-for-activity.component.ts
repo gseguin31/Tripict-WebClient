@@ -8,6 +8,9 @@ import {TranslateService} from '@ngx-translate/core';
 import {CreateActivityComponent} from '../create-activity/create-activity.component';
 import {CreatePostComponent} from '../createPost/createPost.component';
 import {MatDialog} from '@angular/material';
+import {DisplayPostDetailsComponent} from '../display-post-details/display-post-details.component';
+import {FindUserComponent} from '../find-user/find-user.component';
+import {PostDto} from '../Models/DTO/post-dto';
 
 @Component({
   selector: 'app-display-post',
@@ -29,7 +32,7 @@ export class DisplayPostsForActivityComponent implements OnInit {
   public noAccess = false;
   public noActivity = false;
   public allPostsFromServer = [];
-  public prefix = 'http://localhost:52090/';
+  // public prefix = 'http://localhost:52090/';
 
   // public prefix = 'http://e1-test.projet.college-em.info:8080/';
 
@@ -59,8 +62,11 @@ export class DisplayPostsForActivityComponent implements OnInit {
     });
   }
 
-  open(content) {
-    this.modalService.open(content, {centered: true}).result;
+  openPostDetails(post: PostDto) {
+    const dialogRef = this.dialog.open(DisplayPostDetailsComponent, {
+      width: '70%',
+      data: { currentPost: post },
+    });
   }
 
   createPost() {
@@ -76,7 +82,6 @@ export class DisplayPostsForActivityComponent implements OnInit {
 
   getPosts() {
     this.resetErrorMessages();
-    console.log('dans le get posts');
     let activityId = this.route.snapshot.paramMap.get('activityId');
     let id = +activityId;
     this.http.getPostForActivity(id).subscribe(r => {
