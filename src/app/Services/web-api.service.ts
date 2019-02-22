@@ -124,7 +124,7 @@ export class WebApiService {
     this.http.get(this.baseUrl + 'api/Posts/postWasSeen/' + id, this.getOptions()).subscribe(r => r);
   }
 
-  getCommentsByPostId(id): Observable<CommentDto>{
+  getCommentsByPostId(id): Observable<CommentDto[]>{
     return this.http.get<CommentDto>(this.baseUrl + 'api/Comments/GetCommentsByPostId/' + id, this.getOptions());
   }
 
