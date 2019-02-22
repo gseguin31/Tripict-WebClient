@@ -14,6 +14,7 @@ import {LoginUserDto} from '../Models/DTO/login-user-dto';
 export class LoginComponent implements OnInit {
 
   viewRegister = false;
+  apiCallInProgress = false;
   registerPassword = '';
   registerConfirm = '';
   firstName = '';
@@ -67,20 +68,24 @@ export class LoginComponent implements OnInit {
         this.firstName,
         this.lastName,
         this.registerPassword);
+      this.apiCallInProgress = true;
 
       this.http.createUser(cud).subscribe(r => {
           this.http.loginUser(new LoginUserDto(this.registerUserName, this.registerPassword)).subscribe(r => {
             localStorage.setItem('Token', r.access_token);
+            this.apiCallInProgress = false;
             this.router.navigateByUrl('/trips');
           });
         },
         e => {
           if (e.status === 409) {
             this.translate.get('app.userNameAlreadyTaken').subscribe((res: string) => {
+              this.apiCallInProgress = false;
               alert(res);
             });
           }
           else {
+            this.apiCallInProgress = false;
             alert(e.status);
           }
         }
@@ -90,21 +95,25 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginIsValid()) {
+      this.apiCallInProgress = true;
       let lud = new LoginUserDto(
         this.loginUserName,
         this.loginPassword);
 
       this.http.loginUser(lud).subscribe(r => {
+          this.apiCallInProgress = false;
           localStorage.setItem('Token', r.access_token);
           this.router.navigateByUrl('/trips');
         },
         e => {
           if (e.status === 400) {
             this.translate.get('app.invalidUsernameOrPassword').subscribe((res: string) => {
+              this.apiCallInProgress = false;
               alert(res);
             });
           }
           else {
+            this.apiCallInProgress = false;
             alert(e.status);
           }
         });
@@ -130,6 +139,11 @@ export class LoginComponent implements OnInit {
     else {
       return true;
     }
+  }
+
+
+  disableEverythingAndStartSpinner() {
+
   }
 
 
