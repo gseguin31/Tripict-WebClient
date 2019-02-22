@@ -125,7 +125,7 @@ export class WebApiService {
   }
 
   getCommentsByPostId(id): Observable<CommentDto[]>{
-    return this.http.get<CommentDto>(this.baseUrl + 'api/Comments/GetCommentsByPostId/' + id, this.getOptions());
+    return this.http.get<CommentDto[]>(this.baseUrl + 'api/Comments/GetCommentsByPostId/' + id, this.getOptions());
   }
 
   createComment(comment: CreateCommentDto): Observable<any>{
