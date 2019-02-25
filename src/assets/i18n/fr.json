@@ -59,6 +59,7 @@
     "noActivity": "L'activité n'existe pas",
     "comments": "Commentaires",
     "addComment": "Commentez",
-    "btnAddComment": "Envoyer"
+    "btnAddComment": "Envoyer",
+    "nmbPictures": "Photos"
   }
 }
