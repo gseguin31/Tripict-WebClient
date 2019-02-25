@@ -63,8 +63,12 @@ export class DisplayPostsForActivityComponent implements OnInit {
   }
 
   openPostDetails(post: PostDto) {
+    let width = '90%';
+    if (post.idTable.length === 0){
+      width = '40%';
+    }
     const dialogRef = this.dialog.open(DisplayPostDetailsComponent, {
-      width: '90%',
+      width: width,
       data: { currentPost: post },
     });
   }

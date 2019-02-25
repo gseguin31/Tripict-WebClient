@@ -12,10 +12,24 @@
   font-weight: bold;
 }
 
-.commentContainer{
+.commentSectionContainer{
+  max-height: 600px;
+}
+
+.commentsContainer{
   background-color: rgba(233,233,233,.4);
   border-radius: 10px;
-  margin-top: 85px;
+  height: 460px;
+  padding: 5px;
+  overflow: auto;
+}
+
+.addCommentContainer{
+  background-color: rgba(233,233,233,.4);
+  border-radius: 10px;
+  overflow: auto;
+  margin-bottom: 10px;
+  padding: 5px;
 }
 
 .commentHeader{
@@ -63,10 +77,22 @@
   background-color: #52565A;
 }
 
+.mat-form-field{
+  width: 100%;
+}
+
+.sendBtnContainer{
+  text-align: right;
+}
 /* -------------------- mediaqueries ---------------------------*/
 
 @media (max-width: 1200px){
   .commentContainer{
     margin-top: 10px;
   }
+  .addCommentContainer{
+    margin-top: 10px;
+  }
 }
+
+

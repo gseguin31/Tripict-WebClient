@@ -16,7 +16,16 @@
             </div>
 
             <img class="card-img-top"  *ngIf="currentPost.idTable.length  > 0" src="{{http.baseUrl}}api/Pictures/GetPictureFromId/{{currentPost.idTable[0]}}" alt="">
-            <p class="card-text"><small class="text-muted">{{currentPost.date}}</small></p>
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-text"><small class="text-muted">{{currentPost.date}}</small></p>
+              </div>
+              <div class="col-md-6 numberOfPicturesInPost">
+                <p>{{currentPost.idTable.length}} {{'app.nmbPictures' | translate}}</p>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>
