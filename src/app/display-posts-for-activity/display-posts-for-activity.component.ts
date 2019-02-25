@@ -51,9 +51,9 @@ export class DisplayPostsForActivityComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CreatePostComponent, {
-      width: '70%',
+      width: '90%',
       // maxWidth: '50em',
-      minWidth: '20em'
+      // minWidth: '20em'
     });
 
     // Rafraichit la liste après la fermeture du dialogue
@@ -64,7 +64,7 @@ export class DisplayPostsForActivityComponent implements OnInit {
 
   openPostDetails(post: PostDto) {
     const dialogRef = this.dialog.open(DisplayPostDetailsComponent, {
-      width: '70%',
+      width: '90%',
       data: { currentPost: post },
     });
   }
