@@ -3,6 +3,15 @@
     <h1>{{'app.titleTrip' | translate}}</h1>
   </div>
 
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="2" style="height: 400px;">
+    <agm-marker
+      [latitude]="12.8"
+      [longitude]="8.4"
+      [label]="'iuwanadwdasd'"
+      (markerClick)="clickedMarker('iwanadie', i)">
+    </agm-marker>
+  </agm-map>
+
   <div class="row">
     <div class="col-md-12">
       <h4 *ngIf="newTrips.length > 0">{{'app.titleNewTrip' | translate}}</h4>

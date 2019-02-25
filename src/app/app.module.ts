@@ -29,7 +29,7 @@ import {CreateTripComponent} from './create-trip/create-trip.component';
 import { FindUserComponent } from './find-user/find-user.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { InvitedUsersComponent } from './invited-users/invited-users.component';
-
+import { AgmCoreModule } from '@agm/core';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -79,6 +79,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 
       {path: '**', redirectTo: 'trips'}
     ]),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCj6qLye_smua9KUclDhtx5d2bfjNwmZjg'
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

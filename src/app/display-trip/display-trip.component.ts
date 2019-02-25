@@ -23,6 +23,8 @@ export class DisplayTripComponent implements OnInit {
               private dialog: MatDialog) {
   }
 
+  lat: number = 51.678418;
+  lng: number = -52.712830;
   trips: DisplayTripDto[];
   newTrips: DisplayTripDto[];
   loading = true;
@@ -32,6 +34,10 @@ export class DisplayTripComponent implements OnInit {
     this.trips = [];
     this.newTrips = [];
     this.showTrips();
+  }
+
+  clickedMarker(label: string, index: number) {
+    console.log(`clicked the marker: ${label || index}`)
   }
 
   // Redirige vers le component d'affichage d'activités en spécifiant le voyage
