@@ -61,7 +61,7 @@ export class DisplayTripComponent implements OnInit {
         this.trips = [];
         this.newTrips = [];
         for (let i = 0; i < r.length; i++) {
-          let trip = new DisplayTripDto(r[i].id, r[i].name, r[i].seen);
+          let trip = new DisplayTripDto(r[i].id, r[i].name, r[i].seen, r[i].latitude, r[i].longitude);
           if (trip.seen) { // Trie les voyages en fonction de si l'utilisateur les as déjà vus ou non
             this.trips.push(trip);
           } else {

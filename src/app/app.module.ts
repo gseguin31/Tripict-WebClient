@@ -26,10 +26,10 @@ import {DisplayActivitiesComponent} from './display-activities/display-activitie
 import {NavbarComponent} from './navbar/navbar.component';
 import {DisplayTripComponent} from './display-trip/display-trip.component';
 import {CreateTripComponent} from './create-trip/create-trip.component';
-import { FindUserComponent } from './find-user/find-user.component';
+import {FindUserComponent} from './find-user/find-user.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { InvitedUsersComponent } from './invited-users/invited-users.component';
-import { DisplayPostDetailsComponent } from './display-post-details/display-post-details.component';
+import {InvitedUsersComponent} from './invited-users/invited-users.component';
+import {DisplayPostDetailsComponent} from './display-post-details/display-post-details.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -50,7 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CreateTripComponent,
     FindUserComponent,
     InvitedUsersComponent,
-    DisplayPostDetailsComponent
+    DisplayPostDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -27,10 +27,14 @@ export class CreateTripComponent implements OnInit {
   }
 
   name: string;
+  latitude: number;
+  longitude: number;
 
   ngOnInit() {
     this.navBar.show();
     this.name = '';
+    this.latitude = 0;
+    this.longitude = 0;
   }
 
   upload() {
@@ -42,7 +46,7 @@ export class CreateTripComponent implements OnInit {
       return;
     }
 
-    let dto = new CreateTripDto(trimmedName);
+    let dto = new CreateTripDto(trimmedName, this.latitude, this.longitude);
     this.apiService.addTrip(dto).subscribe((r) => {
         this.translate.get('app.alertTripCreate').subscribe((res: string) => {
           alert(res);
@@ -61,4 +65,7 @@ export class CreateTripComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  getAddress(event: Event | undefined) {
+
+  }
 }
