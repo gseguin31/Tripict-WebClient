@@ -9,7 +9,9 @@
   <div class="row" *ngFor="let a of activities; i as index">
     <div class="col-md-12">
       <mat-action-list>
-        <button mat-raised-button (click)="moveToPosts(a.id, a.name)">{{a.name}}</button>
+        <button class="listItem" mat-raised-button (click)="moveToPosts(a.id, a.name)">
+          {{a.name}}
+        </button>
       </mat-action-list>
     </div>
   </div>
