@@ -19,11 +19,39 @@ body, html{
   -webkit-transition: all 0.15s;
 }
 
+.listItem {
+  display: inline-block;
+  list-style-type: none;
+  width: 100%;
+  font-size: 15px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  max-width: 100%;
+  -moz-transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  transition: all 0.3s !important;
+  padding: 0.5em!important;
+}
+
+.listItem:hover {
+  background-color: #2b8087;
+  color: #fff;
+
+}
+
 .mat-fab{
   position: fixed !important;
   background-color: #2B8087 !important;
   right: 2em;
   bottom: 2em;
+  width: 5em !important;
+  height: 5em !important;
+  -moz-transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  transition: all 0.3s !important;
+}
+
+.mat-fab:hover{
 }
 
 .mat-form-field{

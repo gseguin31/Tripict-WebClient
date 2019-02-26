@@ -63,6 +63,8 @@
     "addComment": "Write a comment",
     "btnAddComment": "Send",
     "nmbPictures": "Pictures",
-    "commentFilter": "Newest"
+    "commentFilter": "Newest",
+    "internalServerError": "Something went wrong in the server, try again",
+    "serverOffline": "The server is currently offline, try again later"
   }
 }
