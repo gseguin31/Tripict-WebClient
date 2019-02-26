@@ -62,6 +62,7 @@
     "comments": "Commentaires",
     "addComment": "Commentez",
     "btnAddComment": "Envoyer",
-    "nmbPictures": "Photos"
+    "nmbPictures": "Photos",
+    "commentFilter": "Récent"
   }
 }

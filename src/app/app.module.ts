@@ -28,7 +28,8 @@ import {DisplayTripComponent} from './display-trip/display-trip.component';
 import {CreateTripComponent} from './create-trip/create-trip.component';
 import {FindUserComponent} from './find-user/find-user.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {InvitedUsersComponent} from './invited-users/invited-users.component';
+import { InvitedUsersComponent } from './invited-users/invited-users.component';
+import { AgmCoreModule } from '@agm/core';
 import {DisplayPostDetailsComponent} from './display-post-details/display-post-details.component';
 import {AutocompleteComponent} from './Services/google-places.component';
 
@@ -84,6 +85,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 
       {path: '**', redirectTo: 'trips'}
     ]),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCj6qLye_smua9KUclDhtx5d2bfjNwmZjg'
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
