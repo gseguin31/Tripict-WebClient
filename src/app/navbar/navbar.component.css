@@ -6,3 +6,15 @@ mdb-card-img{
 .name{
   cursor: default;
 }
+
+.navBarLinks{
+  color: white;
+}
+
+.navBarLinks a{
+  padding-right: 15px;
+}
+
+.navBarLinks:hover{
+  cursor: pointer;
+}

@@ -1,8 +1,10 @@
 <h1 mat-dialog-title>{{'app.titleTripCreate' | translate}}</h1>
 <div mat-dialog-content>
-  <mat-form-field>
-    <input matInput maxlength="35" minlength="1" cdkFocusInitial [(ngModel)]="name">
+  <mat-form-field hintLabel="{{'app.tripName' | translate}}">
+    <input matInput maxlength="35" minlength="1" [(ngModel)]="name"/>
   </mat-form-field>
+  <p></p>
+  <app-autocomplete (setAddress)="getAddress($event)" adressType="geocode"></app-autocomplete>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="cancel()">{{'app.modalCancel' | translate}}</button>

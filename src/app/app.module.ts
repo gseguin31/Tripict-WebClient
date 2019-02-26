@@ -31,6 +31,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { InvitedUsersComponent } from './invited-users/invited-users.component';
 import { AgmCoreModule } from '@agm/core';
 import {DisplayPostDetailsComponent} from './display-post-details/display-post-details.component';
+import {AutocompleteComponent} from './Services/google-places.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -52,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FindUserComponent,
     InvitedUsersComponent,
     DisplayPostDetailsComponent,
+    AutocompleteComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: '**', redirectTo: 'trips'}
     ]),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCj6qLye_smua9KUclDhtx5d2bfjNwmZjg'
+      apiKey: 'AIzaSyDrNv1urfbos48QR2TFJRo7yhKrIfC9k9M'
     }),
     TranslateModule.forRoot({
       loader: {
