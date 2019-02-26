@@ -9,6 +9,8 @@
     "titleAllTrip": "Tous les voyages",
     "titleNewTrip": "Nouveaux voyages",
     "titleActivity": "Activités",
+    "tripName": "Nom du voyage",
+    "tripPlace": "Lieu du voyage (optionnel)",
     "alertImageType": "Les fichiers sélectionnés doivent être de type image",
     "alertImageSize": "Attention, vous ne pouvez pas envoyer des images de plus de 5 mb",
     "alertImageAmount": "Attention, une publication ne peut contenir que 10 images, si vous en avez d'autres à partager, vous pouvez toujours les séparer en plusieurs publications",
