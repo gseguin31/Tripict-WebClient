@@ -19,6 +19,32 @@ body, html{
   -webkit-transition: all 0.15s;
 }
 
+.listItem {
+  display: inline-block;
+  color: rgb(210, 211, 196);
+  background-color: rgba(40, 43, 47, 0.8);
+  list-style-type: none;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  max-width: 100%;
+  -moz-transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  transition: all 0.3s !important;
+  padding: 0.5em!important;
+}
+
+.listItem:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  box-shadow: 0 0px 10px 5px rgb(241, 242, 222);
+  background-color: #444;
+  color: rgb(241, 242, 222);
+
+}
+
 .mat-fab{
   position: fixed !important;
   background-color: #2B8087 !important;

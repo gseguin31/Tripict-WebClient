@@ -84,8 +84,17 @@ export class LoginComponent implements OnInit {
               this.apiCallInProgress = false;
               alert(res);
             });
-          }
-          else {
+          } else if (e.status === 500) {
+            this.translate.get('app.internalServerError').subscribe((res: string) => {
+              this.apiCallInProgress = false;
+              alert(res);
+            });
+          } else if (e.status === 0) {
+            this.translate.get('app.serverOffline').subscribe((res: string) => {
+              this.apiCallInProgress = false;
+              alert(res);
+            });
+          } else {
             this.apiCallInProgress = false;
             alert(e.status);
           }
@@ -113,8 +122,17 @@ export class LoginComponent implements OnInit {
               this.apiCallInProgress = false;
               alert(res);
             });
-          }
-          else {
+          } else if (e.status === 500) {
+            this.translate.get('app.internalServerError').subscribe((res: string) => {
+              this.apiCallInProgress = false;
+              alert(res);
+            });
+          } else if (e.status === 0) {
+            this.translate.get('app.serverOffline').subscribe((res: string) => {
+              this.apiCallInProgress = false;
+              alert(res);
+            });
+          } else {
             this.apiCallInProgress = false;
             alert(e.status);
           }

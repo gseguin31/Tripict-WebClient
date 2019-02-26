@@ -61,6 +61,8 @@
     "addComment": "Commentez",
     "btnAddComment": "Envoyer",
     "nmbPictures": "Photos",
-    "commentFilter": "Récent"
+    "commentFilter": "Récent",
+    "internalServerError": "Une erreur interne s'est produite, veuillez réessayer",
+    "serverOffline": "Le serveur n'est pas en ligne pour le moment, veuillez réessayer plus tard"
   }
 }
