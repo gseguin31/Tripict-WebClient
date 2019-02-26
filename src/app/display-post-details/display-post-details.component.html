@@ -36,7 +36,7 @@
             <mat-hint align="end">{{commentText.value?.length || 0}}/250</mat-hint>
           </mat-form-field>
           <div class="sendBtnContainer">
-            <button class="btnAddComment" [disabled]="isSending" (click)="postComment()">{{'app.btnAddComment' | translate}}</button>
+            <button mat-raised-button [disabled]="isSending || commentText.value?.length === 0" (click)="postComment()">{{'app.btnAddComment' | translate}}</button>
           </div>
         </div>
 
