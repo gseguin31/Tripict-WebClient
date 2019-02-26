@@ -41,6 +41,24 @@
 
 .commentHeader p{
   margin-bottom: 0px;
+  display: inline;
+}
+
+.filter{
+  float:right;
+}
+.filter:hover{
+  cursor: pointer;
+}
+
+.commentHeader img:hover{
+  cursor: pointer;
+}
+
+.filterIcon{
+  float: right;
+  margin-top: 5px;
+  margin-left: 2px;
 }
 
 .userNameInComment{
@@ -86,12 +104,47 @@
 }
 /* -------------------- mediaqueries ---------------------------*/
 
+@media (max-width: 1370px){
+  .filter{
+    float: none;
+  }
+  .filterIcon{
+    float: none;
+  }
+
+  .commentHeader p{
+    margin-bottom: 0px;
+    display: block;
+  }
+
+  .commentHeader img{
+    margin-bottom: 0px;
+    display: block;
+    float: right;
+  }
+}
+
 @media (max-width: 1200px){
   .commentContainer{
     margin-top: 10px;
   }
   .addCommentContainer{
     margin-top: 10px;
+  }
+
+  .commentHeader p{
+    display: inline;
+  }
+
+  .commentHeader img{
+    display: inline;
+  }
+
+  .filter{
+    float: right;
+  }
+  .filterIcon{
+    float: right;
   }
 }
 

@@ -60,6 +60,7 @@
     "comments": "Comments",
     "addComment": "Write a comment",
     "btnAddComment": "Send",
-    "nmbPictures": "Pictures"
+    "nmbPictures": "Pictures",
+    "commentFilter": "Newest"
   }
 }

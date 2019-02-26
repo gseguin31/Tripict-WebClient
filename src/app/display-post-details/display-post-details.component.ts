@@ -29,6 +29,7 @@ export class DisplayPostDetailsComponent implements OnInit {
   comments: CommentDto[];
   addComment: string;
   isSending = false;
+  newestUp = false;
 
 
   ngOnInit() {
@@ -36,7 +37,12 @@ export class DisplayPostDetailsComponent implements OnInit {
   }
 
   getComments(){
-    this.http.getCommentsByPostId(this.data.currentPost.id).subscribe(r => this.comments = r);
+    this.http.getCommentsByPostId(this.data.currentPost.id).subscribe(r => {
+      this.comments = r;
+      if (this.newestUp) {
+        this.comments = this.comments.reverse();
+      }
+    });
   }
 
   postComment(){
@@ -57,5 +63,9 @@ export class DisplayPostDetailsComponent implements OnInit {
       });
   }
 
+  filter(){
+    this.comments = this.comments.reverse();
+    this.newestUp = !this.newestUp;
+  }
 
 }
