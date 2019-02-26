@@ -27,6 +27,13 @@ export class DisplayTripComponent implements OnInit {
   newTrips: DisplayTripDto[];
   loading = true;
 
+  labelOptions = {
+    color: 'white',
+    fontFamily: '',
+    fontSize: '14px',
+    fontWeight: 'bold'
+  };
+
   ngOnInit() {
     this.navBar.show();
     this.trips = [];
