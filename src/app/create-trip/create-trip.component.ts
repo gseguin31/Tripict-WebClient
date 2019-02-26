@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, NgZone, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {WebApiService} from '../Services/web-api.service';
 import {NavbarService} from '../Services/navbar.service';
@@ -23,6 +23,7 @@ export class CreateTripComponent implements OnInit {
               public navBar: NavbarService,
               public dialogRef: MatDialogRef<CreateTripComponent>,
               private router: Router,
+              public zone: NgZone,
               @Inject(MAT_DIALOG_DATA) public data: DialogData) {
   }
 
@@ -30,11 +31,17 @@ export class CreateTripComponent implements OnInit {
   latitude: number;
   longitude: number;
 
+  address: Object;
+
+  formattedAddress: string;
+
+  phone: string;
+
   ngOnInit() {
     this.navBar.show();
     this.name = '';
-    this.latitude = 0;
-    this.longitude = 0;
+    this.latitude = 0.0;
+    this.longitude = 0.0;
   }
 
   upload() {
@@ -65,7 +72,79 @@ export class CreateTripComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  getAddress(event: Event | undefined) {
+  getAddress(place: object) {
+    this.address = place['formatted_address'];
+    this.phone = this.getPhone(place);
+    this.formattedAddress = place['formatted_address'];
+    this.zone.run(() => this.formattedAddress = place['formatted_address']);
+    this.latitude = place.geometry.location.lat();
+    this.longitude = place.geometry.location.lng();
+  }
 
+  getAddrComponent(place, componentTemplate) {
+    let result;
+
+    for (let i = 0; i < place.address_components.length; i++) {
+      const addressType = place.address_components[i].types[0];
+      if (componentTemplate[addressType]) {
+        result = place.address_components[i][componentTemplate[addressType]];
+        return result;
+      }
+    }
+    return;
+  }
+
+  getStreetNumber(place) {
+    const COMPONENT_TEMPLATE = { street_number: 'short_name' },
+      streetNumber = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    return streetNumber;
+  }
+
+  getStreet(place) {
+    const COMPONENT_TEMPLATE = { route: 'long_name' },
+      street = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    return street;
+  }
+
+  getCity(place) {
+    const COMPONENT_TEMPLATE = { locality: 'long_name' },
+      city = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    return city;
+  }
+
+  getState(place) {
+    const COMPONENT_TEMPLATE = { administrative_area_level_1: 'short_name' },
+      state = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    return state;
+  }
+
+  getDistrict(place) {
+    const COMPONENT_TEMPLATE = { administrative_area_level_2: 'short_name' },
+      state = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    return state;
+  }
+
+  getCountryShort(place) {
+    const COMPONENT_TEMPLATE = { country: 'short_name' },
+      countryShort = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    return countryShort;
+  }
+
+  getCountry(place) {
+    const COMPONENT_TEMPLATE = { country: 'long_name' },
+      country = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    return country;
+  }
+
+  getPostCode(place) {
+    const COMPONENT_TEMPLATE = { postal_code: 'long_name' },
+      postCode = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    return postCode;
+  }
+
+  getPhone(place) {
+    const COMPONENT_TEMPLATE = { formatted_phone_number: 'formatted_phone_number' },
+      phone = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    return phone;
   }
 }

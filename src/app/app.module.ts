@@ -30,6 +30,7 @@ import {FindUserComponent} from './find-user/find-user.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {InvitedUsersComponent} from './invited-users/invited-users.component';
 import {DisplayPostDetailsComponent} from './display-post-details/display-post-details.component';
+import {AutocompleteComponent} from './Services/google-places.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -51,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FindUserComponent,
     InvitedUsersComponent,
     DisplayPostDetailsComponent,
+    AutocompleteComponent
   ],
   imports: [
     BrowserModule,
