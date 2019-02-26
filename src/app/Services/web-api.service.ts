@@ -15,6 +15,8 @@ import {CreateUserDto} from '../Models/DTO/create-user-dto';
 import {UserSearchResultDto} from '../Models/DTO/userSearchResultDto';
 import {LoginUserDto} from '../Models/DTO/login-user-dto';
 import {forEach} from '@angular/router/src/utils/collection';
+import {CommentDto} from '../Models/DTO/comment-dto';
+import {CreateCommentDto} from '../Models/DTO/create-comment-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +35,7 @@ export class WebApiService {
   };
 
   // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
+   // public baseUrl = 'http://e1-dev.projet.college-em.info:8080/';
    public baseUrl = 'http://localhost:52090/';
 
   getOptions() {
@@ -113,7 +116,6 @@ export class WebApiService {
   }
 
   getPostForActivity(activityId: number): Observable<PostDto[]> {
-    console.log('dans le webapi get posts');
     return this.http.get<PostDto[]>(this.baseUrl + 'api/Posts/GetPostsForActivity/' + activityId, this.getOptions()); /* .pipe(map(r => {
       return r as any;
     }));*/
@@ -121,6 +123,14 @@ export class WebApiService {
 
   postWasSeen(id) {
     this.http.get(this.baseUrl + 'api/Posts/postWasSeen/' + id, this.getOptions()).subscribe(r => r);
+  }
+
+  getCommentsByPostId(id): Observable<CommentDto[]>{
+    return this.http.get<CommentDto[]>(this.baseUrl + 'api/Comments/GetCommentsByPostId/' + id, this.getOptions());
+  }
+
+  createComment(comment: CreateCommentDto): Observable<any>{
+    return this.http.post<any>(this.baseUrl + 'api/Comments/CreateComment', comment, this.getOptions());
   }
 
   // Méthodes pour pictures --------------------------------------------------------------------

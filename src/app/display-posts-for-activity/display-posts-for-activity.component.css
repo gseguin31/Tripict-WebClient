@@ -63,6 +63,16 @@ mat-card-header{
 
 .card{
   margin-top: 1em;
+  cursor: pointer;
+}
+
+.card-img-top{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-text{
+  padding-left: 10px ;
 }
 
 .notSeen{
@@ -74,6 +84,14 @@ mat-card-header{
   margin-left: 5px;
 }
 
+.numberOfPicturesInPost{
+  text-align: right;
+}
+
+.numberOfPicturesInPost p{
+  padding-right: 10px;
+  font-weight: bold;
+}
 
 /* MODAL SECTION */
 .modal-header{
@@ -105,4 +123,17 @@ mat-card-header{
   }
 }
 
+@media (max-width: 985px){
+  .numberOfPicturesInPost p{
+    padding-right: 0px;
+  }
+  .numberOfPicturesInPost{
+    text-align: start;
+  }
+}
 
+@media (max-width: 767px){
+  .numberOfPicturesInPost p{
+    padding-left: 10px;
+  }
+}

@@ -1,0 +1,98 @@
+.userImg{
+  width: 7%;
+}
+
+.userHeader{
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.postDetailDescription{
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.commentSectionContainer{
+  max-height: 600px;
+}
+
+.commentsContainer{
+  background-color: rgba(233,233,233,.4);
+  border-radius: 10px;
+  height: 460px;
+  padding: 5px;
+  overflow: auto;
+}
+
+.addCommentContainer{
+  background-color: rgba(233,233,233,.4);
+  border-radius: 10px;
+  overflow: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.commentHeader{
+  font-weight: bold;
+  padding-top: 5px;
+  border-bottom: 1px solid;
+  margin-bottom: 5px;
+}
+
+.commentHeader p{
+  margin-bottom: 0px;
+}
+
+.userNameInComment{
+  font-weight: bold;
+}
+
+.comment{
+  padding-left: 5px;
+  overflow: auto;
+}
+.mat-dialog-container{
+  padding: 0px;
+}
+
+.btnAddComment{
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: #2b8087;
+  border-color: #2b8087;
+  color: ghostwhite;
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.carousel *{
+  background-color: #52565A;
+}
+
+.mat-form-field{
+  width: 100%;
+}
+
+.sendBtnContainer{
+  text-align: right;
+}
+/* -------------------- mediaqueries ---------------------------*/
+
+@media (max-width: 1200px){
+  .commentContainer{
+    margin-top: 10px;
+  }
+  .addCommentContainer{
+    margin-top: 10px;
+  }
+}
+
+

@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {WebApiService} from './web-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +10,10 @@ import {Injectable} from '@angular/core';
 export class NavbarService {
 
   visible: boolean;
+  public firstName;
+  public lastName;
 
-  constructor() {
+  constructor(public apiService: WebApiService) {
     this.visible = false;
   }
 
@@ -19,5 +23,12 @@ export class NavbarService {
 
   show() {
     this.visible = true;
+  }
+
+  getUserInfo(){
+    this.apiService.getCurrentUserInfo().subscribe( r => {
+      this.firstName = r.firstName;
+      this.lastName = r.lastName;
+    });
   }
 }

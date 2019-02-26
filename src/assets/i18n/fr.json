@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "TripicT",
+    "greetings": "Bonjour",
     "titlePostCreate": "Nouvelle Publication",
     "titleActivityCreate": "Nouvelle Activité",
     "titleTripCreate": "Nouveau Voyage",
@@ -55,6 +56,10 @@
     "InvitedUsers": "Utilisateurs dans ce voyage",
     "noUsersToInvite": "Veuillez saisir un utilisateur valide",
     "noAccess": "Vous n'avez pas les permissions pour visionner ces publications",
-    "noActivity": "L'activité n'existe pas"
+    "noActivity": "L'activité n'existe pas",
+    "comments": "Commentaires",
+    "addComment": "Commentez",
+    "btnAddComment": "Envoyer",
+    "nmbPictures": "Photos"
   }
 }

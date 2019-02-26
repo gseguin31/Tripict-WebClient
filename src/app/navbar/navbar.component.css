@@ -1,6 +1,8 @@
-.first-item{
-}
-
 mdb-card-img{
   width: 40%;
+  cursor: pointer;
+}
+
+.name{
+  cursor: default;
 }

@@ -4,66 +4,28 @@
     <div class="col-md-12">
       <div class="card-columns">
         <div *ngFor="let currentPost of allPostsFromServer">
-          <div class="card"  (click)="open(content); wasSeen(currentPost.id)" [ngClass]="currentPost.seen === true ? 'seen' : 'notSeen'">
+          <div class="card"  (click)="openPostDetails(currentPost); wasSeen(currentPost.id)" [ngClass]="currentPost.seen === true ? 'seen' : 'notSeen'">
 
-            <!-- model du popup (modal) mis ici pour utiliser les params de t-->
-            <ng-template #content let-modal class="modal">
-              <!--<div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Purchase or sell</h4>
-              </div>-->
-              <div class="modal-body">
-                <div class="container">
-
-                  <div class="row postRows modal-row">
-                    <div class="col-md-12 modal-col">
-                      <mat-card class="example-card">
-                        <mat-card-header>
-                          <div mat-card-avatar class="example-header-image"></div>
-                          <mat-card-title>{{currentPost.userName}}</mat-card-title>
-                        </mat-card-header>
-
-                        <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'slide'" [interval]="0">
-                          <mdb-carousel-item *ngFor="let imageId of currentPost.idTable">
-                            <img class="d-block w-100" src="{{prefix}}api/Pictures/GetPictureFromId/{{imageId}}" alt="First slide">
-                          </mdb-carousel-item>
-                        </mdb-carousel>
-
-                        <mat-card-content class="postDescription">
-                          <p>
-                            {{currentPost.text}}
-                          </p>
-                        </mat-card-content>
-                        <!--<mat-card-actions>
-                          <button mat-button class="displayPostBtnComment" >COMMENTAIRE</button>
-                          <button mat-button class="displayPostBtnLike">LIKE</button>
-                        </mat-card-actions>-->
-                      </mat-card>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              <!--<div class="modal-footer">
-                <div class="col-6">
-                  <button type="button" class="btn submit" (click)="modal.close('Save click')">Purchase</button>
-                </div>
-                <div class="col-6">
-                  <button type="button" class="btn submit" (click)="modal.close('Save click')">Sell</button>
-                </div>
-              </div>-->
-            </ng-template>
-            <!-- fin du popup -->
-
-
-            <img class="card-img-top" *ngIf="currentPost.idTable.length  > 0" src="{{prefix}}api/Pictures/GetPictureFromId/{{currentPost.idTable[0]}}" alt="">
             <div class="card-body">
               <h5 class="card-title">
                 <img class="userIcon" src="../../assets/images/user.png" alt="">
-                <span class="userName">{{currentPost.userName}}</span>
+                <span class="userName">{{currentPost.name}}</span>
               </h5>
               <p class="card-text">{{currentPost.text}}</p>
-              <p class="card-text"><small class="text-muted">{{currentPost.date}}</small></p>
+
             </div>
+
+            <img class="card-img-top"  *ngIf="currentPost.idTable.length  > 0" src="{{http.baseUrl}}api/Pictures/GetPictureFromId/{{currentPost.idTable[0]}}" alt="">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-text"><small class="text-muted">{{currentPost.date}}</small></p>
+              </div>
+              <div class="col-md-6 numberOfPicturesInPost">
+                <p>{{currentPost.idTable.length}} {{'app.nmbPictures' | translate}}</p>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>

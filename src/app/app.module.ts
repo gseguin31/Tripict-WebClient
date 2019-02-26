@@ -26,10 +26,12 @@ import {DisplayActivitiesComponent} from './display-activities/display-activitie
 import {NavbarComponent} from './navbar/navbar.component';
 import {DisplayTripComponent} from './display-trip/display-trip.component';
 import {CreateTripComponent} from './create-trip/create-trip.component';
-import { FindUserComponent } from './find-user/find-user.component';
+import {FindUserComponent} from './find-user/find-user.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { InvitedUsersComponent } from './invited-users/invited-users.component';
 import { AgmCoreModule } from '@agm/core';
+import {DisplayPostDetailsComponent} from './display-post-details/display-post-details.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -48,7 +50,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DisplayTripComponent,
     CreateTripComponent,
     FindUserComponent,
-    InvitedUsersComponent
+    InvitedUsersComponent,
+    DisplayPostDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: 'trips', component: DisplayTripComponent},
       {path: 'trips/create-trip', component: CreateTripComponent}, // pour le modale de cree un voyage ... ne sera jamais routé
       {path: 'FindUser', component: FindUserComponent}, // pour le modale de trouver un utilisateur ... ne sera jamais routé
+      {path: 'PostDetails', component: DisplayPostDetailsComponent}, // pour le modale de details de post ... ne sera jamais routé
       {path: 'SeeUsersInTrip', component: InvitedUsersComponent}, // pour le modale voir utilisateur dans un voyage ... ne sera jamais routé
       {path: ':trip/create-activity', component: CreateActivityComponent}, // pour le modal pour cree une activite .. ne sera jamais routé
       {path: 'trip/:tripId/activities', component: DisplayActivitiesComponent}, // route vers la liste des activitée pour un voyage, prend un parametre tripId
