@@ -4,20 +4,24 @@
   </div>
 
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="2" style="height: 400px;">
-    <agm-marker
-      *ngFor="let t of trips"
-      [latitude]="t.latitude"
-      [longitude]="t.longitude"
-      [label]="{size: '40px', text: t.name}"
-      (markerClick)="moveToActivities(t.id, t.name)">{{t.name}}">
-    </agm-marker>
-    <agm-marker
-      *ngFor="let t of newTrips"
-      [latitude]="t.latitude"
-      [longitude]="t.longitude"
-      [label]="t.name"
-      (markerClick)="moveToActivities(t.id, t.name)">{{t.name}}">
-    </agm-marker>
+    <ng-container *ngFor="let t of trips">
+      <agm-marker
+        *ngIf="t.latitude != 0.0 || t.longitude != 0"
+        [latitude]="t.latitude"
+        [longitude]="t.longitude"
+        [label]="{size: '40px', text: t.name}"
+        (markerClick)="moveToActivities(t.id, t.name)">{{t.name}}">
+      </agm-marker>
+    </ng-container>
+    <ng-container *ngFor="let t of newTrips">
+      <agm-marker
+        *ngIf="t.latitude != 0.0 || t.longitude != 0"
+        [latitude]="t.latitude"
+        [longitude]="t.longitude"
+        [label]="t.name"
+        (markerClick)="moveToActivities(t.id, t.name)">{{t.name}}">
+      </agm-marker>
+    </ng-container>
   </agm-map>
 
   <div class="row">

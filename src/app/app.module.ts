@@ -86,7 +86,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: '**', redirectTo: 'trips'}
     ]),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCj6qLye_smua9KUclDhtx5d2bfjNwmZjg'
+      apiKey: 'AIzaSyDrNv1urfbos48QR2TFJRo7yhKrIfC9k9M'
     }),
     TranslateModule.forRoot({
       loader: {

@@ -23,8 +23,6 @@ export class DisplayTripComponent implements OnInit {
               private dialog: MatDialog) {
   }
 
-  lat: number = 51.678418;
-  lng: number = -52.712830;
   trips: DisplayTripDto[];
   newTrips: DisplayTripDto[];
   loading = true;
@@ -69,20 +67,19 @@ export class DisplayTripComponent implements OnInit {
         this.trips = [];
         this.newTrips = [];
         for (let i = 0; i < r.length; i++) {
-          let trip = new DisplayTripDto(r[i].id, r[i].name, r[i].seen, i, i);
+          let trip = new DisplayTripDto(r[i].id, r[i].name, r[i].seen, r[i].latitude, r[i].longitude);
           // console.log(trip);
           if (trip.seen) { // Trie les voyages en fonction de si l'utilisateur les as déjà vus ou non
             this.trips.push(trip);
           } else {
             this.newTrips.push(trip);
           }
-           //console.log(trip);
         }
       },
       e => {
-        if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
+        // if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
-        }
+        // }
       });
   }
 }
