@@ -28,8 +28,9 @@ import {DisplayTripComponent} from './display-trip/display-trip.component';
 import {CreateTripComponent} from './create-trip/create-trip.component';
 import {FindUserComponent} from './find-user/find-user.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { InvitedUsersComponent } from './invited-users/invited-users.component';
-import { AgmCoreModule } from '@agm/core';
+import {InvitedUsersComponent} from './invited-users/invited-users.component';
+import {AgmCoreModule} from '@agm/core';
+import {AgmJsMarkerClustererModule} from '@agm/js-marker-clusterer';
 import {DisplayPostDetailsComponent} from './display-post-details/display-post-details.component';
 import {AutocompleteComponent} from './Services/google-places.component';
 
@@ -88,6 +89,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDrNv1urfbos48QR2TFJRo7yhKrIfC9k9M'
     }),
+    AgmJsMarkerClustererModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
