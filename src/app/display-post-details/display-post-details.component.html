@@ -43,6 +43,9 @@
         <div class="commentsContainer">
           <div class="commentHeader">
             <p>{{"app.comments" | translate}}</p>
+            <img (click)="filter()" class="filterIcon" *ngIf="!newestUp" src="../../assets/images/downArrow.png" height="15" width="15"/>
+            <img (click)="filter()" class="filterIcon" *ngIf="newestUp" src="../../assets/images/upArrow.png" height="16" width="16"/>
+            <p (click)="filter()" class="filter">{{"app.commentFilter" | translate}}</p>
           </div>
 
           <div *ngFor="let comment of comments">
@@ -54,22 +57,6 @@
       </div>
     </div>
 
-    <!--<div class="row">
-      <div class="col-xl-9"></div>
-      <div class="col-xl-3">
-        <mat-form-field class="comment" hintLabel="{{ 'app.maxPostChar' | translate }}">
-          <textarea matInput id="commentText" #commentText maxlength="250" class="form-control" [(ngModel)]="addComment" name="commentText" placeholder="{{ 'app.addComment' | translate}}"></textarea>
-          <mat-hint align="end">{{commentText.value?.length || 0}}/250</mat-hint>
-        </mat-form-field>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xl-9"></div>
-      <div class="col-xl-3" style="text-align: right">
-        <button class="btnAddComment" [disabled]="isSending" (click)="postComment()">{{'app.btnAddComment' | translate}}</button>
-      </div>
-    </div>-->
 
   </div>
 
