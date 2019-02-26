@@ -108,7 +108,7 @@ export class CreatePostComponent implements OnInit {
               if (err.status === 401) { // Code 401 quand la page est atteinte directement sans être connecté
                 this.router.navigateByUrl('/');
               } else {
-                this.translate.get('app.alertGenericApiError').subscribe( (res: string) => {
+                this.translate.get('app.alertGenericApiError').subscribe((res: string) => {
                   alert(res);
                 });
               }

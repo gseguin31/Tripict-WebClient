@@ -72,7 +72,7 @@ export class CreateTripComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  getAddress(place: object) {
+  getAddress(place: any) {
     this.address = place['formatted_address'];
     this.phone = this.getPhone(place);
     this.formattedAddress = place['formatted_address'];
