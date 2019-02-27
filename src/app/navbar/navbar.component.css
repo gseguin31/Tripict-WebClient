@@ -18,3 +18,7 @@ mdb-card-img{
 .navBarLinks:hover{
   cursor: pointer;
 }
+
+.userNameNavBar{
+  font-weight: bold;
+}
