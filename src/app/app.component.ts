@@ -29,10 +29,6 @@ export class AppComponent {
     };
   }
 
-  testCall(){
-    this.http.get('/api/values').subscribe(r => console.log(r));
-  }
-
   // Change la langue entre le français et l'anglais
   switchLanguage() {
     if (this.translate.currentLang === 'fr'){

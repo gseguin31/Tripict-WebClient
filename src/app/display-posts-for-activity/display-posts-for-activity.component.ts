@@ -69,6 +69,7 @@ export class DisplayPostsForActivityComponent implements OnInit {
     }
     const dialogRef = this.dialog.open(DisplayPostDetailsComponent, {
       width: width,
+      height: '90%',
       data: { currentPost: post },
     });
   }

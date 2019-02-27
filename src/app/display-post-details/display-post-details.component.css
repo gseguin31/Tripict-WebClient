@@ -19,7 +19,7 @@
 .commentsContainer{
   background-color: rgba(233,233,233,.4);
   border-radius: 10px;
-  height: 460px;
+  height: 456px;
   padding: 5px;
   overflow: auto;
 }
@@ -71,6 +71,11 @@
 }
 .mat-dialog-container{
   padding: 0px;
+}
+
+.mat-dialog-content{
+  max-height: 100% !important;
+  height: 100%;
 }
 
 .btnAddComment{

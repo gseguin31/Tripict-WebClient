@@ -40,9 +40,6 @@ export class AutocompleteComponent implements OnInit, AfterViewInit {
       const place = autocomplete.getPlace();
       let lat = place.geometry.location.lat();
       let lng = place.geometry.location.lng();
-      /*console.log(place);
-      console.log(lat);
-      console.log(lng);*/
       this.invokeEvent(place);
     });
   }

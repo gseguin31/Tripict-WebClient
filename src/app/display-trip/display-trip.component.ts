@@ -43,7 +43,6 @@ export class DisplayTripComponent implements OnInit {
   }
 
   clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`);
 
   }
 
@@ -75,7 +74,6 @@ export class DisplayTripComponent implements OnInit {
         this.newTrips = [];
         for (let i = 0; i < r.length; i++) {
           let trip = new DisplayTripDto(r[i].id, r[i].name, r[i].seen, r[i].latitude, r[i].longitude);
-          // console.log(trip);
           if (trip.seen) { // Trie les voyages en fonction de si l'utilisateur les as déjà vus ou non
             this.trips.push(trip);
           } else {

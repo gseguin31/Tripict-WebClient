@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.navBar.hide();
 
     this.http.checkAuthorisation().subscribe(r => {
-      // debugger;
+      localStorage.removeItem('Token');
       this.router.navigateByUrl('/trips');
     });
   }
