@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container list-button">
   <div *ngIf="trips.length > 0 || trips === undefined" class="row">
     <h1>{{'app.titleTrip' | translate}}</h1>
   </div>
@@ -33,8 +33,8 @@
   </div>
   <div class="row">
     <div class="col-md-12"  *ngFor="let t of newTrips; i as index">
-      <mat-action-list class="listItem">
-        <button mat-raised-button class="new-trips" (click)="moveToActivities(t.id, t.name)">
+      <mat-action-list>
+        <button mat-raised-button class="new-trips listItem" (click)="moveToActivities(t.id, t.name)">
           {{t.name}}
         </button>
       </mat-action-list>
@@ -47,7 +47,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12" *ngFor="let t of trips; i as index">
+    <div class="col-md-12 " *ngFor="let t of trips; i as index">
       <mat-action-list>
         <button mat-raised-button class="listItem" (click)="moveToActivities(t.id, t.name)">{{t.name}}</button>
       </mat-action-list>

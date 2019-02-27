@@ -30,6 +30,7 @@ export class CreateTripComponent implements OnInit {
   name: string;
   latitude: number;
   longitude: number;
+  currentlyUploading: boolean;
 
   address: Object;
 
@@ -42,6 +43,7 @@ export class CreateTripComponent implements OnInit {
     this.name = '';
     this.latitude = 0.0;
     this.longitude = 0.0;
+    this.currentlyUploading = false;
   }
 
   upload() {
@@ -54,13 +56,16 @@ export class CreateTripComponent implements OnInit {
     }
 
     let dto = new CreateTripDto(trimmedName, this.latitude, this.longitude);
+    this.currentlyUploading = true;
     this.apiService.addTrip(dto).subscribe((r) => {
         this.translate.get('app.alertTripCreate').subscribe((res: string) => {
+          this.currentlyUploading = false;
           alert(res);
           this.dialogRef.close();
         });
       },
       (e) => {
+        this.currentlyUploading = false;
         if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
           this.dialogRef.close();

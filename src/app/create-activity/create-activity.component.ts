@@ -27,12 +27,13 @@ export class CreateActivityComponent implements OnInit {
 
   name: string;
   posts: Post[];
-
+  currentlyUploading: boolean;
   ngOnInit() {
     this.navBar.show();
 
     this.posts = [];
     this.name = '';
+    this.currentlyUploading = false;
   }
 
 
@@ -45,15 +46,17 @@ export class CreateActivityComponent implements OnInit {
       });
       return;
     }
-
+    this.currentlyUploading = true;
     let dto = new CreateActivityDto(trimmedName, this.apiService.currentTrip);
     this.apiService.addActivity(dto).subscribe((r) => {
+        this.currentlyUploading = false;
         this.translate.get('app.alertActivityCreate').subscribe((res: string) => {
           alert(res);
           this.dialogRef.close();
         });
       },
       (e) => {
+        this.currentlyUploading = false;
         if (e.status === 401) { // Code 401 si la page est atteinte directement sans être connecté
           this.router.navigateByUrl('/login');
           this.dialogRef.close();

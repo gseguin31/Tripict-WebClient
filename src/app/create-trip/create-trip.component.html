@@ -8,5 +8,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="cancel()">{{'app.modalCancel' | translate}}</button>
-  <button mat-button (click)="upload()">{{'app.upload' | translate}}</button>
+  <button mat-button [disabled]="currentlyUploading" (click)="upload()">{{'app.upload' | translate}}</button>
 </div>
