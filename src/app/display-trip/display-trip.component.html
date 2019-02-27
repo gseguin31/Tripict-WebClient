@@ -1,9 +1,9 @@
 <div class="container list-button">
-  <div *ngIf="trips.length > 0 || trips === undefined" class="row">
+  <div class="row">
     <h1>{{'app.titleTrip' | translate}}</h1>
   </div>
 
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="2" style="height: 400px;">
+  <agm-map *ngIf="trips.length > 0 || trips === undefined" [latitude]="lat" [longitude]="lng" [zoom]="2" style="height: 400px;">
     <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/js-marker-clusterer/gh-pages/images/m">
       <ng-container *ngFor="let t of trips">
         <agm-marker
