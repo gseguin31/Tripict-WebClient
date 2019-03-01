@@ -35,9 +35,9 @@ export class WebApiService {
   };
 
   // public baseUrl = 'http://e1-test.projet.college-em.info:8080/';
-   // public baseUrl = 'http://e1-dev.projet.college-em.info:8080/';
-   // public baseUrl = 'http://e1.projet.college-em.info:8080/';
-    public baseUrl = 'http://localhost:52090/';
+  //  public baseUrl = 'http://e1-dev.projet.college-em.info:8080/';
+    public baseUrl = 'http://e1.projet.college-em.info:8080/';
+    // public baseUrl = 'http://localhost:52090/';
 
   getOptions() {
     return {
@@ -80,7 +80,7 @@ export class WebApiService {
   }
 
   findUsers(tripId, search): Observable<any> {
-    if (search.length === 0 || search.trim().length === 0) {
+    if (search.length === 0) {
       // mettre une chaine sinon le endpoint ne sera pas trouvé
       search = 'ijasdoifjasodjfasdkjf';
     }
